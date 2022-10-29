@@ -1,0 +1,52 @@
+{
+  "id": "com.spkes.insightTrendsReloaded",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#AA3939",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Insight Trends Reloaded",
+    "de": "Insight Trends Reloaded"
+  },
+  "description": {
+    "en": "Get more out of you insights!",
+    "de": "Holen mehr aus deinen Einblicken heraus!"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [
+    "homey:manager:api"
+  ],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Julian Suhl",
+    "email": "julian@suhl.de"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "fast-stats by Philip Tellis - v0.0.6"
+      },
+      {
+        "name": "Trendline.js by Henning Ofstad - v0.3.1"
+      }
+    ]
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "spikes022"
+      }
+    }
+  },
+  "source": "https://github.com/spkesDE/com.spkes.insightTrendsReloaded",
+  "homeyCommunityTopicId": 71307
+}

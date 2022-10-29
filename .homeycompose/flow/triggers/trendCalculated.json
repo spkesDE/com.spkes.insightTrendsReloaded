@@ -1,0 +1,89 @@
+{
+  "title": {
+    "en": "Trend calculated",
+    "de": "Tendenz berechnet"
+  },
+  "hint": {
+    "en": "Use the 'Calculate trend' THEN Card to trigger this card.",
+    "de": "Verwenden Sie die DANN-Karte „Trend berechnen“, um diese Karte auszulösen."
+  },
+  "titleFormatted": {
+    "en": "When the trend calculation for [[insight]] has finished",
+    "de": "Wenn die Trendberechnung für [[insight]] abgeschlossen ist"
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "insight",
+      "title": {
+        "en": "Insight",
+        "de": "Einblick"
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "name": "min",
+      "type": "number",
+      "title": {
+        "en": "Minimum Value",
+        "de": "Minimalwert"
+      },
+      "example": -1337
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "title": {
+        "en": "Maximum Value",
+        "de": "Maximalwert"
+      },
+      "example": 1337
+    },
+    {
+      "name": "mean",
+      "type": "number",
+      "title": {
+        "en": "Average Value",
+        "de": "Mittelwert"
+      },
+      "example": 668.5
+    },
+    {
+      "name": "median",
+      "type": "number",
+      "title": {
+        "en": "Median",
+        "de": "Median"
+      },
+      "example": 668.5
+    },
+    {
+      "name": "standardDeviation",
+      "type": "number",
+      "title": {
+        "en": "Standard Deviation",
+        "de": "Standardabweichung"
+      },
+      "example": 13.37
+    },
+    {
+      "name": "trend",
+      "type": "number",
+      "title": {
+        "en": "Trend",
+        "de": "Tendenz"
+      },
+      "example": 1.337
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "title": {
+        "en": "Number of used data points",
+        "de": "Anzahl der verwenden Daten"
+      },
+      "example": 1337
+    }
+  ]
+}

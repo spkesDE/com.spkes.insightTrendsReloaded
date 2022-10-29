@@ -1,0 +1,134 @@
+{
+  "title": {
+    "en": "Check Insight Percentile",
+    "de": "Überprüfe Einblick Perzentil"
+  },
+  "titleFormatted": {
+    "en": "Check if [[percent]] of the values of [[insight]] are [[operator]] [[value]] for the past [[range]] [[unit]]",
+    "de": "Prüfen ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind."
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "insight",
+      "title": {
+        "en": "Insight",
+        "de": "Einblick"
+      }
+    },
+    {
+      "type": "number",
+      "name": "range",
+      "title": {
+        "en": "Time range",
+        "de": "Zeitraum"
+      },
+      "min": 1,
+      "value": 15
+    },
+    {
+      "type": "dropdown",
+      "name": "unit",
+      "title": {
+        "en": "Time unit",
+        "de": "Zeit einheit"
+      },
+      "values": [
+        {
+          "id": "1",
+          "label": {
+            "en": "Minutes",
+            "de": "Minuten"
+          }
+        },
+        {
+          "id": "60",
+          "label": {
+            "en": "Hours",
+            "de": "Stunden"
+          }
+        },
+        {
+          "id": "1440",
+          "label": {
+            "en": "Days",
+            "de": "Tage"
+          }
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "name": "percent",
+      "title": {
+        "en": "Percent",
+        "de": "Prozent"
+      },
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "value": 50,
+      "label": "%"
+    },
+    {
+      "type": "dropdown",
+      "name": "operator",
+      "title": {
+        "en": "Operator",
+        "de": "Operator"
+      },
+      "values": [
+        {
+          "id": "smaller",
+          "label": {
+            "en": "smaller than",
+            "de": "kleiner als"
+          }
+        },
+        {
+          "id": "smaller_equal",
+          "label": {
+            "en": "smaller than or equals to",
+            "de": "kleiner oder gleich als"
+          }
+        },
+        {
+          "id": "equal",
+          "label": {
+            "en": "equal to",
+            "de": "gleich als"
+          }
+        },
+        {
+          "id": "not_equal",
+          "label": {
+            "en": "not equal to",
+            "de": "nicht gleich als"
+          }
+        },
+        {
+          "id": "greater_equal",
+          "label": {
+            "en": "greater or equal than",
+            "de": "größer oder gleich als"
+          }
+        },
+        {
+          "id": "greater",
+          "label": {
+            "en": "greater than",
+            "de": "gleich als"
+          }
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "value",
+      "title": {
+        "en": "Value",
+        "de": "Wert"
+      }
+    }
+  ]
+}

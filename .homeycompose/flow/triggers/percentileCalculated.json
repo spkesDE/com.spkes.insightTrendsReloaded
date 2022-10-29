@@ -1,0 +1,53 @@
+{
+  "title": {
+    "en": "Percentile calculated",
+    "de": "Perzentil berechnet"
+  },
+  "hint": {
+    "en": "Use the 'Calculate percentile' THEN Card to trigger this card.",
+    "de": "Verwenden Sie die DANN-Karte „Calculate percentile“, um diese Karte auszulösen."
+  },
+  "titleFormatted": {
+    "en": "When the percentile calculation for [[insight]] has finished",
+    "de": "Wenn die Perzentil berechnung für [[insight]] abgeschlossen ist"
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "insight",
+      "title": {
+        "en": "Insight",
+        "de": "Einblick"
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "name": "value",
+      "type": "number",
+      "title": {
+        "en": "Value",
+        "de": "Wert"
+      },
+      "example": 25.3
+    },
+    {
+      "name": "percent",
+      "type": "number",
+      "title": {
+        "en": "Percent",
+        "de": "Prozent"
+      },
+      "example": 50
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "title": {
+        "en": "Number of used data points",
+        "de": "Anzahl der verwenden Daten"
+      },
+      "example": 1337
+    }
+  ]
+}

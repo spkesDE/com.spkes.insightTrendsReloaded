@@ -1,0 +1,173 @@
+{
+  "title": {
+    "en": "Check Insight",
+    "de": "Überprüfe Einblick"
+  },
+  "titleFormatted": {
+    "en": "Check if [[characteristic]] is [[operator]] [[value]] for the past [[range]] [[unit]] on [[insight]]",
+    "de": "Prüfen ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist."
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "insight",
+      "title": {
+        "en": "Insight",
+        "de": "Einblick"
+      }
+    },
+    {
+      "type": "number",
+      "name": "range",
+      "title": {
+        "en": "Time range",
+        "de": "Zeitraum"
+      },
+      "min": 1,
+      "value": 15
+    },
+    {
+      "type": "dropdown",
+      "name": "unit",
+      "title": {
+        "en": "Time unit",
+        "de": "Zeit einheit"
+      },
+      "values": [
+        {
+          "id": "1",
+          "label": {
+            "en": "Minutes",
+            "de": "Minuten"
+          }
+        },
+        {
+          "id": "60",
+          "label": {
+            "en": "Hours",
+            "de": "Stunden"
+          }
+        },
+        {
+          "id": "1440",
+          "label": {
+            "en": "Days",
+            "de": "Tage"
+          }
+        }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "name": "characteristic",
+      "title": {
+        "en": "Characteristic",
+        "de": "Eigenschaft"
+      },
+      "values": [
+        {
+          "id": "min",
+          "label": {
+            "en": "Minimum",
+            "de": "der Minimalwert"
+          }
+        },
+        {
+          "id": "max",
+          "label": {
+            "en": "Maximum",
+            "de": "der Maximalwert"
+          }
+        },
+        {
+          "id": "average",
+          "label": {
+            "en": "Average",
+            "de": "der Mittelwert"
+          }
+        },
+        {
+          "id": "median",
+          "label": {
+            "en": "Median",
+            "de": "der Medianwert"
+          }
+        },
+        {
+          "id": "trend",
+          "label": {
+            "en": "Trend",
+            "de": "die Tendenz"
+          }
+        },
+        {
+          "id": "standardDeviation",
+          "label": {
+            "en": "Standard Deviation",
+            "de": "die Standardabweichung"
+          }
+        }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "name": "operator",
+      "title": {
+        "en": "Operator",
+        "de": "Operator"
+      },
+      "values": [
+        {
+          "id": "smaller",
+          "label": {
+            "en": "smaller than",
+            "de": "kleiner als"
+          }
+        },
+        {
+          "id": "smaller_equal",
+          "label": {
+            "en": "smaller than or equals to",
+            "de": "kleiner oder gleich als"
+          }
+        },
+        {
+          "id": "equal",
+          "label": {
+            "en": "equal to",
+            "de": "gleich als"
+          }
+        },
+        {
+          "id": "not_equal",
+          "label": {
+            "en": "not equal to",
+            "de": "nicht gleich als"
+          }
+        },
+        {
+          "id": "greater_equal",
+          "label": {
+            "en": "greater or equal than",
+            "de": "größer oder gleich als"
+          }
+        },
+        {
+          "id": "greater",
+          "label": {
+            "en": "greater than",
+            "de": "gleich als"
+          }
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "name": "value",
+      "title": {
+        "en": "Value",
+        "de": "Wert"
+      }
+    }
+  ]
+}

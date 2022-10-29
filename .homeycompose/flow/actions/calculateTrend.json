@@ -1,0 +1,65 @@
+{
+  "title": {
+    "en": "Calculate trend",
+    "de": "Tendenz berechnen"
+  },
+  "hint": {
+    "en": "To use the results you need to use the 'Trend calculated'-WHEN card.",
+    "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Tendenz berechnet“ verwenden."
+  },
+  "titleFormatted": {
+    "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]]",
+    "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]]"
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "insight",
+      "title": {
+        "en": "Insight",
+        "de": "Einblick"
+      }
+    },
+    {
+      "type": "number",
+      "name": "range",
+      "title": {
+        "en": "Time range",
+        "de": "Zeitraum"
+      },
+      "min": 1,
+      "value": 15
+    },
+    {
+      "type": "dropdown",
+      "name": "unit",
+      "title": {
+        "en": "Time unit",
+        "de": "Zeit einheit"
+      },
+      "values": [
+        {
+          "id": "1",
+          "label": {
+            "en": "Minutes",
+            "de": "Minuten"
+          }
+        },
+        {
+          "id": "60",
+          "label": {
+            "en": "Hours",
+            "de": "Stunden"
+          }
+        },
+        {
+          "id": "1440",
+          "label": {
+            "en": "Days",
+            "de": "Tage"
+          }
+        }
+      ]
+    }
+  ]
+}
