@@ -1,11 +1,13 @@
 {
   "title": {
     "en": "Check Insight Percentile",
-    "de": "Überprüfe Einblick Perzentil"
+    "de": "Überprüfe Einblick Perzentil",
+    "sv": "Testa percentilen på Insights-data"
   },
   "titleFormatted": {
     "en": "Check if [[percent]] of the values of [[insight]] are [[operator]] [[value]] for the past [[range]] [[unit]]",
-    "de": "Prüfen ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind."
+    "de": "Prüfen ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind.",
+    "sv": "Testa om [[percent]] för [[insight]] är [[operator]] under de senaste [[value]] [[range]] [[unit]]"
   },
   "args": [
     {
@@ -13,7 +15,8 @@
       "name": "insight",
       "title": {
         "en": "Insight",
-        "de": "Einblick"
+        "de": "Einblick",
+        "sv": "Insights-data"
       }
     },
     {
@@ -21,7 +24,8 @@
       "name": "range",
       "title": {
         "en": "Time range",
-        "de": "Zeitraum"
+        "de": "Zeitraum",
+        "sv": "Tidsintervall"
       },
       "min": 1,
       "value": 15
@@ -31,28 +35,32 @@
       "name": "unit",
       "title": {
         "en": "Time unit",
-        "de": "Zeit einheit"
+        "de": "Zeit einheit",
+        "sv": "Tidsenhet"
       },
       "values": [
         {
           "id": "1",
           "label": {
             "en": "Minutes",
-            "de": "Minuten"
+            "de": "Minuten",
+            "sv": "Minuter"
           }
         },
         {
           "id": "60",
           "label": {
             "en": "Hours",
-            "de": "Stunden"
+            "de": "Stunden",
+            "sv": "Timmar"
           }
         },
         {
           "id": "1440",
           "label": {
             "en": "Days",
-            "de": "Tage"
+            "de": "Tage",
+            "sv": "Dagar"
           }
         }
       ]
@@ -62,7 +70,8 @@
       "name": "percent",
       "title": {
         "en": "Percent",
-        "de": "Prozent"
+        "de": "Prozent",
+        "sv": "Procent"
       },
       "min": 0,
       "max": 100,
@@ -75,49 +84,56 @@
       "name": "operator",
       "title": {
         "en": "Operator",
-        "de": "Operator"
+        "de": "Operator",
+        "sv": "Relation"
       },
       "values": [
         {
           "id": "smaller",
           "label": {
             "en": "smaller than",
-            "de": "kleiner als"
+            "de": "kleiner als",
+            "sv": "mindre än"
           }
         },
         {
           "id": "smaller_equal",
           "label": {
             "en": "smaller than or equals to",
-            "de": "kleiner oder gleich als"
+            "de": "kleiner oder gleich als",
+            "sv": "mindre än eller lika med"
           }
         },
         {
           "id": "equal",
           "label": {
             "en": "equal to",
-            "de": "gleich als"
+            "de": "gleich als",
+            "sv": "lika med"
           }
         },
         {
           "id": "not_equal",
           "label": {
             "en": "not equal to",
-            "de": "nicht gleich als"
+            "de": "nicht gleich als",
+            "sv": "inte lika med"
           }
         },
         {
           "id": "greater_equal",
           "label": {
             "en": "greater or equal than",
-            "de": "größer oder gleich als"
+            "de": "größer oder gleich als",
+            "sv": "större än eller lika med"
           }
         },
         {
           "id": "greater",
           "label": {
             "en": "greater than",
-            "de": "gleich als"
+            "de": "größer als",
+            "sv": "större än"
           }
         }
       ]
@@ -127,7 +143,8 @@
       "name": "value",
       "title": {
         "en": "Value",
-        "de": "Wert"
+        "de": "Wert",
+        "sv": "Värde"
       }
     }
   ]

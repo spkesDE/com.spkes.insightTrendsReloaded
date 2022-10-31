@@ -1,15 +1,18 @@
 {
   "title": {
     "en": "Calculate percentile",
-    "de": "Perzentil berechnen"
+    "de": "Perzentil berechnen",
+    "sv": "Beräkna percentilen"
   },
   "hint": {
     "en": "To use the results you need to use the 'Percentile calculated'-WHEN card. Passing in 50% as an argument will return the median, while 25% and 75% will return the first and third quartiles respectively.",
-    "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Perzentil berechnet“ verwenden. Wenn Sie 50 % als Argument übergeben, wird der Median zurückgegeben, während 25 % und 75 % das erste bzw. dritte Quartil zurückgeben."
+    "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Perzentil berechnet“ verwenden. Wenn Sie 50 % als Argument übergeben, wird der Median zurückgegeben, während 25 % und 75 % das erste bzw. dritte Quartil zurückgeben.",
+    "sv": "Använd NÄR-kortet 'Percentilen beräknad' i ett annat flöde för att få resultatet av beräkningen. Om man använder argumentet '50%' blir resultetat medianvärdet och man använder '25%' eller '75%' får man första respektive tredje kvartilen som resultat."
   },
   "titleFormatted": {
     "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]]",
-    "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]]"
+    "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]]",
+    "sv": "Beräkna percentilen av [[percent]] för [[insight]] baserat på senaste [[range]] [[unit]]"
   },
   "args": [
     {
@@ -17,7 +20,8 @@
       "name": "insight",
       "title": {
         "en": "Insight",
-        "de": "Einblick"
+        "de": "Einblick",
+        "sv": "Insights-data"
       }
     },
     {
@@ -25,7 +29,8 @@
       "name": "range",
       "title": {
         "en": "Time range",
-        "de": "Zeitraum"
+        "de": "Zeitraum",
+        "sv": "Tidsintervall"
       },
       "min": 1,
       "value": 15
@@ -35,28 +40,32 @@
       "name": "unit",
       "title": {
         "en": "Time unit",
-        "de": "Zeit einheit"
+        "de": "Zeit einheit",
+        "sv": "Tidsenhet"
       },
       "values": [
         {
           "id": "1",
           "label": {
             "en": "Minutes",
-            "de": "Minuten"
+            "de": "Minuten",
+            "sv": "Minuter"
           }
         },
         {
           "id": "60",
           "label": {
             "en": "Hours",
-            "de": "Stunden"
+            "de": "Stunden",
+            "sv": "Timmar"
           }
         },
         {
           "id": "1440",
           "label": {
             "en": "Days",
-            "de": "Tage"
+            "de": "Tage",
+            "sv": "Dagar"
           }
         }
       ]
@@ -66,13 +75,46 @@
       "name": "percent",
       "title": {
         "en": "Percent",
-        "de": "Prozent"
+        "de": "Prozent",
+        "sv": "Procent"
       },
       "min": 0,
       "max": 100,
       "step": 1,
       "value": 50,
       "label": "%"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "value",
+      "type": "number",
+      "title": {
+        "en": "Value",
+        "de": "Wert",
+        "sv": "Värde"
+      },
+      "example": 25.3
+    },
+    {
+      "name": "percent",
+      "type": "number",
+      "title": {
+        "en": "Percent",
+        "de": "Prozent",
+        "sv": "Procent"
+      },
+      "example": 50
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "title": {
+        "en": "Number of used data points",
+        "de": "Anzahl der verwenden Daten",
+        "sv": "Antal använda datapunkter"
+      },
+      "example": 1337
     }
   ]
 }

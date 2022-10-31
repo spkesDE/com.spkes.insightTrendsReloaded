@@ -1,15 +1,18 @@
 {
   "title": {
     "en": "Percentile calculated",
-    "de": "Perzentil berechnet"
+    "de": "Perzentil berechnet",
+    "sv": "Percentilen beräknad"
   },
   "hint": {
     "en": "Use the 'Calculate percentile' THEN Card to trigger this card.",
-    "de": "Verwenden Sie die DANN-Karte „Calculate percentile“, um diese Karte auszulösen."
+    "de": "Verwenden Sie die DANN-Karte „Calculate percentile“, um diese Karte auszulösen.",
+    "sv": "Använd DÅ-kortet 'Beräkna percentilen' i ett annat flöde för att trigga detta kort."
   },
   "titleFormatted": {
     "en": "When the percentile calculation for [[insight]] has finished",
-    "de": "Wenn die Perzentil berechnung für [[insight]] abgeschlossen ist"
+    "de": "Wenn die Perzentil berechnung für [[insight]] abgeschlossen ist",
+    "sv": "När percentilen för [[insight]] är beräknad"
   },
   "args": [
     {
@@ -17,7 +20,8 @@
       "name": "insight",
       "title": {
         "en": "Insight",
-        "de": "Einblick"
+        "de": "Einblick",
+        "sv": "Insights-data"
       }
     }
   ],
@@ -27,7 +31,8 @@
       "type": "number",
       "title": {
         "en": "Value",
-        "de": "Wert"
+        "de": "Wert",
+        "sv": "Värde"
       },
       "example": 25.3
     },
@@ -36,7 +41,8 @@
       "type": "number",
       "title": {
         "en": "Percent",
-        "de": "Prozent"
+        "de": "Prozent",
+        "sv": "Procent"
       },
       "example": 50
     },
@@ -45,7 +51,8 @@
       "type": "number",
       "title": {
         "en": "Number of used data points",
-        "de": "Anzahl der verwenden Daten"
+        "de": "Anzahl der verwenden Daten",
+        "sv": "Antal använda datapunkter"
       },
       "example": 1337
     }

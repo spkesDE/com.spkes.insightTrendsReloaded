@@ -1,15 +1,18 @@
 {
   "title": {
     "en": "Calculate trend",
-    "de": "Tendenz berechnen"
+    "de": "Tendenz berechnen",
+    "sv": "Beräkna trenden"
   },
   "hint": {
     "en": "To use the results you need to use the 'Trend calculated'-WHEN card.",
-    "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Tendenz berechnet“ verwenden."
+    "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Tendenz berechnet“ verwenden.",
+    "sv": "Genom att använda NÄR-kortet 'Trend beräknad' får man resultatet av beräkningen."
   },
   "titleFormatted": {
     "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]]",
-    "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]]"
+    "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]]",
+    "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]]"
   },
   "args": [
     {
@@ -17,7 +20,8 @@
       "name": "insight",
       "title": {
         "en": "Insight",
-        "de": "Einblick"
+        "de": "Einblick",
+        "sv": "Insights-data"
       }
     },
     {
@@ -25,7 +29,8 @@
       "name": "range",
       "title": {
         "en": "Time range",
-        "de": "Zeitraum"
+        "de": "Zeitraum",
+        "sv": "Tidsintervall"
       },
       "min": 1,
       "value": 15
@@ -35,31 +40,107 @@
       "name": "unit",
       "title": {
         "en": "Time unit",
-        "de": "Zeit einheit"
+        "de": "Zeit einheit",
+        "sv": "Tidsenhet"
       },
       "values": [
         {
           "id": "1",
           "label": {
             "en": "Minutes",
-            "de": "Minuten"
+            "de": "Minuten",
+            "sv": "Minuter"
           }
         },
         {
           "id": "60",
           "label": {
             "en": "Hours",
-            "de": "Stunden"
+            "de": "Stunden",
+            "sv": "Timmar"
           }
         },
         {
           "id": "1440",
           "label": {
             "en": "Days",
-            "de": "Tage"
+            "de": "Tage",
+            "sv": "Dagar"
           }
         }
       ]
+    }
+  ],
+  "tokens": [
+    {
+      "name": "min",
+      "type": "number",
+      "title": {
+        "en": "Minimum Value",
+        "de": "Minimalwert",
+        "sv": "Minimivärde"
+      },
+      "example": -1337
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "title": {
+        "en": "Maximum Value",
+        "de": "Maximalwert",
+        "sv": "Maximivärde"
+      },
+      "example": 1337
+    },
+    {
+      "name": "mean",
+      "type": "number",
+      "title": {
+        "en": "Average Value",
+        "de": "Mittelwert",
+        "sv": "Medelvärde"
+      },
+      "example": 668.5
+    },
+    {
+      "name": "median",
+      "type": "number",
+      "title": {
+        "en": "Median",
+        "de": "Median",
+        "sv": "Medianvärde"
+      },
+      "example": 668.5
+    },
+    {
+      "name": "standardDeviation",
+      "type": "number",
+      "title": {
+        "en": "Standard Deviation",
+        "de": "Standardabweichung",
+        "sv": "Standardavvikelse"
+      },
+      "example": 13.37
+    },
+    {
+      "name": "trend",
+      "type": "number",
+      "title": {
+        "en": "Trend",
+        "de": "Tendenz",
+        "sv": "Trendvärde"
+      },
+      "example": 1.337
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "title": {
+        "en": "Number of used data points",
+        "de": "Anzahl der verwenden Daten",
+        "sv": "Antal använda datapunkter"
+      },
+      "example": 1337
     }
   ]
 }

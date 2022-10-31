@@ -1,15 +1,18 @@
 {
   "title": {
     "en": "Trend calculated",
-    "de": "Tendenz berechnet"
+    "de": "Tendenz berechnet",
+    "sv": "Trenden beräknad"
   },
   "hint": {
     "en": "Use the 'Calculate trend' THEN Card to trigger this card.",
-    "de": "Verwenden Sie die DANN-Karte „Trend berechnen“, um diese Karte auszulösen."
+    "de": "Verwenden Sie die DANN-Karte „Trend berechnen“, um diese Karte auszulösen.",
+    "sv": "Använd DÅ-kortet 'Beräkna trenden' i ett annat flöde för att trigga detta kort"
   },
   "titleFormatted": {
     "en": "When the trend calculation for [[insight]] has finished",
-    "de": "Wenn die Trendberechnung für [[insight]] abgeschlossen ist"
+    "de": "Wenn die Trendberechnung für [[insight]] abgeschlossen ist",
+    "sv": "När trenden för [[insight]] är beräknad"
   },
   "args": [
     {
@@ -17,7 +20,8 @@
       "name": "insight",
       "title": {
         "en": "Insight",
-        "de": "Einblick"
+        "de": "Einblick",
+        "sv": "Insights-data"
       }
     }
   ],
@@ -27,7 +31,8 @@
       "type": "number",
       "title": {
         "en": "Minimum Value",
-        "de": "Minimalwert"
+        "de": "Minimalwert",
+        "sv": "Minimivärde"
       },
       "example": -1337
     },
@@ -36,7 +41,8 @@
       "type": "number",
       "title": {
         "en": "Maximum Value",
-        "de": "Maximalwert"
+        "de": "Maximalwert",
+        "sv": "Maximivärde"
       },
       "example": 1337
     },
@@ -45,7 +51,8 @@
       "type": "number",
       "title": {
         "en": "Average Value",
-        "de": "Mittelwert"
+        "de": "Mittelwert",
+        "sv": "Medelvärde"
       },
       "example": 668.5
     },
@@ -54,7 +61,8 @@
       "type": "number",
       "title": {
         "en": "Median",
-        "de": "Median"
+        "de": "Median",
+        "sv": "Medianvärde"
       },
       "example": 668.5
     },
@@ -63,7 +71,8 @@
       "type": "number",
       "title": {
         "en": "Standard Deviation",
-        "de": "Standardabweichung"
+        "de": "Standardabweichung",
+        "sv": "Standardavvikelse"
       },
       "example": 13.37
     },
@@ -72,7 +81,8 @@
       "type": "number",
       "title": {
         "en": "Trend",
-        "de": "Tendenz"
+        "de": "Tendenz",
+        "sv": "Trend"
       },
       "example": 1.337
     },
@@ -81,7 +91,8 @@
       "type": "number",
       "title": {
         "en": "Number of used data points",
-        "de": "Anzahl der verwenden Daten"
+        "de": "Anzahl der verwenden Daten",
+        "sv": "Antal använda datapunkter"
       },
       "example": 1337
     }
