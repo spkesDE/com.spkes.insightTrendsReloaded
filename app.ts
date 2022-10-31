@@ -26,14 +26,17 @@ export class InsightTrendsReloaded extends Homey.App {
         return this.api;
     }
 
-    async getLogs(range: number, unit: string, opts: { uri: string, id: string }) {
+    async getLogs(range: number, unit: string, opts: { uri: string, id: string, resolution?: string }, isBooleanBasedCapability: boolean = false) {
         return new Promise<{ x: number; y: any; }[]>(async (resolve, reject) => {
             let minutes = range * parseInt(unit);
+            if (!isBooleanBasedCapability) {
+                opts = {
+                    ...opts,
+                    resolution: this.minutesToTimespan(minutes)
+                }
+            }
             // @ts-ignore
-            let logEntries: any = await this.getHomeyAPI().insights.getLogEntries({
-                ...opts,
-                resolution: this.minutesToTimespan(minutes)
-            });
+            let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts);
             if (logEntries === undefined) reject(new Error('Failed to get log entries'));
             //Calculate the lowest date based on user input
             let minDate = Date.now() - minutes * 60000;
@@ -45,7 +48,7 @@ export class InsightTrendsReloaded extends Homey.App {
                 })
                     //Map the log entries to the x and y
                     .map((entry: { t: string; v: any; }) => {
-                        return {x: Date.parse(entry.t) / 1000, y: entry.v};
+                        return {x: Date.parse(entry.t) / 1000, y: Number(entry.v)};
                     })
             );
         })

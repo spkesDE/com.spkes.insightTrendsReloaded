@@ -7,7 +7,7 @@ export default class CalculatePercentile {
     constructor(app: InsightTrendsReloaded, card: FlowCardAction) {
         card.registerRunListener(async (args: any) => {
             let state = {id: args.insight.id, uri: args.insight.uri};
-            let logs = await app.getLogs(args.range, args.unit, state);
+            let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean');
             let stats = new Stats().push(logs.map((entry: any) => entry.y));
             let token = {
                 value: stats.percentile(args.percent),
@@ -15,7 +15,7 @@ export default class CalculatePercentile {
                 size: logs.length
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)
-            app.homey.flow.getTriggerCard('percentileCalculated').trigger(token, state);
+            await app.homey.flow.getTriggerCard('percentileCalculated').trigger(token, state);
             return token;
         });
         card.registerArgumentAutocompleteListener('insight', async (query: any) => {
