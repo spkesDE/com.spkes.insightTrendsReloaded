@@ -17,8 +17,6 @@ export class InsightTrendsReloaded extends Homey.App {
     async onInit() {
         // @ts-ignore
         this.api = await new HomeyAPIApp({homey: this.homey});
-        console.log(this.api);
-        console.log(this.api.isConnected())
         this._initializeFlowCards();
         this.homeyId = await this.homey.cloud.getHomeyId();
         this.log('InsightTrendsReloaded has been initialized');
