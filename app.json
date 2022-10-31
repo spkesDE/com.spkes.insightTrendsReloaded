@@ -10,11 +10,13 @@
   ],
   "name": {
     "en": "Insight Trends Reloaded",
-    "de": "Insight Trends Reloaded"
+    "de": "Insight Trends Reloaded",
+    "sv": "Insight Trends Reloaded"
   },
   "description": {
     "en": "Get more out of you insights!",
-    "de": "Holen mehr aus deinen Einblicken heraus!"
+    "de": "Holen mehr aus deinen Einblicken heraus!",
+    "sv": "Translate me"
   },
   "category": [
     "tools"
@@ -39,6 +41,11 @@
       {
         "name": "Trendline.js by Henning Ofstad - v0.3.1"
       }
+    ],
+    "translators": [
+      {
+        "name": "you name or forum name"
+      }
     ]
   },
   "contributing": {
@@ -55,15 +62,18 @@
       {
         "title": {
           "en": "Percentile calculated",
-          "de": "Perzentil berechnet"
+          "de": "Perzentil berechnet",
+          "sv": "Translate me"
         },
         "hint": {
           "en": "Use the 'Calculate percentile' THEN Card to trigger this card.",
-          "de": "Verwenden Sie die DANN-Karte „Calculate percentile“, um diese Karte auszulösen."
+          "de": "Verwenden Sie die DANN-Karte „Calculate percentile“, um diese Karte auszulösen.",
+          "sv": "Translate me"
         },
         "titleFormatted": {
           "en": "When the percentile calculation for [[insight]] has finished",
-          "de": "Wenn die Perzentil berechnung für [[insight]] abgeschlossen ist"
+          "de": "Wenn die Perzentil berechnung für [[insight]] abgeschlossen ist",
+          "sv": "Translate me [[insight]] "
         },
         "args": [
           {
@@ -71,7 +81,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Translate me"
             }
           }
         ],
@@ -81,7 +92,8 @@
             "type": "number",
             "title": {
               "en": "Value",
-              "de": "Wert"
+              "de": "Wert",
+              "sv": "Translate me"
             },
             "example": 25.3
           },
@@ -90,7 +102,8 @@
             "type": "number",
             "title": {
               "en": "Percent",
-              "de": "Prozent"
+              "de": "Prozent",
+              "sv": "Translate me"
             },
             "example": 50
           },
@@ -99,7 +112,8 @@
             "type": "number",
             "title": {
               "en": "Number of used data points",
-              "de": "Anzahl der verwenden Daten"
+              "de": "Anzahl der verwenden Daten",
+              "sv": "Translate me"
             },
             "example": 1337
           }
@@ -109,15 +123,18 @@
       {
         "title": {
           "en": "Trend calculated",
-          "de": "Tendenz berechnet"
+          "de": "Tendenz berechnet",
+          "sv": "Translate me"
         },
         "hint": {
           "en": "Use the 'Calculate trend' THEN Card to trigger this card.",
-          "de": "Verwenden Sie die DANN-Karte „Trend berechnen“, um diese Karte auszulösen."
+          "de": "Verwenden Sie die DANN-Karte „Trend berechnen“, um diese Karte auszulösen.",
+          "sv": "Translate me"
         },
         "titleFormatted": {
           "en": "When the trend calculation for [[insight]] has finished",
-          "de": "Wenn die Trendberechnung für [[insight]] abgeschlossen ist"
+          "de": "Wenn die Trendberechnung für [[insight]] abgeschlossen ist",
+          "sv": "Translate me [[insight]] "
         },
         "args": [
           {
@@ -125,7 +142,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Translate me"
             }
           }
         ],
@@ -135,7 +153,8 @@
             "type": "number",
             "title": {
               "en": "Minimum Value",
-              "de": "Minimalwert"
+              "de": "Minimalwert",
+              "sv": "Translate me"
             },
             "example": -1337
           },
@@ -144,7 +163,8 @@
             "type": "number",
             "title": {
               "en": "Maximum Value",
-              "de": "Maximalwert"
+              "de": "Maximalwert",
+              "sv": "Translate me"
             },
             "example": 1337
           },
@@ -153,7 +173,8 @@
             "type": "number",
             "title": {
               "en": "Average Value",
-              "de": "Mittelwert"
+              "de": "Mittelwert",
+              "sv": "Translate me"
             },
             "example": 668.5
           },
@@ -162,7 +183,8 @@
             "type": "number",
             "title": {
               "en": "Median",
-              "de": "Median"
+              "de": "Median",
+              "sv": "Translate me"
             },
             "example": 668.5
           },
@@ -171,7 +193,8 @@
             "type": "number",
             "title": {
               "en": "Standard Deviation",
-              "de": "Standardabweichung"
+              "de": "Standardabweichung",
+              "sv": "Translate me"
             },
             "example": 13.37
           },
@@ -180,7 +203,8 @@
             "type": "number",
             "title": {
               "en": "Trend",
-              "de": "Tendenz"
+              "de": "Tendenz",
+              "sv": "Translate me"
             },
             "example": 1.337
           },
@@ -189,7 +213,8 @@
             "type": "number",
             "title": {
               "en": "Number of used data points",
-              "de": "Anzahl der verwenden Daten"
+              "de": "Anzahl der verwenden Daten",
+              "sv": "Translate me"
             },
             "example": 1337
           }
@@ -201,11 +226,13 @@
       {
         "title": {
           "en": "Check Insight",
-          "de": "Überprüfe Einblick"
+          "de": "Überprüfe Einblick",
+          "sv": "Translate me"
         },
         "titleFormatted": {
           "en": "Check if [[characteristic]] is [[operator]] [[value]] for the past [[range]] [[unit]] on [[insight]]",
-          "de": "Prüfen ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist."
+          "de": "Prüfen ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist.",
+          "sv": "Translate me - Check if [[characteristic]] is [[operator]] [[value]] for the past [[range]] [[unit]] on [[insight]]"
         },
         "args": [
           {
@@ -213,7 +240,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Translate me"
             }
           },
           {
@@ -221,7 +249,8 @@
             "name": "range",
             "title": {
               "en": "Time range",
-              "de": "Zeitraum"
+              "de": "Zeitraum",
+              "sv": "Translate me"
             },
             "min": 1,
             "value": 15
@@ -231,28 +260,32 @@
             "name": "unit",
             "title": {
               "en": "Time unit",
-              "de": "Zeit einheit"
+              "de": "Zeit einheit",
+              "sv": "Translate me"
             },
             "values": [
               {
                 "id": "1",
                 "label": {
                   "en": "Minutes",
-                  "de": "Minuten"
+                  "de": "Minuten",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "60",
                 "label": {
                   "en": "Hours",
-                  "de": "Stunden"
+                  "de": "Stunden",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "1440",
                 "label": {
                   "en": "Days",
-                  "de": "Tage"
+                  "de": "Tage",
+                  "sv": "Translate me"
                 }
               }
             ]
@@ -262,49 +295,56 @@
             "name": "characteristic",
             "title": {
               "en": "Characteristic",
-              "de": "Eigenschaft"
+              "de": "Eigenschaft",
+              "sv": "Translate me"
             },
             "values": [
               {
                 "id": "min",
                 "label": {
                   "en": "Minimum",
-                  "de": "der Minimalwert"
+                  "de": "der Minimalwert",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "max",
                 "label": {
                   "en": "Maximum",
-                  "de": "der Maximalwert"
+                  "de": "der Maximalwert",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "average",
                 "label": {
                   "en": "Average",
-                  "de": "der Mittelwert"
+                  "de": "der Mittelwert",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "median",
                 "label": {
                   "en": "Median",
-                  "de": "der Medianwert"
+                  "de": "der Medianwert",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "trend",
                 "label": {
                   "en": "Trend",
-                  "de": "die Tendenz"
+                  "de": "die Tendenz",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "standardDeviation",
                 "label": {
                   "en": "Standard Deviation",
-                  "de": "die Standardabweichung"
+                  "de": "die Standardabweichung",
+                  "sv": "Translate me"
                 }
               }
             ]
@@ -314,49 +354,56 @@
             "name": "operator",
             "title": {
               "en": "Operator",
-              "de": "Operator"
+              "de": "Operator",
+              "sv": "Translate me"
             },
             "values": [
               {
                 "id": "smaller",
                 "label": {
                   "en": "smaller than",
-                  "de": "kleiner als"
+                  "de": "kleiner als",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "smaller_equal",
                 "label": {
                   "en": "smaller than or equals to",
-                  "de": "kleiner oder gleich als"
+                  "de": "kleiner oder gleich als",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "equal",
                 "label": {
                   "en": "equal to",
-                  "de": "gleich als"
+                  "de": "gleich als",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "not_equal",
                 "label": {
                   "en": "not equal to",
-                  "de": "nicht gleich als"
+                  "de": "nicht gleich als",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "greater_equal",
                 "label": {
                   "en": "greater or equal than",
-                  "de": "größer oder gleich als"
+                  "de": "größer oder gleich als",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "greater",
                 "label": {
                   "en": "greater than",
-                  "de": "gleich als"
+                  "de": "gleich als",
+                  "sv": "Translate me"
                 }
               }
             ]
@@ -366,7 +413,8 @@
             "name": "value",
             "title": {
               "en": "Value",
-              "de": "Wert"
+              "de": "Wert",
+              "sv": "Translate me"
             }
           }
         ],
@@ -375,11 +423,13 @@
       {
         "title": {
           "en": "Check Insight Percentile",
-          "de": "Überprüfe Einblick Perzentil"
+          "de": "Überprüfe Einblick Perzentil",
+          "sv": "Translate me"
         },
         "titleFormatted": {
           "en": "Check if [[percent]] of the values of [[insight]] are [[operator]] [[value]] for the past [[range]] [[unit]]",
-          "de": "Prüfen ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind."
+          "de": "Prüfen ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind.",
+          "sv": "Translate me [[percent]] [[insight]] [[operator]] [[value]] [[range]] [[unit]]"
         },
         "args": [
           {
@@ -387,7 +437,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Translate me"
             }
           },
           {
@@ -395,7 +446,8 @@
             "name": "range",
             "title": {
               "en": "Time range",
-              "de": "Zeitraum"
+              "de": "Zeitraum",
+              "sv": "Translate me"
             },
             "min": 1,
             "value": 15
@@ -405,28 +457,32 @@
             "name": "unit",
             "title": {
               "en": "Time unit",
-              "de": "Zeit einheit"
+              "de": "Zeit einheit",
+              "sv": "Translate me"
             },
             "values": [
               {
                 "id": "1",
                 "label": {
                   "en": "Minutes",
-                  "de": "Minuten"
+                  "de": "Minuten",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "60",
                 "label": {
                   "en": "Hours",
-                  "de": "Stunden"
+                  "de": "Stunden",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "1440",
                 "label": {
                   "en": "Days",
-                  "de": "Tage"
+                  "de": "Tage",
+                  "sv": "Translate me"
                 }
               }
             ]
@@ -436,7 +492,8 @@
             "name": "percent",
             "title": {
               "en": "Percent",
-              "de": "Prozent"
+              "de": "Prozent",
+              "sv": "Translate me"
             },
             "min": 0,
             "max": 100,
@@ -449,49 +506,56 @@
             "name": "operator",
             "title": {
               "en": "Operator",
-              "de": "Operator"
+              "de": "Operator",
+              "sv": "Translate me"
             },
             "values": [
               {
                 "id": "smaller",
                 "label": {
                   "en": "smaller than",
-                  "de": "kleiner als"
+                  "de": "kleiner als",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "smaller_equal",
                 "label": {
                   "en": "smaller than or equals to",
-                  "de": "kleiner oder gleich als"
+                  "de": "kleiner oder gleich als",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "equal",
                 "label": {
                   "en": "equal to",
-                  "de": "gleich als"
+                  "de": "gleich als",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "not_equal",
                 "label": {
                   "en": "not equal to",
-                  "de": "nicht gleich als"
+                  "de": "nicht gleich als",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "greater_equal",
                 "label": {
                   "en": "greater or equal than",
-                  "de": "größer oder gleich als"
+                  "de": "größer oder gleich als",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "greater",
                 "label": {
                   "en": "greater than",
-                  "de": "gleich als"
+                  "de": "gleich als",
+                  "sv": "Translate me"
                 }
               }
             ]
@@ -501,7 +565,8 @@
             "name": "value",
             "title": {
               "en": "Value",
-              "de": "Wert"
+              "de": "Wert",
+              "sv": "Translate me"
             }
           }
         ],
@@ -512,15 +577,18 @@
       {
         "title": {
           "en": "Calculate percentile",
-          "de": "Perzentil berechnen"
+          "de": "Perzentil berechnen",
+          "sv": "Translate me"
         },
         "hint": {
           "en": "To use the results you need to use the 'Percentile calculated'-WHEN card. Passing in 50% as an argument will return the median, while 25% and 75% will return the first and third quartiles respectively.",
-          "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Perzentil berechnet“ verwenden. Wenn Sie 50 % als Argument übergeben, wird der Median zurückgegeben, während 25 % und 75 % das erste bzw. dritte Quartil zurückgeben."
+          "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Perzentil berechnet“ verwenden. Wenn Sie 50 % als Argument übergeben, wird der Median zurückgegeben, während 25 % und 75 % das erste bzw. dritte Quartil zurückgeben.",
+          "sv": "Translate me"
         },
         "titleFormatted": {
           "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]]",
-          "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]]"
+          "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]]",
+          "sv": "Translate me - Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]]"
         },
         "args": [
           {
@@ -528,7 +596,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Translate me"
             }
           },
           {
@@ -536,7 +605,8 @@
             "name": "range",
             "title": {
               "en": "Time range",
-              "de": "Zeitraum"
+              "de": "Zeitraum",
+              "sv": "Translate me"
             },
             "min": 1,
             "value": 15
@@ -546,28 +616,32 @@
             "name": "unit",
             "title": {
               "en": "Time unit",
-              "de": "Zeit einheit"
+              "de": "Zeit einheit",
+              "sv": "Translate me"
             },
             "values": [
               {
                 "id": "1",
                 "label": {
                   "en": "Minutes",
-                  "de": "Minuten"
+                  "de": "Minuten",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "60",
                 "label": {
                   "en": "Hours",
-                  "de": "Stunden"
+                  "de": "Stunden",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "1440",
                 "label": {
                   "en": "Days",
-                  "de": "Tage"
+                  "de": "Tage",
+                  "sv": "Translate me"
                 }
               }
             ]
@@ -577,7 +651,8 @@
             "name": "percent",
             "title": {
               "en": "Percent",
-              "de": "Prozent"
+              "de": "Prozent",
+              "sv": "Translate me"
             },
             "min": 0,
             "max": 100,
@@ -586,20 +661,55 @@
             "label": "%"
           }
         ],
+        "tokens": [
+          {
+            "name": "value",
+            "type": "number",
+            "title": {
+              "en": "Value",
+              "de": "Wert",
+              "sv": "Translate me"
+            },
+            "example": 25.3
+          },
+          {
+            "name": "percent",
+            "type": "number",
+            "title": {
+              "en": "Percent",
+              "de": "Prozent",
+              "sv": "Translate me"
+            },
+            "example": 50
+          },
+          {
+            "name": "size",
+            "type": "number",
+            "title": {
+              "en": "Number of used data points",
+              "de": "Anzahl der verwenden Daten",
+              "sv": "Translate me"
+            },
+            "example": 1337
+          }
+        ],
         "id": "calculatePercentile"
       },
       {
         "title": {
           "en": "Calculate trend",
-          "de": "Tendenz berechnen"
+          "de": "Tendenz berechnen",
+          "sv": "Translate me"
         },
         "hint": {
           "en": "To use the results you need to use the 'Trend calculated'-WHEN card.",
-          "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Tendenz berechnet“ verwenden."
+          "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Tendenz berechnet“ verwenden.",
+          "sv": "Translate me"
         },
         "titleFormatted": {
           "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]]",
-          "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]]"
+          "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]]",
+          "sv": "Translate me - Calculate trend for [[insight]] based on the last [[range]] [[unit]]"
         },
         "args": [
           {
@@ -607,7 +717,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Translate me"
             }
           },
           {
@@ -615,7 +726,8 @@
             "name": "range",
             "title": {
               "en": "Time range",
-              "de": "Zeitraum"
+              "de": "Zeitraum",
+              "sv": "Translate me"
             },
             "min": 1,
             "value": 15
@@ -625,31 +737,107 @@
             "name": "unit",
             "title": {
               "en": "Time unit",
-              "de": "Zeit einheit"
+              "de": "Zeit einheit",
+              "sv": "Translate me"
             },
             "values": [
               {
                 "id": "1",
                 "label": {
                   "en": "Minutes",
-                  "de": "Minuten"
+                  "de": "Minuten",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "60",
                 "label": {
                   "en": "Hours",
-                  "de": "Stunden"
+                  "de": "Stunden",
+                  "sv": "Translate me"
                 }
               },
               {
                 "id": "1440",
                 "label": {
                   "en": "Days",
-                  "de": "Tage"
+                  "de": "Tage",
+                  "sv": "Translate me"
                 }
               }
             ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "min",
+            "type": "number",
+            "title": {
+              "en": "Minimum Value",
+              "de": "Minimalwert",
+              "sv": "Translate me"
+            },
+            "example": -1337
+          },
+          {
+            "name": "max",
+            "type": "number",
+            "title": {
+              "en": "Maximum Value",
+              "de": "Maximalwert",
+              "sv": "Translate me"
+            },
+            "example": 1337
+          },
+          {
+            "name": "mean",
+            "type": "number",
+            "title": {
+              "en": "Average Value",
+              "de": "Mittelwert",
+              "sv": "Translate me"
+            },
+            "example": 668.5
+          },
+          {
+            "name": "median",
+            "type": "number",
+            "title": {
+              "en": "Median",
+              "de": "Median",
+              "sv": "Translate me"
+            },
+            "example": 668.5
+          },
+          {
+            "name": "standardDeviation",
+            "type": "number",
+            "title": {
+              "en": "Standard Deviation",
+              "de": "Standardabweichung",
+              "sv": "Translate me"
+            },
+            "example": 13.37
+          },
+          {
+            "name": "trend",
+            "type": "number",
+            "title": {
+              "en": "Trend",
+              "de": "Tendenz",
+              "sv": "Translate me"
+            },
+            "example": 1.337
+          },
+          {
+            "name": "size",
+            "type": "number",
+            "title": {
+              "en": "Number of used data points",
+              "de": "Anzahl der verwenden Daten",
+              "sv": "Translate me"
+            },
+            "example": 1337
           }
         ],
         "id": "calculateTrend"

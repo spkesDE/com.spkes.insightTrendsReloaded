@@ -27,6 +27,7 @@ export default class FlowUtils {
 
     public static async getSortedInsightsForAutocomplete(app: InsightTrendsReloaded, query: any, filter: any = {type: 'number'}): Promise<any> {
         return new Promise<any>(async (resolve) => {
+            // @ts-ignore
             let insights: any = await app.getHomeyAPI().insights.getLogs(filter);
             resolve(insights.filter((entry: any) => entry.type == filter.type)
                 // Map entries to a usable friendly object

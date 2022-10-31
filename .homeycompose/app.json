@@ -9,11 +9,13 @@
   ],
   "name": {
     "en": "Insight Trends Reloaded",
-    "de": "Insight Trends Reloaded"
+    "de": "Insight Trends Reloaded",
+    "sv": "Insight Trends Reloaded"
   },
   "description": {
     "en": "Get more out of you insights!",
-    "de": "Holen mehr aus deinen Einblicken heraus!"
+    "de": "Holen mehr aus deinen Einblicken heraus!",
+    "sv": "Mer nytta av dina Insights-data!"
   },
   "category": [
     "tools"
@@ -37,6 +39,11 @@
       },
       {
         "name": "Trendline.js by Henning Ofstad - v0.3.1"
+      }
+    ],
+    "translators": [
+      {
+        "name": "\uD83C\uDDF8\uD83C\uDDEA Morgan"
       }
     ]
   },

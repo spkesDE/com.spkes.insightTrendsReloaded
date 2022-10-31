@@ -13,7 +13,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "athom-api": "^3.7.7",
-    "fast-stats": "^0.0.6"
+    "fast-stats": "^0.0.6",
+    "homey-api": "^1.8.0"
   }
 }

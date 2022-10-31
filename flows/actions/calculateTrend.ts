@@ -21,6 +21,7 @@ export default class CalculateTrend {
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)
             app.homey.flow.getTriggerCard('trendCalculated').trigger(token, state);
+            return token;
         });
         card.registerArgumentAutocompleteListener('insight', async (query: any) => {
             return await FlowUtils.getSortedInsightsForAutocomplete(app, query);
