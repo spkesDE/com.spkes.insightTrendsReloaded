@@ -1,6 +1,6 @@
 {
   "id": "com.spkes.insightTrendsReloaded",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#AA3939",
@@ -43,7 +43,7 @@
     ],
     "translators": [
       {
-        "name": "\uD83C\uDDF8\uD83C\uDDEA Morgan"
+        "name": "🇸🇪 Morgan"
       }
     ]
   },
