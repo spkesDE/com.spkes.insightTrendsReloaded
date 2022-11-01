@@ -1,41 +1,42 @@
 import Homey from 'homey';
-import {HomeyAPI} from "athom-api";
 import PercentileCalculated from "./flows/triggers/percentileCalculated";
 import TrendCalculated from "./flows/triggers/trendCalculated";
 import CalculatePercentile from "./flows/actions/calculatePercentile";
 import CalculateTrend from "./flows/actions/calculateTrend";
 import CheckInsight from "./flows/conditions/checkInsight";
 import CheckInsightPercentile from "./flows/conditions/checkInsightPercentile";
+import {HomeyAPIApp} from "homey-api";
 
 export class InsightTrendsReloaded extends Homey.App {
     public homeyId: string | undefined;
-    private api: HomeyAPI | undefined;
+    private api: HomeyAPIApp | undefined;
 
     /**
      * onInit is called when the app is initialized.
      */
     async onInit() {
-        this.api = await HomeyAPI.forCurrentHomey(this.homey);
+        // @ts-ignore
+        this.api = await new HomeyAPIApp({homey: this.homey});
         this._initializeFlowCards();
         this.homeyId = await this.homey.cloud.getHomeyId();
         this.log('InsightTrendsReloaded has been initialized');
     }
 
-    public getHomeyAPI(): HomeyAPI {
-        if (this.api === undefined) {
-            this.error('No API available. Getting API from HomeyAPI');
-            return HomeyAPI.forCurrentHomey(this.homey);
-        }
+    public getHomeyAPI() {
         return this.api;
     }
 
-    async getLogs(range: number, unit: string, opts: { uri: string, id: string }) {
+    async getLogs(range: number, unit: string, opts: { uri: string, id: string, resolution?: string }, isBooleanBasedCapability: boolean = false) {
         return new Promise<{ x: number; y: any; }[]>(async (resolve, reject) => {
             let minutes = range * parseInt(unit);
-            let logEntries: any = await this.getHomeyAPI().insights.getLogEntries({
-                ...opts,
-                resolution: this.minutesToTimespan(minutes)
-            });
+            if (!isBooleanBasedCapability) {
+                opts = {
+                    ...opts,
+                    resolution: this.minutesToTimespan(minutes)
+                }
+            }
+            // @ts-ignore
+            let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts);
             if (logEntries === undefined) reject(new Error('Failed to get log entries'));
             //Calculate the lowest date based on user input
             let minDate = Date.now() - minutes * 60000;
@@ -47,7 +48,7 @@ export class InsightTrendsReloaded extends Homey.App {
                 })
                     //Map the log entries to the x and y
                     .map((entry: { t: string; v: any; }) => {
-                        return {x: Date.parse(entry.t) / 1000, y: entry.v};
+                        return {x: Date.parse(entry.t) / 1000, y: Number(entry.v)};
                     })
             );
         })

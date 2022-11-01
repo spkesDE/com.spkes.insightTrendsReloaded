@@ -10,11 +10,13 @@
   ],
   "name": {
     "en": "Insight Trends Reloaded",
-    "de": "Insight Trends Reloaded"
+    "de": "Insight Trends Reloaded",
+    "sv": "Insight Trends Reloaded"
   },
   "description": {
     "en": "Get more out of you insights!",
-    "de": "Holen mehr aus deinen Einblicken heraus!"
+    "de": "Holen mehr aus deinen Einblicken heraus!",
+    "sv": "Mer nytta av dina Insights-data!"
   },
   "category": [
     "tools"
@@ -39,6 +41,11 @@
       {
         "name": "Trendline.js by Henning Ofstad - v0.3.1"
       }
+    ],
+    "translators": [
+      {
+        "name": "🇸🇪 Morgan"
+      }
     ]
   },
   "contributing": {
@@ -55,15 +62,18 @@
       {
         "title": {
           "en": "Percentile calculated",
-          "de": "Perzentil berechnet"
+          "de": "Perzentil berechnet",
+          "sv": "Percentilen beräknad"
         },
         "hint": {
           "en": "Use the 'Calculate percentile' THEN Card to trigger this card.",
-          "de": "Verwenden Sie die DANN-Karte „Calculate percentile“, um diese Karte auszulösen."
+          "de": "Verwenden Sie die DANN-Karte „Calculate percentile“, um diese Karte auszulösen.",
+          "sv": "Använd DÅ-kortet 'Beräkna percentilen' i ett annat flöde för att trigga detta kort."
         },
         "titleFormatted": {
           "en": "When the percentile calculation for [[insight]] has finished",
-          "de": "Wenn die Perzentil berechnung für [[insight]] abgeschlossen ist"
+          "de": "Wenn die Perzentil berechnung für [[insight]] abgeschlossen ist",
+          "sv": "När percentilen för [[insight]] är beräknad"
         },
         "args": [
           {
@@ -71,7 +81,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Insights-data"
             }
           }
         ],
@@ -81,7 +92,8 @@
             "type": "number",
             "title": {
               "en": "Value",
-              "de": "Wert"
+              "de": "Wert",
+              "sv": "Värde"
             },
             "example": 25.3
           },
@@ -90,7 +102,8 @@
             "type": "number",
             "title": {
               "en": "Percent",
-              "de": "Prozent"
+              "de": "Prozent",
+              "sv": "Procent"
             },
             "example": 50
           },
@@ -99,7 +112,8 @@
             "type": "number",
             "title": {
               "en": "Number of used data points",
-              "de": "Anzahl der verwenden Daten"
+              "de": "Anzahl der verwenden Daten",
+              "sv": "Antal använda datapunkter"
             },
             "example": 1337
           }
@@ -109,15 +123,18 @@
       {
         "title": {
           "en": "Trend calculated",
-          "de": "Tendenz berechnet"
+          "de": "Tendenz berechnet",
+          "sv": "Trenden beräknad"
         },
         "hint": {
           "en": "Use the 'Calculate trend' THEN Card to trigger this card.",
-          "de": "Verwenden Sie die DANN-Karte „Trend berechnen“, um diese Karte auszulösen."
+          "de": "Verwenden Sie die DANN-Karte „Trend berechnen“, um diese Karte auszulösen.",
+          "sv": "Använd DÅ-kortet 'Beräkna trenden' i ett annat flöde för att trigga detta kort"
         },
         "titleFormatted": {
           "en": "When the trend calculation for [[insight]] has finished",
-          "de": "Wenn die Trendberechnung für [[insight]] abgeschlossen ist"
+          "de": "Wenn die Trendberechnung für [[insight]] abgeschlossen ist",
+          "sv": "När trenden för [[insight]] är beräknad"
         },
         "args": [
           {
@@ -125,7 +142,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Insights-data"
             }
           }
         ],
@@ -135,7 +153,8 @@
             "type": "number",
             "title": {
               "en": "Minimum Value",
-              "de": "Minimalwert"
+              "de": "Minimalwert",
+              "sv": "Minimivärde"
             },
             "example": -1337
           },
@@ -144,7 +163,8 @@
             "type": "number",
             "title": {
               "en": "Maximum Value",
-              "de": "Maximalwert"
+              "de": "Maximalwert",
+              "sv": "Maximivärde"
             },
             "example": 1337
           },
@@ -153,7 +173,8 @@
             "type": "number",
             "title": {
               "en": "Average Value",
-              "de": "Mittelwert"
+              "de": "Mittelwert",
+              "sv": "Medelvärde"
             },
             "example": 668.5
           },
@@ -162,7 +183,8 @@
             "type": "number",
             "title": {
               "en": "Median",
-              "de": "Median"
+              "de": "Median",
+              "sv": "Medianvärde"
             },
             "example": 668.5
           },
@@ -171,7 +193,8 @@
             "type": "number",
             "title": {
               "en": "Standard Deviation",
-              "de": "Standardabweichung"
+              "de": "Standardabweichung",
+              "sv": "Standardavvikelse"
             },
             "example": 13.37
           },
@@ -180,7 +203,8 @@
             "type": "number",
             "title": {
               "en": "Trend",
-              "de": "Tendenz"
+              "de": "Tendenz",
+              "sv": "Trend"
             },
             "example": 1.337
           },
@@ -189,7 +213,8 @@
             "type": "number",
             "title": {
               "en": "Number of used data points",
-              "de": "Anzahl der verwenden Daten"
+              "de": "Anzahl der verwenden Daten",
+              "sv": "Antal använda datapunkter"
             },
             "example": 1337
           }
@@ -201,11 +226,13 @@
       {
         "title": {
           "en": "Check Insight",
-          "de": "Überprüfe Einblick"
+          "de": "Überprüfe Einblick",
+          "sv": "Testa Insights-data"
         },
         "titleFormatted": {
           "en": "Check if [[characteristic]] is [[operator]] [[value]] for the past [[range]] [[unit]] on [[insight]]",
-          "de": "Prüfen ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist."
+          "de": "Prüfen ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist.",
+          "sv": "Testa om [[characteristic]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]]."
         },
         "args": [
           {
@@ -213,7 +240,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Insights-data"
             }
           },
           {
@@ -221,7 +249,8 @@
             "name": "range",
             "title": {
               "en": "Time range",
-              "de": "Zeitraum"
+              "de": "Zeitraum",
+              "sv": "Tidsintervall"
             },
             "min": 1,
             "value": 15
@@ -231,28 +260,32 @@
             "name": "unit",
             "title": {
               "en": "Time unit",
-              "de": "Zeit einheit"
+              "de": "Zeit einheit",
+              "sv": "Tidsenhet"
             },
             "values": [
               {
                 "id": "1",
                 "label": {
                   "en": "Minutes",
-                  "de": "Minuten"
+                  "de": "Minuten",
+                  "sv": "Minuter"
                 }
               },
               {
                 "id": "60",
                 "label": {
                   "en": "Hours",
-                  "de": "Stunden"
+                  "de": "Stunden",
+                  "sv": "Timmar"
                 }
               },
               {
                 "id": "1440",
                 "label": {
                   "en": "Days",
-                  "de": "Tage"
+                  "de": "Tage",
+                  "sv": "Dagar"
                 }
               }
             ]
@@ -262,49 +295,56 @@
             "name": "characteristic",
             "title": {
               "en": "Characteristic",
-              "de": "Eigenschaft"
+              "de": "Eigenschaft",
+              "sv": "Statistikfunktion"
             },
             "values": [
               {
                 "id": "min",
                 "label": {
                   "en": "Minimum",
-                  "de": "der Minimalwert"
+                  "de": "der Minimalwert",
+                  "sv": "Minimivärdet"
                 }
               },
               {
                 "id": "max",
                 "label": {
                   "en": "Maximum",
-                  "de": "der Maximalwert"
+                  "de": "der Maximalwert",
+                  "sv": "Maximivärdet"
                 }
               },
               {
                 "id": "average",
                 "label": {
                   "en": "Average",
-                  "de": "der Mittelwert"
+                  "de": "der Mittelwert",
+                  "sv": "Medelvärdet"
                 }
               },
               {
                 "id": "median",
                 "label": {
                   "en": "Median",
-                  "de": "der Medianwert"
+                  "de": "der Medianwert",
+                  "sv": "Medianvärdet"
                 }
               },
               {
                 "id": "trend",
                 "label": {
                   "en": "Trend",
-                  "de": "die Tendenz"
+                  "de": "die Tendenz",
+                  "sv": "Trendvärdet"
                 }
               },
               {
                 "id": "standardDeviation",
                 "label": {
                   "en": "Standard Deviation",
-                  "de": "die Standardabweichung"
+                  "de": "die Standardabweichung",
+                  "sv": "Standardavvikelsen"
                 }
               }
             ]
@@ -314,49 +354,56 @@
             "name": "operator",
             "title": {
               "en": "Operator",
-              "de": "Operator"
+              "de": "Operator",
+              "sv": "Relation"
             },
             "values": [
               {
                 "id": "smaller",
                 "label": {
                   "en": "smaller than",
-                  "de": "kleiner als"
+                  "de": "kleiner als",
+                  "sv": "mindre än"
                 }
               },
               {
                 "id": "smaller_equal",
                 "label": {
                   "en": "smaller than or equals to",
-                  "de": "kleiner oder gleich als"
+                  "de": "kleiner oder gleich als",
+                  "sv": "större än"
                 }
               },
               {
                 "id": "equal",
                 "label": {
                   "en": "equal to",
-                  "de": "gleich als"
+                  "de": "gleich als",
+                  "sv": "lika med"
                 }
               },
               {
                 "id": "not_equal",
                 "label": {
                   "en": "not equal to",
-                  "de": "nicht gleich als"
+                  "de": "nicht gleich als",
+                  "sv": "inte lika med"
                 }
               },
               {
                 "id": "greater_equal",
                 "label": {
                   "en": "greater or equal than",
-                  "de": "größer oder gleich als"
+                  "de": "größer oder gleich als",
+                  "sv": "större än eller lika med"
                 }
               },
               {
                 "id": "greater",
                 "label": {
                   "en": "greater than",
-                  "de": "gleich als"
+                  "de": "größer als",
+                  "sv": "större än"
                 }
               }
             ]
@@ -366,7 +413,8 @@
             "name": "value",
             "title": {
               "en": "Value",
-              "de": "Wert"
+              "de": "Wert",
+              "sv": "Värde"
             }
           }
         ],
@@ -375,11 +423,13 @@
       {
         "title": {
           "en": "Check Insight Percentile",
-          "de": "Überprüfe Einblick Perzentil"
+          "de": "Überprüfe Einblick Perzentil",
+          "sv": "Testa percentilen på Insights-data"
         },
         "titleFormatted": {
           "en": "Check if [[percent]] of the values of [[insight]] are [[operator]] [[value]] for the past [[range]] [[unit]]",
-          "de": "Prüfen ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind."
+          "de": "Prüfen ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind.",
+          "sv": "Testa om [[percent]] för [[insight]] är [[operator]] under de senaste [[value]] [[range]] [[unit]]"
         },
         "args": [
           {
@@ -387,7 +437,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Insights-data"
             }
           },
           {
@@ -395,7 +446,8 @@
             "name": "range",
             "title": {
               "en": "Time range",
-              "de": "Zeitraum"
+              "de": "Zeitraum",
+              "sv": "Tidsintervall"
             },
             "min": 1,
             "value": 15
@@ -405,28 +457,32 @@
             "name": "unit",
             "title": {
               "en": "Time unit",
-              "de": "Zeit einheit"
+              "de": "Zeit einheit",
+              "sv": "Tidsenhet"
             },
             "values": [
               {
                 "id": "1",
                 "label": {
                   "en": "Minutes",
-                  "de": "Minuten"
+                  "de": "Minuten",
+                  "sv": "Minuter"
                 }
               },
               {
                 "id": "60",
                 "label": {
                   "en": "Hours",
-                  "de": "Stunden"
+                  "de": "Stunden",
+                  "sv": "Timmar"
                 }
               },
               {
                 "id": "1440",
                 "label": {
                   "en": "Days",
-                  "de": "Tage"
+                  "de": "Tage",
+                  "sv": "Dagar"
                 }
               }
             ]
@@ -436,7 +492,8 @@
             "name": "percent",
             "title": {
               "en": "Percent",
-              "de": "Prozent"
+              "de": "Prozent",
+              "sv": "Procent"
             },
             "min": 0,
             "max": 100,
@@ -449,49 +506,56 @@
             "name": "operator",
             "title": {
               "en": "Operator",
-              "de": "Operator"
+              "de": "Operator",
+              "sv": "Relation"
             },
             "values": [
               {
                 "id": "smaller",
                 "label": {
                   "en": "smaller than",
-                  "de": "kleiner als"
+                  "de": "kleiner als",
+                  "sv": "mindre än"
                 }
               },
               {
                 "id": "smaller_equal",
                 "label": {
                   "en": "smaller than or equals to",
-                  "de": "kleiner oder gleich als"
+                  "de": "kleiner oder gleich als",
+                  "sv": "mindre än eller lika med"
                 }
               },
               {
                 "id": "equal",
                 "label": {
                   "en": "equal to",
-                  "de": "gleich als"
+                  "de": "gleich als",
+                  "sv": "lika med"
                 }
               },
               {
                 "id": "not_equal",
                 "label": {
                   "en": "not equal to",
-                  "de": "nicht gleich als"
+                  "de": "nicht gleich als",
+                  "sv": "inte lika med"
                 }
               },
               {
                 "id": "greater_equal",
                 "label": {
                   "en": "greater or equal than",
-                  "de": "größer oder gleich als"
+                  "de": "größer oder gleich als",
+                  "sv": "större än eller lika med"
                 }
               },
               {
                 "id": "greater",
                 "label": {
                   "en": "greater than",
-                  "de": "gleich als"
+                  "de": "größer als",
+                  "sv": "större än"
                 }
               }
             ]
@@ -501,7 +565,8 @@
             "name": "value",
             "title": {
               "en": "Value",
-              "de": "Wert"
+              "de": "Wert",
+              "sv": "Värde"
             }
           }
         ],
@@ -512,15 +577,18 @@
       {
         "title": {
           "en": "Calculate percentile",
-          "de": "Perzentil berechnen"
+          "de": "Perzentil berechnen",
+          "sv": "Beräkna percentilen"
         },
         "hint": {
           "en": "To use the results you need to use the 'Percentile calculated'-WHEN card. Passing in 50% as an argument will return the median, while 25% and 75% will return the first and third quartiles respectively.",
-          "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Perzentil berechnet“ verwenden. Wenn Sie 50 % als Argument übergeben, wird der Median zurückgegeben, während 25 % und 75 % das erste bzw. dritte Quartil zurückgeben."
+          "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Perzentil berechnet“ verwenden. Wenn Sie 50 % als Argument übergeben, wird der Median zurückgegeben, während 25 % und 75 % das erste bzw. dritte Quartil zurückgeben.",
+          "sv": "Använd NÄR-kortet 'Percentilen beräknad' i ett annat flöde för att få resultatet av beräkningen. Om man använder argumentet '50%' blir resultetat medianvärdet och man använder '25%' eller '75%' får man första respektive tredje kvartilen som resultat."
         },
         "titleFormatted": {
           "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]]",
-          "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]]"
+          "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]]",
+          "sv": "Beräkna percentilen av [[percent]] för [[insight]] baserat på senaste [[range]] [[unit]]"
         },
         "args": [
           {
@@ -528,7 +596,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Insights-data"
             }
           },
           {
@@ -536,7 +605,8 @@
             "name": "range",
             "title": {
               "en": "Time range",
-              "de": "Zeitraum"
+              "de": "Zeitraum",
+              "sv": "Tidsintervall"
             },
             "min": 1,
             "value": 15
@@ -546,28 +616,32 @@
             "name": "unit",
             "title": {
               "en": "Time unit",
-              "de": "Zeit einheit"
+              "de": "Zeit einheit",
+              "sv": "Tidsenhet"
             },
             "values": [
               {
                 "id": "1",
                 "label": {
                   "en": "Minutes",
-                  "de": "Minuten"
+                  "de": "Minuten",
+                  "sv": "Minuter"
                 }
               },
               {
                 "id": "60",
                 "label": {
                   "en": "Hours",
-                  "de": "Stunden"
+                  "de": "Stunden",
+                  "sv": "Timmar"
                 }
               },
               {
                 "id": "1440",
                 "label": {
                   "en": "Days",
-                  "de": "Tage"
+                  "de": "Tage",
+                  "sv": "Dagar"
                 }
               }
             ]
@@ -577,7 +651,8 @@
             "name": "percent",
             "title": {
               "en": "Percent",
-              "de": "Prozent"
+              "de": "Prozent",
+              "sv": "Procent"
             },
             "min": 0,
             "max": 100,
@@ -586,20 +661,55 @@
             "label": "%"
           }
         ],
+        "tokens": [
+          {
+            "name": "value",
+            "type": "number",
+            "title": {
+              "en": "Value",
+              "de": "Wert",
+              "sv": "Värde"
+            },
+            "example": 25.3
+          },
+          {
+            "name": "percent",
+            "type": "number",
+            "title": {
+              "en": "Percent",
+              "de": "Prozent",
+              "sv": "Procent"
+            },
+            "example": 50
+          },
+          {
+            "name": "size",
+            "type": "number",
+            "title": {
+              "en": "Number of used data points",
+              "de": "Anzahl der verwenden Daten",
+              "sv": "Antal använda datapunkter"
+            },
+            "example": 1337
+          }
+        ],
         "id": "calculatePercentile"
       },
       {
         "title": {
           "en": "Calculate trend",
-          "de": "Tendenz berechnen"
+          "de": "Tendenz berechnen",
+          "sv": "Beräkna trenden"
         },
         "hint": {
           "en": "To use the results you need to use the 'Trend calculated'-WHEN card.",
-          "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Tendenz berechnet“ verwenden."
+          "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Tendenz berechnet“ verwenden.",
+          "sv": "Genom att använda NÄR-kortet 'Trend beräknad' får man resultatet av beräkningen."
         },
         "titleFormatted": {
           "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]]",
-          "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]]"
+          "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]]",
+          "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]]"
         },
         "args": [
           {
@@ -607,7 +717,8 @@
             "name": "insight",
             "title": {
               "en": "Insight",
-              "de": "Einblick"
+              "de": "Einblick",
+              "sv": "Insights-data"
             }
           },
           {
@@ -615,7 +726,8 @@
             "name": "range",
             "title": {
               "en": "Time range",
-              "de": "Zeitraum"
+              "de": "Zeitraum",
+              "sv": "Tidsintervall"
             },
             "min": 1,
             "value": 15
@@ -625,31 +737,107 @@
             "name": "unit",
             "title": {
               "en": "Time unit",
-              "de": "Zeit einheit"
+              "de": "Zeit einheit",
+              "sv": "Tidsenhet"
             },
             "values": [
               {
                 "id": "1",
                 "label": {
                   "en": "Minutes",
-                  "de": "Minuten"
+                  "de": "Minuten",
+                  "sv": "Minuter"
                 }
               },
               {
                 "id": "60",
                 "label": {
                   "en": "Hours",
-                  "de": "Stunden"
+                  "de": "Stunden",
+                  "sv": "Timmar"
                 }
               },
               {
                 "id": "1440",
                 "label": {
                   "en": "Days",
-                  "de": "Tage"
+                  "de": "Tage",
+                  "sv": "Dagar"
                 }
               }
             ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "min",
+            "type": "number",
+            "title": {
+              "en": "Minimum Value",
+              "de": "Minimalwert",
+              "sv": "Minimivärde"
+            },
+            "example": -1337
+          },
+          {
+            "name": "max",
+            "type": "number",
+            "title": {
+              "en": "Maximum Value",
+              "de": "Maximalwert",
+              "sv": "Maximivärde"
+            },
+            "example": 1337
+          },
+          {
+            "name": "mean",
+            "type": "number",
+            "title": {
+              "en": "Average Value",
+              "de": "Mittelwert",
+              "sv": "Medelvärde"
+            },
+            "example": 668.5
+          },
+          {
+            "name": "median",
+            "type": "number",
+            "title": {
+              "en": "Median",
+              "de": "Median",
+              "sv": "Medianvärde"
+            },
+            "example": 668.5
+          },
+          {
+            "name": "standardDeviation",
+            "type": "number",
+            "title": {
+              "en": "Standard Deviation",
+              "de": "Standardabweichung",
+              "sv": "Standardavvikelse"
+            },
+            "example": 13.37
+          },
+          {
+            "name": "trend",
+            "type": "number",
+            "title": {
+              "en": "Trend",
+              "de": "Tendenz",
+              "sv": "Trendvärde"
+            },
+            "example": 1.337
+          },
+          {
+            "name": "size",
+            "type": "number",
+            "title": {
+              "en": "Number of used data points",
+              "de": "Anzahl der verwenden Daten",
+              "sv": "Antal använda datapunkter"
+            },
+            "example": 1337
           }
         ],
         "id": "calculateTrend"
