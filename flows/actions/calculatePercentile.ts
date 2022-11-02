@@ -4,7 +4,7 @@ import FlowUtils from "../flowUtils";
 import {Stats} from "fast-stats";
 
 export default class CalculatePercentile {
-    constructor(app: InsightTrendsReloaded, card: FlowCardAction) {
+    constructor(app: InsightTrendsReloaded, card: FlowCardAction, withToken: boolean = true) {
         card.registerRunListener(async (args: any) => {
             let state = {id: args.insight.id, uri: args.insight.uri};
             let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean');
@@ -16,7 +16,8 @@ export default class CalculatePercentile {
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)
             await app.homey.flow.getTriggerCard('percentileCalculated').trigger(token, state);
-            return token;
+            if (withToken)
+                return token;
         });
         card.registerArgumentAutocompleteListener('insight', async (query: any) => {
             return await FlowUtils.getSortedInsightsForAutocomplete(app, query);

@@ -66,7 +66,9 @@ export class InsightTrendsReloaded extends Homey.App {
 
         //Action Cards
         new CalculatePercentile(this, this.homey.flow.getActionCard('calculatePercentile'));
+        new CalculatePercentile(this, this.homey.flow.getActionCard('calculatePercentileWithoutToken'), false);
         new CalculateTrend(this, this.homey.flow.getActionCard('calculateTrend'));
+        new CalculateTrend(this, this.homey.flow.getActionCard('calculateTrendWithoutToken'), false);
         this.log('Flow cards initialized');
     }
 

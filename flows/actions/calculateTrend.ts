@@ -5,7 +5,7 @@ import {Stats} from "fast-stats";
 import Trend from "../../trend";
 
 export default class CalculateTrend {
-    constructor(app: InsightTrendsReloaded, card: FlowCardAction) {
+    constructor(app: InsightTrendsReloaded, card: FlowCardAction, withToken: boolean = true) {
         card.registerRunListener(async (args: any) => {
             let state = {id: args.insight.id, uri: args.insight.uri};
             let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean');
@@ -21,7 +21,8 @@ export default class CalculateTrend {
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)
             await app.homey.flow.getTriggerCard('trendCalculated').trigger(token, state);
-            return token;
+            if (withToken)
+                return token;
         });
         card.registerArgumentAutocompleteListener('insight', async (query: any) => {
             return await FlowUtils.getSortedInsightsForAutocomplete(app, query);

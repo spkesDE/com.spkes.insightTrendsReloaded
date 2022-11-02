@@ -1,0 +1,74 @@
+{
+  "title": {
+    "en": "Calculate trend",
+    "de": "Tendenz berechnen",
+    "sv": "Beräkna trenden"
+  },
+  "hint": {
+    "en": "To use the results you need to use the 'Trend calculated'-WHEN card.",
+    "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Tendenz berechnet“ verwenden.",
+    "sv": "Genom att använda NÄR-kortet 'Trend beräknad' får man resultatet av beräkningen."
+  },
+  "titleFormatted": {
+    "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]]",
+    "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]]",
+    "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]]"
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "insight",
+      "title": {
+        "en": "Insight",
+        "de": "Einblick",
+        "sv": "Insights-data"
+      }
+    },
+    {
+      "type": "number",
+      "name": "range",
+      "title": {
+        "en": "Time range",
+        "de": "Zeitraum",
+        "sv": "Tidsintervall"
+      },
+      "min": 1,
+      "value": 15
+    },
+    {
+      "type": "dropdown",
+      "name": "unit",
+      "title": {
+        "en": "Time unit",
+        "de": "Zeit einheit",
+        "sv": "Tidsenhet"
+      },
+      "values": [
+        {
+          "id": "1",
+          "label": {
+            "en": "Minutes",
+            "de": "Minuten",
+            "sv": "Minuter"
+          }
+        },
+        {
+          "id": "60",
+          "label": {
+            "en": "Hours",
+            "de": "Stunden",
+            "sv": "Timmar"
+          }
+        },
+        {
+          "id": "1440",
+          "label": {
+            "en": "Days",
+            "de": "Tage",
+            "sv": "Dagar"
+          }
+        }
+      ]
+    }
+  ]
+}
