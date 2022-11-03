@@ -9,6 +9,7 @@ export default class CalculateTrend {
         card.registerRunListener(async (args: any) => {
             let state = {id: args.insight.id, uri: args.insight.uri};
             let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean');
+            console.log(logs);
             let stats = await new Stats().push(logs.map((entry: any) => entry.y));
             let token = {
                 min: Number(stats.range()[0]),
@@ -16,7 +17,7 @@ export default class CalculateTrend {
                 mean: stats.amean(),
                 median: stats.median(),
                 standardDeviation: stats.stddev(),
-                trend: Trend.createTrend(logs).slope,
+                trend: Trend.createTrend(logs).slope * 1000,
                 size: logs.length
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)

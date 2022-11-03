@@ -48,7 +48,7 @@ export class InsightTrendsReloaded extends Homey.App {
                 })
                     //Map the log entries to the x and y
                     .map((entry: { t: string; v: any; }) => {
-                        return {x: Date.parse(entry.t) / 1000, y: Number(entry.v)};
+                        return {x: Date.parse(entry.t), y: Number(entry.v)};
                     })
             );
         })
