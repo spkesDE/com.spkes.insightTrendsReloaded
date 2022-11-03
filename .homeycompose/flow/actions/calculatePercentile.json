@@ -4,6 +4,7 @@
     "de": "Perzentil berechnen",
     "sv": "Beräkna percentilen"
   },
+  "highlight": true,
   "hint": {
     "en": "To use the results you need to use the 'Percentile calculated'-WHEN card. Passing in 50% as an argument will return the median, while 25% and 75% will return the first and third quartiles respectively.",
     "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Perzentil berechnet“ verwenden. Wenn Sie 50 % als Argument übergeben, wird der Median zurückgegeben, während 25 % und 75 % das erste bzw. dritte Quartil zurückgeben.",

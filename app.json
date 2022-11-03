@@ -231,7 +231,7 @@
         },
         "titleFormatted": {
           "en": "Check if [[characteristic]] is [[operator]] [[value]] for the past [[range]] [[unit]] on [[insight]]",
-          "de": "Prüfen ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist.",
+          "de": "Prüfe ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist.",
           "sv": "Testa om [[characteristic]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]]."
         },
         "args": [
@@ -428,7 +428,7 @@
         },
         "titleFormatted": {
           "en": "Check if [[percent]] of the values of [[insight]] are [[operator]] [[value]] for the past [[range]] [[unit]]",
-          "de": "Prüfen ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind.",
+          "de": "Prüfe ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind.",
           "sv": "Testa om [[percent]] för [[insight]] är [[operator]] under de senaste [[value]] [[range]] [[unit]]"
         },
         "args": [
@@ -580,6 +580,7 @@
           "de": "Perzentil berechnen",
           "sv": "Beräkna percentilen"
         },
+        "highlight": true,
         "hint": {
           "en": "To use the results you need to use the 'Percentile calculated'-WHEN card. Passing in 50% as an argument will return the median, while 25% and 75% will return the first and third quartiles respectively.",
           "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Perzentil berechnet“ verwenden. Wenn Sie 50 % als Argument übergeben, wird der Median zurückgegeben, während 25 % und 75 % das erste bzw. dritte Quartil zurückgeben.",
@@ -790,6 +791,7 @@
           "de": "Tendenz berechnen",
           "sv": "Beräkna trenden"
         },
+        "highlight": true,
         "hint": {
           "en": "To use the results you need to use the 'Trend calculated'-WHEN card.",
           "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Tendenz berechnet“ verwenden.",

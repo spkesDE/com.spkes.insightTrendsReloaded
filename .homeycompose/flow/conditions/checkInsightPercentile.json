@@ -6,7 +6,7 @@
   },
   "titleFormatted": {
     "en": "Check if [[percent]] of the values of [[insight]] are [[operator]] [[value]] for the past [[range]] [[unit]]",
-    "de": "Prüfen ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind.",
+    "de": "Prüfe ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind.",
     "sv": "Testa om [[percent]] för [[insight]] är [[operator]] under de senaste [[value]] [[range]] [[unit]]"
   },
   "args": [

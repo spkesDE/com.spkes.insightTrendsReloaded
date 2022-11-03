@@ -6,7 +6,7 @@
   },
   "titleFormatted": {
     "en": "Check if [[characteristic]] is [[operator]] [[value]] for the past [[range]] [[unit]] on [[insight]]",
-    "de": "Prüfen ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist.",
+    "de": "Prüfe ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist.",
     "sv": "Testa om [[characteristic]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]]."
   },
   "args": [

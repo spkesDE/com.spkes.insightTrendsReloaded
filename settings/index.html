@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- The '/homey.js' script must be included in your settings view to work -->
+    <script data-origin="settings" src="/homey.js" type="text/javascript"></script>
+    <script src="chart.min.js" type="text/javascript"></script>
+    <link href="homey.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="tab">
+    <button class="tab-links" data-i18n="settings.data" data-target="insights" id="defaultOpen">Insights</button>
+    <button class="tab-links" data-i18n="settings.settings" data-target="settings">Settings</button>
+</div>
+
+<div class="tab-content" id="insights">
+    <div class="insights" id="users-list">
+        <canvas height="300" id="chart" width="400"></canvas>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="min">Minimum</label>
+            <input class="insight-input" disabled id="min" type="number" value="10"/>
+        </div>
+        <div class="col">
+            <label for="max">Maximum</label>
+            <input class="insight-input" disabled id="max" type="number" value="10"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="mean">Average</label>
+            <input class="insight-input" disabled id="mean" type="number" value="10"/>
+        </div>
+        <div class="col">
+            <label for="median">Median</label>
+            <input class="insight-input" disabled id="median" type="number" value="10"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="standardDeviation">Standard Deviation</label>
+            <input class="insight-input" disabled id="standardDeviation" type="number" value="10"/>
+        </div>
+        <div class="col">
+            <label for="trend">trend</label>
+            <input class="insight-input" disabled id="trend" type="number" value="10"/>
+        </div>
+    </div>
+    <div class="row center">
+        <div class="col">
+            <label for="size">Number of used data points</label>
+            <input class="insight-input" disabled id="size" type="number" value="10"/>
+        </div>
+    </div>
+</div>
+
+<div class="tab-content" id="settings">
+    <div class="row" style="margin-bottom: .5em">
+        <h2 data-i18n="settings.silentQuestion">Significant Figures</h2>
+        <label class="switch right">
+            <input id="question-silent-question" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+</div>
+
+<script src="index.js" type="text/javascript"></script>
+</body>
+</html>

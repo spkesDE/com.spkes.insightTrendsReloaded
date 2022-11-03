@@ -57,4 +57,31 @@ export default class FlowUtils {
                 ));
         })
     }
+
+    /**
+     ** Code by Gianluca Casati
+     ** https://stackoverflow.com/a/58494899/3261540
+     **/
+    public static toSignificantDigits(number: number, precision: number = 4): number {
+        if (number === undefined || number === null) return 0;
+        if (number === 0) return 0;
+
+        let roundedValue = Number(number.toPrecision(precision));
+        let floorValue = Math.floor(roundedValue)
+
+        //Check if number is e.g. 1.3e-17
+        let isInteger = Math.abs(floorValue - roundedValue) < Number.EPSILON
+
+        let numberOfFloorDigits = String(floorValue).length
+        let numberOfDigits = String(roundedValue).length
+
+        if (numberOfFloorDigits < precision) return floorValue
+        let padding = isInteger ? precision - numberOfFloorDigits : precision - numberOfDigits + 1
+
+        if (padding < 0) return roundedValue;
+        if (isInteger)
+            return Number(`${floorValue}.${'0'.repeat(padding)}`)
+        else
+            return Number(`${roundedValue}${'0'.repeat(padding)}`)
+    }
 }

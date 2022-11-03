@@ -4,6 +4,7 @@
     "de": "Tendenz berechnen",
     "sv": "Beräkna trenden"
   },
+  "highlight": true,
   "hint": {
     "en": "To use the results you need to use the 'Trend calculated'-WHEN card.",
     "de": "Um die Ergebnisse zu verwenden, müssen Sie die Wenn-Karte „Tendenz berechnet“ verwenden.",
