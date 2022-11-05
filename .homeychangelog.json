@@ -7,5 +7,8 @@
   },
   "1.0.2": {
     "en": "Added THEN Cards without token for standart flows"
+  },
+  "1.0.3": {
+    "en": "Fixed an error with tiemspan between 6h-3days "
   }
 }
