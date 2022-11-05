@@ -10,5 +10,8 @@
   },
   "1.0.3": {
     "en": "Fixed an error with tiemspan between 6h-3days "
+  },
+  "1.0.4": {
+    "en": "Fixed store assets"
   }
 }
