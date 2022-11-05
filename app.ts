@@ -88,6 +88,7 @@ export class InsightTrendsReloaded extends Homey.App {
         if (minutes >= 20160) return 'last14Days';
         if (minutes >= 10080) return 'last7Days';
         if (minutes >= 4320) return 'last3Days';
+        if (minutes >= 1440) return 'last24Hours';
         if (minutes >= 360) return 'last6Hours';
         return 'lastHour';
     }
