@@ -10,6 +10,7 @@ export default class CalculateTrend {
             let state = {id: args.insight.id, uri: args.insight.uri};
             let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean');
             let stats = await new Stats().push(logs.map((entry: any) => entry.y));
+            console.log(app.homey.clock.getTimezone())
             let token = {
                 min: Number(stats.range()[0]),
                 max: Number(stats.range()[1]),
@@ -17,6 +18,16 @@ export default class CalculateTrend {
                 median: stats.median(),
                 standardDeviation: stats.stddev(),
                 trend: Trend.createTrend(logs).slope,
+                firstvalue: logs[0].y,
+                firstvalue_timestamp: logs[0].x,
+                firstvalue_time: new Date(logs[0].x * 1000).toLocaleString('en-GB', {
+                    timeZone: app.homey.clock.getTimezone(), hour12: false
+                }),
+                lastvalue: logs[logs.length - 1].y,
+                lastvalue_timestamp: logs[logs.length - 1].x,
+                lastvalue_time: new Date(logs[logs.length - 1].x * 1000).toLocaleString('en-GB', {
+                    timeZone: app.homey.clock.getTimezone(), hour12: false
+                }),
                 size: logs.length
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)

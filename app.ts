@@ -80,17 +80,18 @@ export class InsightTrendsReloaded extends Homey.App {
          “lastWeek” | “lastMonth” | “lastYear")
      */
     private minutesToTimespan(minutes: number): string {
-        if (minutes >= 1051200) return 'last2Years';
-        if (minutes >= 525600) return 'lastYear';
-        if (minutes >= 262800) return 'last6Months';
-        if (minutes >= 131400) return 'last3Months';
-        if (minutes >= 44640) return 'last31Days';
-        if (minutes >= 20160) return 'last14Days';
-        if (minutes >= 10080) return 'last7Days';
-        if (minutes >= 4320) return 'last3Days';
-        if (minutes >= 1440) return 'last24Hours';
-        if (minutes >= 360) return 'last6Hours';
-        return 'lastHour';
+        if (minutes <= 60) return 'lastHour';
+        if (minutes <= 360) return 'last6Hours';
+        if (minutes <= 1440) return 'last24Hours';
+        if (minutes <= 4320) return 'last3Days';
+        if (minutes <= 10080) return 'last7Days';
+        if (minutes <= 20160) return 'last14Days';
+        if (minutes <= 44640) return 'last31Days';
+        if (minutes <= 131400) return 'last3Months';
+        if (minutes <= 262800) return 'last6Months';
+        if (minutes <= 525600) return 'lastYear';
+        if (minutes <= 1051200) return 'last2Years';
+        return 'last24Hours';
     }
 }
 
