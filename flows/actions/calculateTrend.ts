@@ -17,6 +17,16 @@ export default class CalculateTrend {
                 median: stats.median(),
                 standardDeviation: stats.stddev(),
                 trend: Trend.createTrend(logs).slope * 1000,
+                firstvalue: logs[0].y,
+                firstvalue_timestamp: logs[0].x,
+                firstvalue_time: new Date(logs[0].x).toLocaleString('en-GB', {
+                    timeZone: app.homey.clock.getTimezone(), hour12: false
+                }),
+                lastvalue: logs[logs.length - 1].y,
+                lastvalue_timestamp: logs[logs.length - 1].x,
+                lastvalue_time: new Date(logs[logs.length - 1].x).toLocaleString('en-GB', {
+                    timeZone: app.homey.clock.getTimezone(), hour12: false
+                }),
                 size: logs.length
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)

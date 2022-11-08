@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.spkes.insightTrendsReloaded",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#AA3939",
@@ -207,6 +207,66 @@
               "sv": "Trend"
             },
             "example": 1.337
+          },
+          {
+            "name": "firstvalue",
+            "type": "number",
+            "title": {
+              "en": "First value",
+              "de": "Erster Wert",
+              "sv": "Första värdet"
+            },
+            "example": 1
+          },
+          {
+            "name": "firstvalue_timestamp",
+            "type": "number",
+            "title": {
+              "en": "First value timestamp",
+              "de": "Erster Wert Zeitstempel",
+              "sv": "Första värdet tidsstämpel"
+            },
+            "example": 1667631600
+          },
+          {
+            "name": "firstvalue_time",
+            "type": "string",
+            "title": {
+              "en": "First value formatted date",
+              "de": "Erster Wert formatiertes Datum",
+              "sv": "Första värdet formaterat datum"
+            },
+            "example": "06/11/2022, 09:00:00"
+          },
+          {
+            "name": "lastvalue",
+            "type": "number",
+            "title": {
+              "en": "Last value",
+              "de": "Letzter Wert",
+              "sv": "Sista värde"
+            },
+            "example": 1.337
+          },
+          {
+            "name": "lastvalue_timestamp",
+            "type": "number",
+            "title": {
+              "en": "Last value timestamp",
+              "de": "Letzter Wert Zeitstempel",
+              "sv": "Sista värde tidsstämpel"
+            },
+            "example": 1667754000
+          },
+          {
+            "name": "lastvalue_time",
+            "type": "string",
+            "title": {
+              "en": "Last value formatted date",
+              "de": "Letzter Wert formatiertes Datum",
+              "sv": "Senaste värdeformaterade datum"
+            },
+            "example": "06/11/2022, 19:00:00"
           },
           {
             "name": "size",
@@ -919,6 +979,66 @@
               "sv": "Trendvärde"
             },
             "example": 1.337
+          },
+          {
+            "name": "firstvalue",
+            "type": "number",
+            "title": {
+              "en": "First value",
+              "de": "Erster Wert",
+              "sv": "Första värdet"
+            },
+            "example": 1
+          },
+          {
+            "name": "firstvalue_timestamp",
+            "type": "number",
+            "title": {
+              "en": "First value timestamp",
+              "de": "Erster Wert Zeitstempel",
+              "sv": "Första värdet tidsstämpel"
+            },
+            "example": 1667631600
+          },
+          {
+            "name": "firstvalue_time",
+            "type": "string",
+            "title": {
+              "en": "First value formatted date",
+              "de": "Erster Wert formatiertes Datum",
+              "sv": "Första värdet formaterat datum"
+            },
+            "example": "06/11/2022, 09:00:00"
+          },
+          {
+            "name": "lastvalue",
+            "type": "number",
+            "title": {
+              "en": "Last value",
+              "de": "Letzter Wert",
+              "sv": "Sista värde"
+            },
+            "example": 1.337
+          },
+          {
+            "name": "lastvalue_timestamp",
+            "type": "number",
+            "title": {
+              "en": "Last value timestamp",
+              "de": "Letzter Wert Zeitstempel",
+              "sv": "Sista värde tidsstämpel"
+            },
+            "example": 1667754000
+          },
+          {
+            "name": "lastvalue_time",
+            "type": "string",
+            "title": {
+              "en": "Last value formatted date",
+              "de": "Letzter Wert formatiertes Datum",
+              "sv": "Senaste värdeformaterade datum"
+            },
+            "example": "06/11/2022, 19:00:00"
           },
           {
             "name": "size",
