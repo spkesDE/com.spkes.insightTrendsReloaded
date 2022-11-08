@@ -104,7 +104,7 @@ function autoCompleteHandler() {
             src: async (query) => {
                 return await this.searchInsights(query)
             },
-            keys: ["name"],
+            keys: ["name", "description"],
         },
         resultsList: {
             element: (list, data) => {
@@ -116,9 +116,15 @@ function autoCompleteHandler() {
                 }
             },
             noResults: true,
+            maxResults: 25
         },
         resultItem: {
             element: (item, data) => {
+                let reg = new RegExp("(" + autoCompleteJS.feedback.query + ")")
+                let split = data.value.name.split(reg);
+                if(split.length > 1)
+                    split[1] = "<mark>" + split[1] + "</mark>";
+                item.innerHTML = split.join("");
                 if (data.value.icon) {
                     const img = document.createElement("img");
                     img.classList.add("search-icon");
@@ -128,11 +134,14 @@ function autoCompleteHandler() {
                 if (data.value.description) {
                     const description = document.createElement("div");
                     description.classList.add("description");
-                    description.innerHTML = data.value.description;
+                    let splitDescription = data.value.description.split(reg);
+                    if(splitDescription.length > 1)
+                        splitDescription[1] = "<mark>" + splitDescription[1] + "</mark>";
+                    description.innerHTML = splitDescription.join("");
                     item.append(description)
                 }
             },
-            highlight: true,
+            highlight: false,
         },
     });
 
