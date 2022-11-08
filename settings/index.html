@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css"
           rel="stylesheet">
-    <script src='https://cdn.staticaly.com/gh/robertklep/homey-mocks/v0.0.4/homey-settings-mock.js'></script>
     <link href="homey.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
@@ -21,18 +20,17 @@
 </div>
 
 <div class="tab-content" id="insights">
-    <h1>Telegram Notifications - Speichernutzung (MB)</h1>
     <div class="row">
         <div class="col" style="align-items: stretch; width: 100%">
-            <input class="autocomplete" id="insights-select" tabindex="1" type="text"/>
+            <input class="autocomplete hy-nostyle" id="insights-select" tabindex="1" type="search"/>
         </div>
     </div>
     <div class="row" style="margin-top: 5px; margin-bottom: 5px">
-        <input class="scope" id="scope" placeholder="24" style="width: 100%" type="number">
-        <select class="scope" id="scopeUnit">
-            <option>Minutes</option>
-            <option selected="selected">Hours</option>
-            <option>Days</option>
+        <input class="scope" id="range" placeholder="24" style="width: 100%" type="number">
+        <select class="scope" id="unit">
+            <option value="1">Minutes</option>
+            <option selected="selected" value="60">Hours</option>
+            <option value="1440">Days</option>
         </select>
     </div>
     <div class="insights" id="users-list">
@@ -79,12 +77,15 @@
 
 <div class="tab-content" id="settings">
     <div class="row" style="margin-bottom: .5em">
-        <h2 data-i18n="settings.silentQuestion">Significant Figures</h2>
+        <h2 data-i18n="settings.significantFigures">Significant Figures</h2>
         <label class="switch right">
-            <input id="question-silent-question" type="checkbox">
+            <input id="significantFigures" onclick="onSignificantFigures()" type="checkbox">
             <span class="slider round"></span>
         </label>
     </div>
+    <!--<div class="row row-end" style="margin-bottom: .5em">
+        <input class="scope" id="range" placeholder="24" type="number">
+    </div>-->
 </div>
 
 <script src="index.js" type="text/javascript"></script>

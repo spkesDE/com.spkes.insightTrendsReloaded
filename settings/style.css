@@ -1,5 +1,5 @@
 .autocomplete {
-    width: 100%;
+    width: 100% !important;
     border: 0.05rem solid rgba(255, 122, 122, .5) !important;
     font-size: 16px;
     font-weight: 400;
@@ -27,18 +27,21 @@
     margin: 0;
 }
 
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
 }
 
-.scope:first-child {
+.scope:first-child:not(:last-child) {
     border-start-end-radius: 0.25rem;
     border-start-start-radius: 0.25rem;
     border-right: none !important;
 }
 
-.scope:last-child {
+.scope:last-child:not(:first-child) {
     border-end-end-radius: 0.25rem;
     border-end-start-radius: 0.25rem;
     border-left: none !important;
@@ -47,8 +50,14 @@ input[type=number] {
 .search-icon {
     height: 20px;
     width: 20px;
-    padding-right: .5rem;
+    padding-right: 10px;
     vertical-align: middle;
+}
+
+.description {
+    font-size: 12px;
+    color: gray;
+    padding-left: 30px;
 }
 
 .autoComplete_wrapper > ul > li {
@@ -68,6 +77,10 @@ input[type=number] {
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
+}
+
+.row.row-end {
+    justify-content: flex-end;
 }
 
 .row.center {
@@ -113,7 +126,7 @@ input[type=number] {
 }
 
 .tab button.active {
-    background-color: #4f8fd7;
+    background-color: #861f1f;
     color: #f5f4f4;
 }
 

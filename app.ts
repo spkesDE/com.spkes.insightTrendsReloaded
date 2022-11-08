@@ -7,10 +7,13 @@ import CheckInsight from "./flows/conditions/checkInsight";
 import CheckInsightPercentile from "./flows/conditions/checkInsightPercentile";
 import {HomeyAPIApp} from "homey-api";
 import FlowUtils from "./flows/flowUtils";
+import {Stats} from "fast-stats";
+import Trend from "./trend";
 
 export class InsightTrendsReloaded extends Homey.App {
     public homeyId: string | undefined;
     private api: HomeyAPIApp | undefined;
+    public significantFigures: boolean = false;
 
     /**
      * onInit is called when the app is initialized.
@@ -18,9 +21,14 @@ export class InsightTrendsReloaded extends Homey.App {
     async onInit() {
         // @ts-ignore
         this.api = await new HomeyAPIApp({homey: this.homey});
+        this.significantFigures = await this.homey.settings.get("significantFigures") ?? false;
         this._initializeFlowCards();
         this.homeyId = await this.homey.cloud.getHomeyId();
         this.log('InsightTrendsReloaded has been initialized');
+        this.homey.settings.on('set', async key => {
+            if (key === 'significantFigures')
+                this.significantFigures = await this.homey.settings.get('significantFigures')
+        });
     }
 
     public getHomeyAPI() {
@@ -96,12 +104,40 @@ export class InsightTrendsReloaded extends Homey.App {
     }
 
     public async searchInsights(query: string) {
-        try {
-            let results = await FlowUtils.getSortedInsightsForAutocomplete(this, query);
-            return {error: null, results: results}
-        } catch (e: any) {
-            return {error: e.message ?? e, results: null}
-        }
+        return await FlowUtils.getSortedInsightsForAutocomplete(this, query);
+    }
+
+    public async getInsightCalculated(id: string, uri: string, range: number, unit: string, percentile: number, type: string) {
+        let logEntries = await this.getLogs(range, unit, {id: id, uri: uri}, type === 'boolean');
+        let stats = await new Stats().push(logEntries.map((entry: any) => entry.y));
+        let trendline = Trend.createTrend(logEntries);
+        return {
+            trendLine: [
+                {x: logEntries[0].x, y: trendline.calcY(logEntries[0].x)},
+                {x: logEntries[logEntries.length - 1].x, y: trendline.calcY(logEntries[logEntries.length - 1].x)},
+            ],
+            //Casting to number because of boolean values
+            min: this.significantFigures ? FlowUtils.toSignificantDigits(Number(stats.range()[0])) : Number(stats.range()[0]),
+            max: this.significantFigures ? FlowUtils.toSignificantDigits(Number(stats.range()[1])) : Number(stats.range()[1]),
+            mean: this.significantFigures ? FlowUtils.toSignificantDigits(stats.amean()) : stats.amean(),
+            median: this.significantFigures ? FlowUtils.toSignificantDigits(stats.median()) : stats.median(),
+            standardDeviation: this.significantFigures ? FlowUtils.toSignificantDigits(stats.stddev()) : stats.stddev(),
+            trend: this.significantFigures ? FlowUtils.toSignificantDigits(trendline.slope * 1000) : trendline.slope * 1000,
+            firstvalue: this.significantFigures ? FlowUtils.toSignificantDigits(logEntries[0].y,) : logEntries[0].y,
+            firstvalue_timestamp: logEntries[0].x,
+            firstvalue_time: new Date(logEntries[0].x).toLocaleString('en-GB', {
+                timeZone: this.homey.clock.getTimezone(), hour12: false
+            }),
+            lastvalue: this.significantFigures ? FlowUtils.toSignificantDigits(logEntries[logEntries.length - 1].y) : logEntries[logEntries.length - 1].y,
+            lastvalue_timestamp: logEntries[logEntries.length - 1].x,
+            lastvalue_time: new Date(logEntries[logEntries.length - 1].x).toLocaleString('en-GB', {
+                timeZone: this.homey.clock.getTimezone(), hour12: false
+            }),
+            size: logEntries.length,
+            percentile: stats.percentile(percentile),
+            percent: percentile,
+            data: logEntries
+        };
     }
 }
 

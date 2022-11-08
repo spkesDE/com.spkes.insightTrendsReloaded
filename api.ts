@@ -3,6 +3,6 @@ module.exports = {
         return await homey.app.searchInsights(query.search);
     },
     async getInsightCalculated({homey, query}: any) {
-        return await homey.app.getInsightCalculated(query.id, query.uid, query.minutes, query.scopeUnit, query.percentile);
+        return await homey.app.getInsightCalculated(query.id, query.uri, query.range, query.unit, query.percentile, query.type);
     },
 };
