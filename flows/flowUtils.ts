@@ -38,6 +38,7 @@ export default class FlowUtils {
                         id: entry.id,
                         uri: entry.uri,
                         type: entry.type,
+                        units: entry.units
                     }
                     if (entry.uriObj.iconObj && app.homeyId) {
                         result.icon = "https://" + app.homeyId + ".connect.athom.com" + entry.uriObj.iconObj.url;

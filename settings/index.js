@@ -1,4 +1,4 @@
-onHomeyReady(undefined)
+// noinspection JSUnresolvedVariable
 
 function loadChart() {
     let ctx = document.getElementById('chart');
@@ -144,7 +144,143 @@ function loadChart() {
     });
 }
 
+async function searchInsights(query) {
+    return new Promise((resolve, reject) => {
+        Homey.api('GET', '/searchInsights?search=' + query, {}, (error, result) => {
+            if (error || result.error) {
+                Homey.alert(error ?? result.error);
+                reject(error);
+            }
+            resolve(result.results);
+        });
+    })
+}
+
+
+function autoCompleteHandler() {
+    const autoCompleteJS = new autoComplete({
+        selector: "#insights-select",
+        placeHolder: "Search of Insights...",
+        data: {
+            src: async (query) => {
+                let data = await this.searchInsights(query);
+                console.log(data);
+                return data;
+            },
+            keys: ["name"],
+        },
+        resultsList: {
+            element: (list, data) => {
+                if (!data.results.length) {
+                    const message = document.createElement("div");
+                    message.classList.add("noResult");
+                    message.innerHTML = `<span>Found no results for "${data.query}"</span>`;
+                    list.prepend(message);
+                }
+            },
+            noResults: true,
+        },
+        resultItem: {
+            element: (item, data) => {
+                if (data.value.icon) {
+                    const img = document.createElement("img");
+                    img.classList.add("search-icon");
+                    img.src = data.value.icon;
+                    item.prepend(img)
+                }
+                if (data.value.units) {
+                    item.innerHTML += " (" + data.value.units + ")";
+                }
+            },
+            highlight: true,
+        },
+    });
+
+    autoCompleteJS.input.addEventListener("selection", function (event) {
+        const feedback = event.detail;
+        autoCompleteJS.input.value = feedback.selection.value.name;
+    });
+}
+
 function onHomeyReady(Homey) {
+    if (Homey.isMock) {
+        Homey.alert('Warning: Homey is mocked only!!!')
+        Homey.addRoutes([
+            {
+                method: 'GET',
+                path: '/searchInsights',
+                public: false,
+                fn: function (args, callback) {
+                    return callback(null, {
+                        error: null, results: [{
+                            name: 'temperature 1',
+                            description: 'device 1',
+                            id: '1',
+                            uri: 'uri',
+                            type: 'number',
+                            units: '&#8451',
+                            booleanBasedCapability: false,
+                            color: '#ff0000',
+                            icon: "https://60755625448a330c22a0bdfe.connect.athom.com/icon/de128d34f89b99dc3c44eb5678e3e067/icon.svg",
+                        }, {
+                            name: 'temperature 2',
+                            description: 'device 2',
+                            id: '2',
+                            uri: 'uri',
+                            type: 'number',
+                            units: '&#8451',
+                            booleanBasedCapability: false,
+                            color: '#00ff00',
+                            icon: "https://60755625448a330c22a0bdfe.connect.athom.com/icon/de128d34f89b99dc3c44eb5678e3e067/icon.svg"
+                        }, {
+                            name: 'temperature 3',
+                            description: 'device 3',
+                            id: '3',
+                            uri: 'uri',
+                            type: 'number',
+                            units: '&#8451',
+                            booleanBasedCapability: false,
+                            color: '#0000ff',
+                            icon: "https://60755625448a330c22a0bdfe.connect.athom.com/icon/de128d34f89b99dc3c44eb5678e3e067/icon.svg"
+                        }]
+                    })
+                }
+            },
+            {
+                method: 'GET',
+                path: '/trends',
+                public: false,
+                fn: async function (args, callback) {
+                    let entries = [];
+                    let now = Date.now();
+                    for (let i = 0; i < 100; i++) {
+                        entries.push({x: now + (i * 1000 * 60) - (100 * 1000 * 60), y: Math.random() * 100});
+                    }
+                    return callback(null, {
+                        entries: entries,
+                        trendline: [{x: now - (100 * 1000 * 60), y: 0}, {
+                            x: now + (100 * 1000 * 60) - (100 * 1000 * 60),
+                            y: 100
+                        }],
+                        min: -100,
+                        max: 100,
+                        amean: 10,
+                        median: 15,
+                        standardDeviation: 5,
+                        trend: 0.45,
+                        size: 10,
+                        lastValue: Math.random() * 100,
+                        performance: {
+                            total: 0,
+                            calculation: 0,
+                            fetchInsight: 0,
+                            fetchLogEntries: 0
+                        }
+                    })
+                }
+            }
+        ]);
+    }
     Array.from(document.getElementsByClassName('tab-links'))
         .forEach(function (element) {
             element.addEventListener('click', handleTab);
@@ -152,6 +288,7 @@ function onHomeyReady(Homey) {
     document.getElementById('defaultOpen').click();
 
     this.loadChart();
+    this.autoCompleteHandler();
     Homey.ready();
 }
 

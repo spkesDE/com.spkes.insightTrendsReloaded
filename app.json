@@ -55,6 +55,16 @@
       }
     }
   },
+  "api": {
+    "getInsightCalculated": {
+      "method": "get",
+      "path": "/getInsightCalculated"
+    },
+    "searchInsights": {
+      "method": "get",
+      "path": "/searchInsights"
+    }
+  },
   "source": "https://github.com/spkesDE/com.spkes.insightTrendsReloaded",
   "homeyCommunityTopicId": 71307,
   "flow": {
@@ -489,7 +499,7 @@
         "titleFormatted": {
           "en": "Check if [[percent]] of the values of [[insight]] are [[operator]] [[value]] for the past [[range]] [[unit]]",
           "de": "Prüfe ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind.",
-          "sv": "Testa om [[percent]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]]"
+          "sv": "Testa om [[percent]] för [[insight]] är [[value]] [[operator]] under de senaste [[range]] [[unit]]"
         },
         "args": [
           {

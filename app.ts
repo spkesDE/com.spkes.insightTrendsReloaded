@@ -6,6 +6,7 @@ import CalculateTrend from "./flows/actions/calculateTrend";
 import CheckInsight from "./flows/conditions/checkInsight";
 import CheckInsightPercentile from "./flows/conditions/checkInsightPercentile";
 import {HomeyAPIApp} from "homey-api";
+import FlowUtils from "./flows/flowUtils";
 
 export class InsightTrendsReloaded extends Homey.App {
     public homeyId: string | undefined;
@@ -92,6 +93,15 @@ export class InsightTrendsReloaded extends Homey.App {
         if (minutes <= 525600) return 'lastYear';
         if (minutes <= 1051200) return 'last2Years';
         return 'last24Hours';
+    }
+
+    public async searchInsights(query: string) {
+        try {
+            let results = await FlowUtils.getSortedInsightsForAutocomplete(this, query);
+            return {error: null, results: results}
+        } catch (e: any) {
+            return {error: e.message ?? e, results: null}
+        }
     }
 }
 

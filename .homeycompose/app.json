@@ -54,6 +54,16 @@
       }
     }
   },
+  "api": {
+    "getInsightCalculated": {
+      "method": "get",
+      "path": "/getInsightCalculated"
+    },
+    "searchInsights": {
+      "method": "get",
+      "path": "/searchInsights"
+    }
+  },
   "source": "https://github.com/spkesDE/com.spkes.insightTrendsReloaded",
   "homeyCommunityTopicId": 71307
 }
