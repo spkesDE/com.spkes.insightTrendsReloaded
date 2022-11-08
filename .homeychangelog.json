@@ -22,5 +22,8 @@
   },
   "1.0.7": {
     "en": "Beta 1 of the settingspage"
+  },
+  "1.0.8": {
+    "en": "Result size to 25"
   }
 }
