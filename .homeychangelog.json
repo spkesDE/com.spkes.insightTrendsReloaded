@@ -25,5 +25,8 @@
   },
   "1.0.8": {
     "en": "Result size to 25"
+  },
+  "1.0.9": {
+    "en": "Changed search beheavor"
   }
 }
