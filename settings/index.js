@@ -112,8 +112,13 @@ async function refreshChart() {
     if (autoCompleteJS === undefined) return;
     if (autoCompleteJS.feedback === undefined) return;
     if (autoCompleteJS.feedback.selection.value === undefined) return;
+    let btn = document.getElementById('refreshChart');
+    if (btn.classList.contains('loading')) return;
     console.log('Refreshing chart');
-    loadChartData(autoCompleteJS.feedback.selection.value).then();
+    document.getElementById('refreshChart').classList.add('loading');
+    loadChartData(autoCompleteJS.feedback.selection.value).then(() => {
+        btn.classList.remove('loading');
+    });
 }
 
 function autoCompleteHandler() {
