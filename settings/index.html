@@ -9,6 +9,10 @@
     <script src="autoComplete.min.js"></script>
     <link href="autoComplete.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+
+
+    <script src='https://cdn.staticaly.com/gh/robertklep/homey-mocks/v0.0.4/homey-settings-mock.js'></script>
+    <link href="homey.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,12 +28,14 @@
         </div>
     </div>
     <div class="row" style="margin-top: 5px; margin-bottom: 5px">
-        <input class="scope" id="range" placeholder="24" style="width: 100%" type="number">
-        <select class="scope" id="unit">
+        <input class="scope hy-nostyle" id="range" placeholder="24" style="width: 100%" type="number">
+        <select class="scope hy-nostyle" id="unit">
             <option value="1">Minutes</option>
             <option selected="selected" value="60">Hours</option>
             <option value="1440">Days</option>
         </select>
+        <button class="btn btn-refresh scope hy-nostyle" onclick="refreshChart()">
+        </button>
     </div>
     <div class="insights" id="users-list">
         <canvas height="300" id="chart" width="400"></canvas>
@@ -71,6 +77,36 @@
         </div>
     </div>
     <hr>
+    <div class="row">
+        <div class="col">
+            <label for="firstValue">First Value</label>
+            <input class="insight-input" disabled id="firstValue" type="number" value="18.800640000000012"/>
+        </div>
+        <div class="col">
+            <label for="lastValue">Last Value</label>
+            <input class="insight-input" disabled id="lastValue" type="number" value="18.808627199999986"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="firstValueTime">First Value Time</label>
+            <input class="insight-input" disabled id="firstValueTime" type="text" value="07/11/2022, 14:40:00"/>
+        </div>
+        <div class="col">
+            <label for="lastValueTime">Last Value Time</label>
+            <input class="insight-input" disabled id="lastValueTime" type="text" value="08/11/2022, 14:30:00"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="firstValueTimestamp">First Value</label>
+            <input class="insight-input" disabled id="firstValueTimestamp" type="number" value="1667828400000"/>
+        </div>
+        <div class="col">
+            <label for="lastValueTimestamp">Last Value</label>
+            <input class="insight-input" disabled id="lastValueTimestamp" type="number" value="1667914200000"/>
+        </div>
+    </div>
 </div>
 
 <div class="tab-content" id="settings">

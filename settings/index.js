@@ -1,6 +1,7 @@
 // noinspection JSUnresolvedVariable
 
 let chart = undefined;
+let autoCompleteJS = undefined;
 
 function loadChart() {
     let ctx = document.getElementById('chart');
@@ -76,7 +77,12 @@ async function getInsightCalculated(id, uri, range, unit, percentile, type) {
 
 
 async function loadChartData(value) {
-    console.log('Loading chart data...')
+    if (chart === undefined) return;
+    console.log('Loading chart data...');
+    if (value === undefined) {
+        console.error('Value is undefined');
+        return;
+    }
     let range = document.getElementById('range').value ?? 24;
     let unit = document.getElementById('unit').value ?? 60;
     if (range === undefined || range === '') range = 24;
@@ -90,14 +96,28 @@ async function loadChartData(value) {
     document.getElementById('standardDeviation').value = data.standardDeviation;
     document.getElementById('trend').value = data.trend;
     document.getElementById('size').value = data.size;
+    document.getElementById('firstValue').value = data.firstvalue;
+    document.getElementById('firstValueTime').value = data.firstvalue_time;
+    document.getElementById('firstValueTimestamp').value = data.firstvalue_timestamp;
+    document.getElementById('lastValue').value = data.lastvalue;
+    document.getElementById('lastValueTime').value = data.lastvalue_time;
+    document.getElementById('lastValueTimestamp').value = data.lastvalue_timestamp;
     chart.data.datasets[0].steppedLine = value.type === 'boolean';
     chart.data.datasets[0].data = data.data;
     chart.data.datasets[1].data = data.trendLine
     chart.update();
 }
 
+async function refreshChart() {
+    if (autoCompleteJS === undefined) return;
+    if (autoCompleteJS.feedback === undefined) return;
+    if (autoCompleteJS.feedback.selection.value === undefined) return;
+    console.log('Refreshing chart');
+    loadChartData(autoCompleteJS.feedback.selection.value).then();
+}
+
 function autoCompleteHandler() {
-    const autoCompleteJS = new autoComplete({
+    autoCompleteJS = new autoComplete({
         selector: "#insights-select",
         placeHolder: "Search of Insights...",
         data: {
@@ -153,6 +173,83 @@ function autoCompleteHandler() {
 }
 
 function onHomeyReady(Homey) {
+    if (Homey.isMock) {
+        Homey.alert('Warning: Homey is mocked only!!!')
+        Homey.addRoutes([
+            {
+                method: 'GET',
+                path: '/searchInsights',
+                public: false,
+                fn: function (args, callback) {
+                    return callback(null, [{
+                        name: 'temperature 1',
+                        description: 'device 1',
+                        id: '1',
+                        uri: 'uri',
+                        type: 'number',
+                        units: '&#8451',
+                        booleanBasedCapability: false,
+                        color: '#ff0000',
+                        icon: "https://60755625448a330c22a0bdfe.connect.athom.com/icon/de128d34f89b99dc3c44eb5678e3e067/icon.svg",
+                    }, {
+                        name: 'temperature 2',
+                        description: 'device 2',
+                        id: '2',
+                        uri: 'uri',
+                        type: 'number',
+                        units: '&#8451',
+                        booleanBasedCapability: false,
+                        color: '#00ff00',
+                        icon: "https://60755625448a330c22a0bdfe.connect.athom.com/icon/de128d34f89b99dc3c44eb5678e3e067/icon.svg"
+                    }, {
+                        name: 'temperature 3',
+                        description: 'device 3',
+                        id: '3',
+                        uri: 'uri',
+                        type: 'number',
+                        units: '&#8451',
+                        booleanBasedCapability: false,
+                        color: '#0000ff',
+                        icon: "https://60755625448a330c22a0bdfe.connect.athom.com/icon/de128d34f89b99dc3c44eb5678e3e067/icon.svg"
+                    }]);
+                }
+            },
+            {
+                method: 'GET',
+                path: '/getInsightCalculated',
+                public: false,
+                fn: async function (args, callback) {
+                    let entries = [];
+                    let now = Date.now();
+                    for (let i = 0; i < 100; i++) {
+                        entries.push({x: now + (i * 1000 * 60) - (100 * 1000 * 60), y: Math.random() * 100});
+                    }
+                    return callback(null, {
+                        data: entries,
+                        trendLine: [{x: now - (100 * 1000 * 60), y: 0}, {
+                            x: now + (100 * 1000 * 60) - (100 * 1000 * 60),
+                            y: 100
+                        }],
+                        firstvalue: 18.800640000000012,
+                        firstvalue_time: "07/11/2022, 14:40:00",
+                        firstvalue_timestamp: 1667828400000,
+                        lastvalue: 18.808627199999986,
+                        lastvalue_time: "08/11/2022, 14:30:00",
+                        lastvalue_timestamp: 1667914200000,
+                        max: 18.869247999999985,
+                        mean: 18.808090343321716,
+                        median: 18.808832000000013,
+                        min: 18.800435200000006,
+                        percent: "25",
+                        percentile: 18.800640000000012,
+                        size: 287,
+                        standardDeviation: 0.011371776738991278,
+                        trend: 2.7052422915815307e-7,
+                    })
+                }
+            }
+        ]);
+    }
     Array.from(document.getElementsByClassName('tab-links'))
         .forEach(function (element) {
             element.addEventListener('click', handleTab);
