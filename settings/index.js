@@ -85,8 +85,9 @@ async function loadChartData(value) {
     }
     let range = document.getElementById('range').value ?? 24;
     let unit = document.getElementById('unit').value ?? 60;
+    let percent = document.getElementById('percentileRange').value ?? 50;
     if (range === undefined || range === '') range = 24;
-    let data = await getInsightCalculated(value.id, value.uri, range, unit, 25, value.type ?? false).catch(e => {
+    let data = await getInsightCalculated(value.id, value.uri, range, unit, percent, value.type ?? false).catch(e => {
         console.log(e);
     });
     document.getElementById('min').value = data.min;
@@ -102,6 +103,7 @@ async function loadChartData(value) {
     document.getElementById('lastValue').value = data.lastvalue;
     document.getElementById('lastValueTime').value = data.lastvalue_time;
     document.getElementById('lastValueTimestamp').value = data.lastvalue_timestamp;
+    document.getElementById('percentile').value = data.percentile;
     chart.data.datasets[0].steppedLine = value.type === 'boolean';
     chart.data.datasets[0].data = data.data;
     chart.data.datasets[1].data = data.trendLine
@@ -119,6 +121,20 @@ async function refreshChart() {
     loadChartData(autoCompleteJS.feedback.selection.value).then(() => {
         btn.classList.remove('loading');
     });
+}
+
+function onPercentileChange() {
+    document.getElementById('valueRange').innerHTML = document.getElementById('percentileRange').value;
+}
+
+function significantFiguresRangeChange() {
+    let value = document.getElementById('significantFiguresRange').value;
+    if (value < 10) value = "0" + value;
+    document.getElementById('significantFiguresRangeValue').innerHTML = value;
+}
+
+function saveSignificantFiguresValue() {
+    Homey.set('significantFiguresValue', document.getElementById('significantFiguresRange')?.value ?? 4)
 }
 
 function autoCompleteHandler() {
@@ -274,6 +290,7 @@ function onHomeyReady(Homey) {
 function onSignificantFigures() {
     let significantFigures = document.getElementById('significantFigures').checked ?? false;
     Homey.set('significantFigures', significantFigures)
+    saveSignificantFiguresValue();
 }
 
 function handleTab(event) {

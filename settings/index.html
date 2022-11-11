@@ -111,19 +111,33 @@
         </div>
     </div>
     <hr class="hy-nostyle">
+    <div class="row">
+        <div class="col" style="align-items: stretch; width: 100%">
+            <label for="percentileRange">Percent (<span id="valueRange">50</span>%)</label>
+            <input id="percentileRange" max="100" min="0" oninput="onPercentileChange()" type="range" value="50"/>
+        </div>
+    </div>
+    <div class="row center">
+        <div class="col">
+            <label for="size">Percentile</label>
+            <input class="insight-input" disabled id="percentile" type="number" value="10"/>
+        </div>
+    </div>
 </div>
 
 <div class="tab-content" id="settings">
     <div class="row" style="margin-bottom: .5em">
         <h2 data-i18n="settings.significantFigures">Significant Figures</h2>
+        <input id="significantFiguresRange"
+               max="21" min="1" onchange="saveSignificantFiguresValue()" oninput="significantFiguresRangeChange()"
+               type="range"
+               value="5">
+        <span id="significantFiguresRangeValue">05</span>
         <label class="switch right">
             <input id="significantFigures" onclick="onSignificantFigures()" type="checkbox">
             <span class="slider round"></span>
         </label>
     </div>
-    <!--<div class="row row-end" style="margin-bottom: .5em">
-        <input class="scope" id="range" placeholder="24" type="number">
-    </div>-->
 </div>
 <script src="index.js" type="text/javascript"></script>
 </body>

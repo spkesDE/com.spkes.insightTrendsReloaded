@@ -14,6 +14,7 @@ export class InsightTrendsReloaded extends Homey.App {
     public homeyId: string | undefined;
     private api: HomeyAPIApp | undefined;
     public significantFigures: boolean = false;
+    public significantFiguresValue: number = 5;
 
     /**
      * onInit is called when the app is initialized.
@@ -22,12 +23,15 @@ export class InsightTrendsReloaded extends Homey.App {
         // @ts-ignore
         this.api = await new HomeyAPIApp({homey: this.homey});
         this.significantFigures = await this.homey.settings.get("significantFigures") ?? false;
+        this.significantFiguresValue = await this.homey.settings.get("significantFiguresValue") ?? 5;
         this._initializeFlowCards();
         this.homeyId = await this.homey.cloud.getHomeyId();
         this.log('InsightTrendsReloaded has been initialized');
         this.homey.settings.on('set', async key => {
             if (key === 'significantFigures')
                 this.significantFigures = await this.homey.settings.get('significantFigures')
+            if (key === 'significantFiguresValue')
+                this.significantFiguresValue = await this.homey.settings.get('significantFiguresValue')
         });
     }
 
@@ -107,7 +111,7 @@ export class InsightTrendsReloaded extends Homey.App {
         return await FlowUtils.getSortedInsightsForAutocomplete(this, query);
     }
 
-    public async getInsightCalculated(id: string, uri: string, range: number, unit: string, percentile: number, type: string) {
+    public async getInsightCalculated(id: string, uri: string, range: number, unit: string, percent: number, type: string) {
         let logEntries = await this.getLogs(range, unit, {id: id, uri: uri}, type === 'boolean');
         let stats = await new Stats().push(logEntries.map((entry: any) => entry.y));
         let trendline = Trend.createTrend(logEntries);
@@ -117,25 +121,25 @@ export class InsightTrendsReloaded extends Homey.App {
                 {x: logEntries[logEntries.length - 1].x, y: trendline.calcY(logEntries[logEntries.length - 1].x)},
             ],
             //Casting to number because of boolean values
-            min: this.significantFigures ? FlowUtils.toSignificantDigits(Number(stats.range()[0])) : Number(stats.range()[0]),
-            max: this.significantFigures ? FlowUtils.toSignificantDigits(Number(stats.range()[1])) : Number(stats.range()[1]),
-            mean: this.significantFigures ? FlowUtils.toSignificantDigits(stats.amean()) : stats.amean(),
-            median: this.significantFigures ? FlowUtils.toSignificantDigits(stats.median()) : stats.median(),
-            standardDeviation: this.significantFigures ? FlowUtils.toSignificantDigits(stats.stddev()) : stats.stddev(),
-            trend: this.significantFigures ? FlowUtils.toSignificantDigits(trendline.slope * 1000) : trendline.slope * 1000,
-            firstvalue: this.significantFigures ? FlowUtils.toSignificantDigits(logEntries[0].y,) : logEntries[0].y,
+            min: this.significantFigures ? FlowUtils.toSignificantDigits(Number(stats.range()[0]), this.significantFiguresValue) : Number(stats.range()[0]),
+            max: this.significantFigures ? FlowUtils.toSignificantDigits(Number(stats.range()[1]), this.significantFiguresValue) : Number(stats.range()[1]),
+            mean: this.significantFigures ? FlowUtils.toSignificantDigits(stats.amean(), this.significantFiguresValue) : stats.amean(),
+            median: this.significantFigures ? FlowUtils.toSignificantDigits(stats.median(), this.significantFiguresValue) : stats.median(),
+            standardDeviation: this.significantFigures ? FlowUtils.toSignificantDigits(stats.stddev(), this.significantFiguresValue) : stats.stddev(),
+            trend: this.significantFigures ? FlowUtils.toSignificantDigits(trendline.slope * 1000, this.significantFiguresValue) : trendline.slope * 1000,
+            firstvalue: this.significantFigures ? FlowUtils.toSignificantDigits(logEntries[0].y, this.significantFiguresValue) : logEntries[0].y,
             firstvalue_timestamp: logEntries[0].x,
             firstvalue_time: new Date(logEntries[0].x).toLocaleString('en-GB', {
                 timeZone: this.homey.clock.getTimezone(), hour12: false
             }),
-            lastvalue: this.significantFigures ? FlowUtils.toSignificantDigits(logEntries[logEntries.length - 1].y) : logEntries[logEntries.length - 1].y,
+            lastvalue: this.significantFigures ? FlowUtils.toSignificantDigits(logEntries[logEntries.length - 1].y, this.significantFiguresValue) : logEntries[logEntries.length - 1].y,
             lastvalue_timestamp: logEntries[logEntries.length - 1].x,
             lastvalue_time: new Date(logEntries[logEntries.length - 1].x).toLocaleString('en-GB', {
                 timeZone: this.homey.clock.getTimezone(), hour12: false
             }),
             size: logEntries.length,
-            percentile: stats.percentile(percentile),
-            percent: percentile,
+            percentile: stats.percentile(percent),
+            percent: percent,
             data: logEntries
         };
     }
