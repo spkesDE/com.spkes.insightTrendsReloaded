@@ -59,6 +59,7 @@ export default class FlowUtils {
         })
     }
     public static toSignificantDigits(number: number, precision: number = 4): number {
+        if (precision > 20) precision = 20;
         return Number(number.toFixed(precision))
     }
 }
