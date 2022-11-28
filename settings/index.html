@@ -10,12 +10,16 @@
     <link href="autoComplete.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 
+
+    <script src='https://cdn.staticaly.com/gh/robertklep/homey-mocks/v0.0.4/homey-settings-mock.js'></script>
+    <link href="homey.css" rel="stylesheet">
 </head>
 
 <body>
 <div class="tab">
-    <button class="tab-links" data-i18n="settings.data" data-target="insights" id="defaultOpen">Insights</button>
-    <button class="tab-links" data-i18n="settings.settings" data-target="settings">Settings</button>
+    <button class="tab-links hy-nostyle" data-i18n="settings.data" data-target="insights" id="defaultOpen">Insights
+    </button>
+    <button class="tab-links hy-nostyle" data-i18n="settings.settings" data-target="settings">Settings</button>
 </div>
 
 <div class="tab-content" id="insights">
@@ -31,7 +35,8 @@
             <option selected="selected" value="60">Hours</option>
             <option value="1440">Days</option>
         </select>
-        <button class="btn btn-refresh scope hy-nostyle" id="refreshChart" onclick="refreshChart()">
+        <button class="btn scope hy-nostyle" id="refreshChart" onclick="refreshChart()">
+            <i class="fas fa-sync" id="reload-icon"></i>
         </button>
     </div>
     <div class="insights" id="users-list">
@@ -48,6 +53,8 @@
             <input class="insight-input" disabled id="max" type="number" value="10"/>
         </div>
     </div>
+
+
     <div class="row">
         <div class="col">
             <label for="mean">Average</label>

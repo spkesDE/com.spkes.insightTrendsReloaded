@@ -11,8 +11,8 @@ function loadChart() {
             datasets: [
                 {
                     showLine: true,
-                    borderColor: 'rgb(170,57,57)',
-                    backgroundColor: 'rgba(170,57,57,0.16)',
+                    borderColor: 'rgba(0, 130, 250, .7)',
+                    backgroundColor: 'rgba(0, 130, 250,0.16)',
                     fill: true,
                     borderWidth: 2,
                     pointRadius: 3,
@@ -21,7 +21,7 @@ function loadChart() {
                 },
                 {
                     showLine: true,
-                    borderColor: 'rgb(0,0,0)',
+                    borderColor: 'rgba(79,79,79,0.7)',
                     borderWidth: 3,
                     pointRadius: 0,
                     pointBorderWidth: 0,
@@ -114,12 +114,17 @@ async function refreshChart() {
     if (autoCompleteJS === undefined) return;
     if (autoCompleteJS.feedback === undefined) return;
     if (autoCompleteJS.feedback.selection.value === undefined) return;
-    let btn = document.getElementById('refreshChart');
-    if (btn.classList.contains('loading')) return;
+    let icon = document.getElementById('reload-icon');
+    if (icon.classList.contains('fa-spin')) return;
     console.log('Refreshing chart');
-    document.getElementById('refreshChart').classList.add('loading');
+    icon.classList.add('fa-spin');
     loadChartData(autoCompleteJS.feedback.selection.value).then(() => {
-        btn.classList.remove('loading');
+        if (Homey.isMock)
+            setTimeout(() => {
+                icon.classList.remove('fa-spin');
+            }, 1000)
+        else
+            icon.classList.remove('fa-spin');
     });
 }
 
@@ -194,6 +199,83 @@ function autoCompleteHandler() {
 }
 
 function onHomeyReady(Homey) {
+    if (Homey.isMock) {
+        Homey.alert('Warning: Homey is mocked only!!!')
+        Homey.addRoutes([
+            {
+                method: 'GET',
+                path: '/searchInsights',
+                public: false,
+                fn: function (args, callback) {
+                    return callback(null, [{
+                        name: 'temperature 1',
+                        description: 'device 1',
+                        id: '1',
+                        uri: 'uri',
+                        type: 'number',
+                        units: '&#8451',
+                        booleanBasedCapability: false,
+                        color: '#ff0000',
+                        icon: "https://60755625448a330c22a0bdfe.connect.athom.com/icon/de128d34f89b99dc3c44eb5678e3e067/icon.svg",
+                    }, {
+                        name: 'temperature 2',
+                        description: 'device 2',
+                        id: '2',
+                        uri: 'uri',
+                        type: 'number',
+                        units: '&#8451',
+                        booleanBasedCapability: false,
+                        color: '#00ff00',
+                        icon: "https://60755625448a330c22a0bdfe.connect.athom.com/icon/de128d34f89b99dc3c44eb5678e3e067/icon.svg"
+                    }, {
+                        name: 'temperature 3',
+                        description: 'device 3',
+                        id: '3',
+                        uri: 'uri',
+                        type: 'number',
+                        units: '&#8451',
+                        booleanBasedCapability: false,
+                        color: '#0000ff',
+                        icon: "https://60755625448a330c22a0bdfe.connect.athom.com/icon/de128d34f89b99dc3c44eb5678e3e067/icon.svg"
+                    }]);
+                }
+            },
+            {
+                method: 'GET',
+                path: '/getInsightCalculated',
+                public: false,
+                fn: async function (args, callback) {
+                    let entries = [];
+                    let now = Date.now();
+                    for (let i = 0; i < 100; i++) {
+                        entries.push({x: now + (i * 1000 * 60) - (100 * 1000 * 60), y: Math.random() * 100});
+                    }
+                    return callback(null, {
+                        data: entries,
+                        trendLine: [{x: now - (100 * 1000 * 60), y: 0}, {
+                            x: now + (100 * 1000 * 60) - (100 * 1000 * 60),
+                            y: 100
+                        }],
+                        firstvalue: 18.800640000000012,
+                        firstvalue_time: "07/11/2022, 14:40:00",
+                        firstvalue_timestamp: 1667828400000,
+                        lastvalue: 18.808627199999986,
+                        lastvalue_time: "08/11/2022, 14:30:00",
+                        lastvalue_timestamp: 1667914200000,
+                        max: 18.869247999999985,
+                        mean: 18.808090343321716,
+                        median: 18.808832000000013,
+                        min: 18.800435200000006,
+                        percent: "25",
+                        percentile: 18.800640000000012,
+                        size: 287,
+                        standardDeviation: 0.011371776738991278,
+                        trend: 2.7052422915815307e-7,
+                    })
+                }
+            }
+        ]);
+    }
     Array.from(document.getElementsByClassName('tab-links'))
         .forEach(function (element) {
             element.addEventListener('click', handleTab);
