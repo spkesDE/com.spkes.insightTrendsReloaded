@@ -26,9 +26,12 @@ export default class FlowUtils {
     }
 
     public static async getSortedInsightsForAutocomplete(app: InsightTrendsReloaded, query: any, filter: any = {type: undefined}): Promise<any> {
-        return new Promise<any>(async (resolve) => {
+        return new Promise<any>(async (resolve, reject) => {
             // @ts-ignore
-            let insights: any = await app.getHomeyAPI().insights.getLogs(filter);
+            let insights: any = await app.getHomeyAPI().insights.getLogs(filter).catch(reason => {
+                reject(reason);
+            });
+            if (insights === undefined || insights.length === 0) reject(new Error('Failed to get insights'));
             resolve(insights.filter((entry: any) => entry.type == filter.type || filter.type == undefined)
                 // Map entries to a usable friendly object
                 .map((entry: any) => {
