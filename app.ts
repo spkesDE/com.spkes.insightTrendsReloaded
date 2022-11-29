@@ -49,8 +49,8 @@ export class InsightTrendsReloaded extends Homey.App {
                 }
             }
             // @ts-ignore
-            let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts);
-            if (logEntries === undefined) reject(new Error('Failed to get log entries'));
+            let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts).catch(this.error);
+            if (logEntries === undefined || logEntries.length === 0) reject(new Error('Failed to get log entries'));
             //Calculate the lowest date based on user input
             let minDate = Date.now() - minutes * 60000;
             this.log('Got ' + logEntries.values.length + ' entries from homey with timespan(' + minutes + ') of ' + this.minutesToTimespan(minutes))
