@@ -27,26 +27,23 @@ export default class FlowUtils {
 
     public static async getSortedInsightsForAutocomplete(app: InsightTrendsReloaded, query: any, filter: any = {type: undefined}): Promise<any> {
         return new Promise<any>(async (resolve, reject) => {
-            // @ts-ignore
-            let insights: any = await app.getHomeyAPI().insights.getLogs(filter).catch(reason => {
-                reject(reason);
-            });
+            let insights: any = await app.getHomeyAPI().insights.getLogs(filter).catch(app.error);
             if (insights === undefined || insights.length === 0) reject(new Error('Failed to get insights'));
             resolve(insights.filter((entry: any) => entry.type == filter.type || filter.type == undefined)
                 // Map entries to a usable friendly object
                 .map((entry: any) => {
                     let result: any = {
                         name: entry.title,
-                        description: entry.uriObj.name,
+                        description: entry.uriObj?.name ?? entry.ownerName ?? "Unknown",
                         id: entry.id,
                         uri: entry.uri,
                         type: entry.type,
                         units: entry.units
                     }
-                    if (entry.uriObj.iconObj && app.homeyId) {
-                        result.icon = "https://" + app.homeyId + ".connect.athom.com" + entry.uriObj.iconObj.url;
+                    if (entry.uriObj?.iconObj && app.homeyId) {
+                        result.icon = "https://" + app.homeyId + ".connect.athom.com" + entry.uriObj?.iconObj?.url;
                     }
-                    if (entry.units) {
+                    if (entry.units !== null) {
                         result.name = result.name + ' (' + entry.units + ')';
                     }
                     return result;

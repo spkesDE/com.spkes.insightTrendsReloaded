@@ -12,7 +12,7 @@ import Trend from "./trend";
 
 export class InsightTrendsReloaded extends Homey.App {
     public homeyId: string | undefined;
-    private api: HomeyAPIApp | undefined;
+    private api!: HomeyAPIApp;
     public significantFigures: boolean = false;
     public significantFiguresValue: number = 5;
 
@@ -20,8 +20,11 @@ export class InsightTrendsReloaded extends Homey.App {
      * onInit is called when the app is initialized.
      */
     async onInit() {
-        // @ts-ignore
-        this.api = await new HomeyAPIApp({homey: this.homey});
+        try {
+            this.api = await new HomeyAPIApp({homey: this.homey, debug: false});
+        } catch (err) {
+            this.error(err)
+        }
         this.significantFigures = await this.homey.settings.get("significantFigures") ?? false;
         this.significantFiguresValue = await this.homey.settings.get("significantFiguresValue") ?? 5;
         this._initializeFlowCards();
@@ -36,7 +39,7 @@ export class InsightTrendsReloaded extends Homey.App {
     }
 
     public getHomeyAPI() {
-        return this.api;
+        return this.api as any;
     }
 
     async getLogs(range: number, unit: string, opts: { uri: string, id: string, resolution?: string }, isBooleanBasedCapability: boolean = false) {
@@ -48,7 +51,6 @@ export class InsightTrendsReloaded extends Homey.App {
                     resolution: this.minutesToTimespan(minutes)
                 }
             }
-            // @ts-ignore
             let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts).catch(this.error);
             if (logEntries === undefined || logEntries.length === 0) reject(new Error('Failed to get log entries'));
             //Calculate the lowest date based on user input

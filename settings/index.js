@@ -198,9 +198,25 @@ function autoCompleteHandler() {
     });
 }
 
+function createWarningBox(text) {
+    let warningBox = document.createElement('div');
+    warningBox.style.position = "fixed";
+    warningBox.style.bottom = "1%";
+    warningBox.style.left = "50%";
+    warningBox.style.width = "25%"
+    warningBox.style.padding = "5px"
+    warningBox.style.fontWeight = "bold";
+    warningBox.style.transform = "translateX(-50%)";
+    warningBox.style.border = "1px solid black";
+    warningBox.style.backgroundColor = "rgba(200, 0, 0, 0.75)";
+    warningBox.style.textAlign = "center";
+    warningBox.innerHTML = text;
+    document.body.appendChild(warningBox);
+}
+
 function onHomeyReady(Homey) {
     if (Homey.isMock) {
-        Homey.alert('Warning: Homey is mocked only!!!')
+        createWarningBox("Homey is Mock");
         Homey.addRoutes([
             {
                 method: 'GET',

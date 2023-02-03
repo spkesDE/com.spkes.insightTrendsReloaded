@@ -23,113 +23,120 @@
 </div>
 
 <div class="tab-content" id="insights">
-    <div class="row">
-        <div class="col" style="align-items: stretch; width: 100%">
-            <input class="autocomplete hy-nostyle" id="insights-select" tabindex="1" type="search"/>
+    <div class="tab-container">
+        <div class="row">
+            <div class="col" style="align-items: stretch; width: 100%">
+                <input class="autocomplete hy-nostyle" id="insights-select" tabindex="1" type="search"/>
+            </div>
+        </div>
+
+        <div class="input-group" style="margin-top: 5px; margin-bottom: 5px">
+            <input class="scope hy-nostyle" id="range" placeholder="24" style="width: 100%" type="number">
+            <select class="scope hy-nostyle" id="unit">
+                <option value="1">Minutes</option>
+                <option selected="selected" value="60">Hours</option>
+                <option value="1440">Days</option>
+            </select>
+            <button class="btn scope hy-nostyle" id="refreshChart" onclick="refreshChart()">
+                <i class="fas fa-sync" id="reload-icon"></i>
+            </button>
         </div>
     </div>
-    <div class="input-group" style="margin-top: 5px; margin-bottom: 5px">
-        <input class="scope hy-nostyle" id="range" placeholder="24" style="width: 100%" type="number">
-        <select class="scope hy-nostyle" id="unit">
-            <option value="1">Minutes</option>
-            <option selected="selected" value="60">Hours</option>
-            <option value="1440">Days</option>
-        </select>
-        <button class="btn scope hy-nostyle" id="refreshChart" onclick="refreshChart()">
-            <i class="fas fa-sync" id="reload-icon"></i>
-        </button>
-    </div>
-    <div class="insights" id="users-list">
-        <canvas height="300" id="chart" width="400"></canvas>
-    </div>
-    <hr class="hy-nostyle">
-    <div class="row">
-        <div class="col">
-            <label for="min">Minimum</label>
-            <input class="insight-input" disabled id="min" type="number" value="10"/>
-        </div>
-        <div class="col">
-            <label for="max">Maximum</label>
-            <input class="insight-input" disabled id="max" type="number" value="10"/>
+    <div class="tab-container">
+        <div class="insights" id="users-list">
+            <canvas height="300" id="chart" width="400"></canvas>
         </div>
     </div>
 
+    <div class="tab-container">
+        <div class="row">
+            <div class="col">
+                <label for="min">Minimum</label>
+                <input class="insight-input" disabled id="min" type="number" value="10"/>
+            </div>
+            <div class="col">
+                <label for="max">Maximum</label>
+                <input class="insight-input" disabled id="max" type="number" value="10"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="mean">Average</label>
+                <input class="insight-input" disabled id="mean" type="number" value="10"/>
+            </div>
+            <div class="col">
+                <label for="median">Median</label>
+                <input class="insight-input" disabled id="median" type="number" value="10"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="standardDeviation">Standard Deviation</label>
+                <input class="insight-input" disabled id="standardDeviation" type="number" value="10"/>
+            </div>
+            <div class="col">
+                <label for="trend">trend</label>
+                <input class="insight-input" disabled id="trend" type="number" value="10"/>
+            </div>
+        </div>
+        <div class="row center">
+            <div class="col">
+                <label for="size">Number of used data points</label>
+                <input class="insight-input" disabled id="size" type="number" value="10"/>
+            </div>
+        </div>
+    </div>
 
-    <div class="row">
-        <div class="col">
-            <label for="mean">Average</label>
-            <input class="insight-input" disabled id="mean" type="number" value="10"/>
+    <div class="tab-container">
+        <div class="row">
+            <div class="col">
+                <label for="firstValue">First Value</label>
+                <input class="insight-input" disabled id="firstValue" type="number" value="18.800640000000012"/>
+            </div>
+            <div class="col">
+                <label for="lastValue">Last Value</label>
+                <input class="insight-input" disabled id="lastValue" type="number" value="18.808627199999986"/>
+            </div>
         </div>
-        <div class="col">
-            <label for="median">Median</label>
-            <input class="insight-input" disabled id="median" type="number" value="10"/>
+        <div class="row">
+            <div class="col">
+                <label for="firstValueTime">First Value Time</label>
+                <input class="insight-input hy-nostyle" disabled id="firstValueTime" type="text"
+                       value="07/11/2022, 14:40:00"/>
+            </div>
+            <div class="col">
+                <label for="lastValueTime">Last Value Time</label>
+                <input class="insight-input hy-nostyle" disabled id="lastValueTime" type="text"
+                       value="08/11/2022, 14:30:00"/>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <label for="standardDeviation">Standard Deviation</label>
-            <input class="insight-input" disabled id="standardDeviation" type="number" value="10"/>
+        <div class="row">
+            <div class="col">
+                <label for="firstValueTimestamp">First Value</label>
+                <input class="insight-input" disabled id="firstValueTimestamp" type="number" value="1667828400000"/>
+            </div>
+            <div class="col">
+                <label for="lastValueTimestamp">Last Value</label>
+                <input class="insight-input" disabled id="lastValueTimestamp" type="number" value="1667914200000"/>
+            </div>
         </div>
-        <div class="col">
-            <label for="trend">trend</label>
-            <input class="insight-input" disabled id="trend" type="number" value="10"/>
+        <hr class="hy-nostyle">
+        <div class="row">
+            <div class="col" style="align-items: stretch; width: 100%">
+                <label for="percentileRange">Percent (<span id="valueRange">50</span>%)</label>
+                <input id="percentileRange" max="100" min="0" oninput="onPercentileChange()" type="range" value="50"/>
+            </div>
         </div>
-    </div>
-    <div class="row center">
-        <div class="col">
-            <label for="size">Number of used data points</label>
-            <input class="insight-input" disabled id="size" type="number" value="10"/>
-        </div>
-    </div>
-    <hr class="hy-nostyle">
-    <div class="row">
-        <div class="col">
-            <label for="firstValue">First Value</label>
-            <input class="insight-input" disabled id="firstValue" type="number" value="18.800640000000012"/>
-        </div>
-        <div class="col">
-            <label for="lastValue">Last Value</label>
-            <input class="insight-input" disabled id="lastValue" type="number" value="18.808627199999986"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <label for="firstValueTime">First Value Time</label>
-            <input class="insight-input hy-nostyle" disabled id="firstValueTime" type="text"
-                   value="07/11/2022, 14:40:00"/>
-        </div>
-        <div class="col">
-            <label for="lastValueTime">Last Value Time</label>
-            <input class="insight-input hy-nostyle" disabled id="lastValueTime" type="text"
-                   value="08/11/2022, 14:30:00"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <label for="firstValueTimestamp">First Value</label>
-            <input class="insight-input" disabled id="firstValueTimestamp" type="number" value="1667828400000"/>
-        </div>
-        <div class="col">
-            <label for="lastValueTimestamp">Last Value</label>
-            <input class="insight-input" disabled id="lastValueTimestamp" type="number" value="1667914200000"/>
-        </div>
-    </div>
-    <hr class="hy-nostyle">
-    <div class="row">
-        <div class="col" style="align-items: stretch; width: 100%">
-            <label for="percentileRange">Percent (<span id="valueRange">50</span>%)</label>
-            <input id="percentileRange" max="100" min="0" oninput="onPercentileChange()" type="range" value="50"/>
-        </div>
-    </div>
-    <div class="row center">
-        <div class="col">
-            <label for="size">Percentile</label>
-            <input class="insight-input" disabled id="percentile" type="number" value="10"/>
+        <div class="row center">
+            <div class="col">
+                <label for="size">Percentile</label>
+                <input class="insight-input" disabled id="percentile" type="number" value="10"/>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="tab-content" id="settings">
+<div class="tab-content tab-container" id="settings">
     <div class="row" style="margin-bottom: .5em">
         <h2 data-i18n="settings.significantFigures">Significant Figures</h2>
         <input id="significantFiguresRange"

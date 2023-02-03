@@ -40,6 +40,9 @@
       },
       {
         "name": "Trendline.js by Henning Ofstad - v0.3.1"
+      },
+      {
+        "name": "Icons by Icons8"
       }
     ],
     "translators": [
@@ -499,7 +502,7 @@
         "titleFormatted": {
           "en": "Check if [[percent]] of the values of [[insight]] are [[operator]] [[value]] for the past [[range]] [[unit]]",
           "de": "Prüfe ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind.",
-          "sv": "Testa om [[percent]] för [[insight]] är [[value]] [[operator]] under de senaste [[range]] [[unit]]"
+          "sv": "Testa om [[percent]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]]"
         },
         "args": [
           {
