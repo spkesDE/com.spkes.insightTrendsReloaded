@@ -31,5 +31,8 @@
   },
   "1.0.10": {
     "en": "Added highlighting back"
+  },
+  "1.0.11": {
+    "en": "Updated Settings Page, Added Significant Figures, Added Cache"
   }
 }
