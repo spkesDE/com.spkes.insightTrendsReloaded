@@ -10,6 +10,7 @@
     <link href="autoComplete.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 
+    <!--<link href="https://63c568c5e1c0180b8a2acafe.connect.athom.com/manager/webserver/assets/css/homey.css" rel="stylesheet">-->
 
     <script src='https://cdn.staticaly.com/gh/robertklep/homey-mocks/v0.0.4/homey-settings-mock.js'></script>
     <link href="homey.css" rel="stylesheet">
@@ -52,37 +53,37 @@
         <div class="row">
             <div class="col">
                 <label for="min">Minimum</label>
-                <input class="insight-input" disabled id="min" type="number" value="10"/>
+                <input class="insight-input" disabled id="min" type="number"/>
             </div>
             <div class="col">
                 <label for="max">Maximum</label>
-                <input class="insight-input" disabled id="max" type="number" value="10"/>
+                <input class="insight-input" disabled id="max" type="number"/>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label for="mean">Average</label>
-                <input class="insight-input" disabled id="mean" type="number" value="10"/>
+                <input class="insight-input" disabled id="mean" type="number"/>
             </div>
             <div class="col">
                 <label for="median">Median</label>
-                <input class="insight-input" disabled id="median" type="number" value="10"/>
+                <input class="insight-input" disabled id="median" type="number"/>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label for="standardDeviation">Standard Deviation</label>
-                <input class="insight-input" disabled id="standardDeviation" type="number" value="10"/>
+                <input class="insight-input" disabled id="standardDeviation" type="number"/>
             </div>
             <div class="col">
                 <label for="trend">trend</label>
-                <input class="insight-input" disabled id="trend" type="number" value="10"/>
+                <input class="insight-input" disabled id="trend" type="number"/>
             </div>
         </div>
         <div class="row center">
             <div class="col">
                 <label for="size">Number of used data points</label>
-                <input class="insight-input" disabled id="size" type="number" value="10"/>
+                <input class="insight-input" disabled id="size" type="number"/>
             </div>
         </div>
     </div>
@@ -91,33 +92,31 @@
         <div class="row">
             <div class="col">
                 <label for="firstValue">First Value</label>
-                <input class="insight-input" disabled id="firstValue" type="number" value="18.800640000000012"/>
+                <input class="insight-input" disabled id="firstValue" type="number"/>
             </div>
             <div class="col">
                 <label for="lastValue">Last Value</label>
-                <input class="insight-input" disabled id="lastValue" type="number" value="18.808627199999986"/>
+                <input class="insight-input" disabled id="lastValue" type="number"/>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label for="firstValueTime">First Value Time</label>
-                <input class="insight-input hy-nostyle" disabled id="firstValueTime" type="text"
-                       value="07/11/2022, 14:40:00"/>
+                <input class="insight-input hy-nostyle" disabled id="firstValueTime" type="text"/>
             </div>
             <div class="col">
                 <label for="lastValueTime">Last Value Time</label>
-                <input class="insight-input hy-nostyle" disabled id="lastValueTime" type="text"
-                       value="08/11/2022, 14:30:00"/>
+                <input class="insight-input hy-nostyle" disabled id="lastValueTime" type="text"/>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label for="firstValueTimestamp">First Value</label>
-                <input class="insight-input" disabled id="firstValueTimestamp" type="number" value="1667828400000"/>
+                <input class="insight-input" disabled id="firstValueTimestamp" type="number"/>
             </div>
             <div class="col">
                 <label for="lastValueTimestamp">Last Value</label>
-                <input class="insight-input" disabled id="lastValueTimestamp" type="number" value="1667914200000"/>
+                <input class="insight-input" disabled id="lastValueTimestamp" type="number"/>
             </div>
         </div>
         <hr class="hy-nostyle">
@@ -130,13 +129,13 @@
         <div class="row center">
             <div class="col">
                 <label for="size">Percentile</label>
-                <input class="insight-input" disabled id="percentile" type="number" value="10"/>
+                <input class="insight-input" disabled id="percentile" type="number"/>
             </div>
         </div>
     </div>
 </div>
 
-<div class="tab-content tab-container" id="settings">
+<div class="tab-content tab-container" id="settings" style="margin-bottom: 50px">
     <div class="row" style="margin-bottom: .5em">
         <h2 data-i18n="settings.significantFigures">Significant Figures</h2>
         <input id="significantFiguresRange"
@@ -145,7 +144,7 @@
                value="5">
         <span id="significantFiguresRangeValue">05</span>
         <label class="switch right">
-            <input id="significantFigures" onclick="onSignificantFigures()" type="checkbox">
+            <input class="hy-nostyle" id="significantFigures" onclick="onSignificantFigures()" type="checkbox">
             <span class="slider round"></span>
         </label>
     </div>

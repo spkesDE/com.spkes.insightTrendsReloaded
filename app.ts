@@ -15,6 +15,8 @@ export class InsightTrendsReloaded extends Homey.App {
     private api!: HomeyAPIApp;
     public significantFigures: boolean = false;
     public significantFiguresValue: number = 5;
+    cachedInsightsLastupdate: number = 0;
+    cachedInsights: [] = [];
 
     /**
      * onInit is called when the app is initialized.
@@ -31,10 +33,25 @@ export class InsightTrendsReloaded extends Homey.App {
         this.homeyId = await this.homey.cloud.getHomeyId();
         this.log('InsightTrendsReloaded has been initialized');
         this.homey.settings.on('set', async key => {
-            if (key === 'significantFigures')
+            if (key === 'significantFigures') {
                 this.significantFigures = await this.homey.settings.get('significantFigures')
-            if (key === 'significantFiguresValue')
+                this.log(`Significant Figure is now ${this.significantFigures}`);
+            }
+            if (key === 'significantFiguresValue') {
                 this.significantFiguresValue = await this.homey.settings.get('significantFiguresValue')
+                this.log(`Significant Figure Value is now ${this.significantFiguresValue}`);
+            }
+        });
+
+        this.initCachedInsights();
+    }
+
+    public initCachedInsights(tries: number = 3) {
+        FlowUtils.getCachedInsights(this).then(() => {
+            this.log("Successfully cached Insights!");
+        }).catch(() => {
+            this.error(`Failed to get Insights! Tries left ${--tries}`);
+            this.initCachedInsights(--tries)
         });
     }
 
@@ -52,18 +69,21 @@ export class InsightTrendsReloaded extends Homey.App {
                 }
             }
             let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts).catch(this.error);
-            if (logEntries === undefined || logEntries.length === 0) reject(new Error('Failed to get log entries'));
+            if (logEntries === undefined || logEntries.length === 0) {
+                this.error('Failed to get log entries! Most likely Timeout after 5000ms. Try again later.');
+                return [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}]
+            }
             //Calculate the lowest date based on user input
             let minDate = Date.now() - minutes * 60000;
             this.log('Got ' + logEntries.values.length + ' entries from homey with timespan(' + minutes + ') of ' + this.minutesToTimespan(minutes))
             resolve(
                 //Filter the log entries by date
                 logEntries.values.filter((entry: { t: string, v: any }) => {
-                    return Date.parse(entry.t) >= minDate && entry.v !== null;
+                    return Date.parse(entry.t) >= minDate;
                 })
                     //Map the log entries to the x and y
                     .map((entry: { t: string; v: any; }) => {
-                        return {x: Date.parse(entry.t), y: Number(entry.v)};
+                        return {x: Date.parse(entry.t), y: Number(entry.v ?? 0)};
                     })
             );
         })

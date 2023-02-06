@@ -1,7 +1,7 @@
 {
   "id": "com.spkes.insightTrendsReloaded",
   "version": "1.0.10",
-  "compatibility": ">=5.0.0",
+  "compatibility": ">=8.1.0",
   "sdk": 3,
   "brandColor": "#AA3939",
   "platforms": [

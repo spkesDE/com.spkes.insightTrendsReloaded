@@ -67,7 +67,8 @@ async function getInsightCalculated(id, uri, range, unit, percentile, type) {
             '&type=' + type,
             {}, (error, result) => {
                 if (error) {
-                    Homey.alert(error);
+                    console.error("Got Error!", error);
+                    console.error(result);
                     reject(new Error(error));
                 }
                 resolve(result);
@@ -87,26 +88,27 @@ async function loadChartData(value) {
     let unit = document.getElementById('unit').value ?? 60;
     let percent = document.getElementById('percentileRange').value ?? 50;
     if (range === undefined || range === '') range = 24;
+    console.log(value)
     let data = await getInsightCalculated(value.id, value.uri, range, unit, percent, value.type ?? false).catch(e => {
         console.log(e);
     });
-    document.getElementById('min').value = data.min;
-    document.getElementById('max').value = data.max;
-    document.getElementById('mean').value = data.mean;
-    document.getElementById('median').value = data.median;
-    document.getElementById('standardDeviation').value = data.standardDeviation;
-    document.getElementById('trend').value = data.trend;
-    document.getElementById('size').value = data.size;
-    document.getElementById('firstValue').value = data.firstvalue;
-    document.getElementById('firstValueTime').value = data.firstvalue_time;
-    document.getElementById('firstValueTimestamp').value = data.firstvalue_timestamp;
-    document.getElementById('lastValue').value = data.lastvalue;
-    document.getElementById('lastValueTime').value = data.lastvalue_time;
-    document.getElementById('lastValueTimestamp').value = data.lastvalue_timestamp;
-    document.getElementById('percentile').value = data.percentile;
+    document.getElementById('min').value = data.min ?? "0";
+    document.getElementById('max').value = data.max ?? "0";
+    document.getElementById('mean').value = data.mean ?? "0";
+    document.getElementById('median').value = data.median ?? "0";
+    document.getElementById('standardDeviation').value = data.standardDeviation ?? "0";
+    document.getElementById('trend').value = data.trend ?? "0";
+    document.getElementById('size').value = data.size ?? "0";
+    document.getElementById('firstValue').value = data.firstvalue ?? "0";
+    document.getElementById('firstValueTime').value = data.firstvalue_time ?? "0";
+    document.getElementById('firstValueTimestamp').value = data.firstvalue_timestamp ?? "0";
+    document.getElementById('lastValue').value = data.lastvalue ?? "0";
+    document.getElementById('lastValueTime').value = data.lastvalue_time ?? "0";
+    document.getElementById('lastValueTimestamp').value = data.lastvalue_timestamp ?? "0";
+    document.getElementById('percentile').value = data.percentile ?? "0";
     chart.data.datasets[0].steppedLine = value.type === 'boolean';
-    chart.data.datasets[0].data = data.data;
-    chart.data.datasets[1].data = data.trendLine
+    chart.data.datasets[0].data = data.data ?? [];
+    chart.data.datasets[1].data = data.trendLine ?? []
     chart.update();
 }
 
@@ -171,12 +173,12 @@ function autoCompleteHandler() {
                 if(split.length > 1)
                     split[1] = "<mark>" + split[1] + "</mark>";
                 item.innerHTML = split.join("");
-                if (data.value.icon) {
+                /*if (data.value.icon) {
                     const img = document.createElement("img");
                     img.classList.add("search-icon");
                     img.src = data.value.icon;
                     item.prepend(img)
-                }
+                }*/
                 if (data.value.description) {
                     const description = document.createElement("div");
                     description.classList.add("description");

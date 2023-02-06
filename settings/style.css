@@ -1,6 +1,5 @@
 @import url('./tabs.css');
 @import url('./homeyExtras.css');
-@import url('./assets/css/homey.css');
 
 :root {
     --border: 0.05rem solid var(--homey-color-line);
@@ -40,7 +39,7 @@
 .description {
     color: gray;
     font-size: 12px;
-    padding-left: 30px;
+    /*padding-left: 30px; No ICON anymore*/
 }
 
 .hidden {
@@ -122,6 +121,12 @@
     border-end-start-radius: var(--homey-border-radius);
     border-right: none !important;
     border-start-start-radius: var(--homey-border-radius);
+    border-end-end-radius: 0;
+    border-start-end-radius: 0;
+}
+
+select.scope {
+    border-radius: 0 !important;
 }
 
 .scope:last-child:not(:first-child) {
