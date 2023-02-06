@@ -2,6 +2,7 @@
 
 let chart = undefined;
 let autoCompleteJS = undefined;
+let requestInProgress = false;
 
 function loadChart() {
     let ctx = document.getElementById('chart');
@@ -45,8 +46,8 @@ function loadChart() {
 }
 
 async function searchInsights(query) {
-    return new Promise((resolve, reject) => {
-        Homey.api('GET', '/searchInsights?search=' + query, {}, (error, result) => {
+    return new Promise(async (resolve, reject) => {
+        await Homey.api('GET', '/searchInsights?search=' + query, {}, (error, result) => {
             if (error) {
                 Homey.alert(error);
                 reject(error);
@@ -57,8 +58,8 @@ async function searchInsights(query) {
 }
 
 async function getInsightCalculated(id, uri, range, unit, percentile, type) {
-    return new Promise((resolve, reject) => {
-        Homey.api('GET', '/getInsightCalculated' +
+    return new Promise(async (resolve, reject) => {
+        await Homey.api('GET', '/getInsightCalculated' +
             '?id=' + id +
             '&uri=' + uri +
             '&range=' + range +
@@ -173,17 +174,19 @@ function autoCompleteHandler() {
                 if(split.length > 1)
                     split[1] = "<mark>" + split[1] + "</mark>";
                 item.innerHTML = split.join("");
-                /*if (data.value.icon) {
+                if (data.value.icon) {
                     const img = document.createElement("img");
                     img.classList.add("search-icon");
                     img.src = data.value.icon;
                     item.prepend(img)
-                }*/
+                }
                 if (data.value.description) {
                     const description = document.createElement("div");
                     description.classList.add("description");
+                    if (data.value.icon)
+                        description.classList.add("icon-padding");
                     let splitDescription = data.value.description.split(reg);
-                    if(splitDescription.length > 1)
+                    if (splitDescription.length > 1)
                         splitDescription[1] = "<mark>" + splitDescription[1] + "</mark>";
                     description.innerHTML = splitDescription.join("");
                     item.append(description)

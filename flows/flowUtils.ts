@@ -56,18 +56,18 @@ export default class FlowUtils {
                 .map((entry: any) => {
                     let result: any = {
                         name: entry.title,
-                        description: entry.ownerName ?? "Unknown",
+                        description: entry.uriObj?.name ?? entry.ownerName ?? "Unknown",
                         id: entry.id,
-                        uri: entry.ownerUri,
+                        uri: entry.uri ?? entry.ownerUri,
                         type: entry.type,
-                        units: entry.units ?? "Unknown"
+                        units: entry.units
                     }
                     //Homey API changes to ni iCON?
-                    /*
+
                     if (entry.uriObj?.iconObj && app.homeyId) {
                         result.icon = "https://" + app.homeyId + ".connect.athom.com" + entry.uriObj?.iconObj?.url;
-                    }*/
-                    if (entry.units !== null) {
+                    }
+                    if (entry.units) {
                         result.name = result.name + ' (' + entry.units + ')';
                     }
                     return result;
