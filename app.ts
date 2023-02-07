@@ -14,6 +14,7 @@ export class InsightTrendsReloaded extends Homey.App {
     public homeyId: string | undefined;
     private api!: HomeyAPIApp;
     public significantFigures: boolean = false;
+    public ignoreTrendValue: boolean = false;
     public significantFiguresValue: number = 5;
     cachedInsightsLastupdate: number = 0;
     cachedInsights: [] = [];
@@ -40,6 +41,10 @@ export class InsightTrendsReloaded extends Homey.App {
             if (key === 'significantFiguresValue') {
                 this.significantFiguresValue = await this.homey.settings.get('significantFiguresValue')
                 this.log(`Significant Figure Value is now ${this.significantFiguresValue}`);
+            }
+            if (key === 'ignoreTrendValue') {
+                this.ignoreTrendValue = await this.homey.settings.get('ignoreTrendValue')
+                this.log(`Ignore Trend Value is now ${this.ignoreTrendValue}`);
             }
         });
 
@@ -148,7 +153,7 @@ export class InsightTrendsReloaded extends Homey.App {
             mean: this.significantFigures ? FlowUtils.toSignificantDigits(stats.amean(), this.significantFiguresValue) : stats.amean(),
             median: this.significantFigures ? FlowUtils.toSignificantDigits(stats.median(), this.significantFiguresValue) : stats.median(),
             standardDeviation: this.significantFigures ? FlowUtils.toSignificantDigits(stats.stddev(), this.significantFiguresValue) : stats.stddev(),
-            trend: this.significantFigures ? FlowUtils.toSignificantDigits(trendline.slope * 1000, this.significantFiguresValue) : trendline.slope * 1000,
+            trend: this.significantFigures && !this.ignoreTrendValue ? FlowUtils.toSignificantDigits(trendline.slope * 1000, this.significantFiguresValue) : trendline.slope * 1000,
             firstvalue: this.significantFigures ? FlowUtils.toSignificantDigits(logEntries[0].y, this.significantFiguresValue) : logEntries[0].y,
             firstvalue_timestamp: logEntries[0].x,
             firstvalue_time: new Date(logEntries[0].x).toLocaleString('en-GB', {

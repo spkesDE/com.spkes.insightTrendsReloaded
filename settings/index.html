@@ -50,87 +50,44 @@
     </div>
 
     <div class="tab-container">
-        <div class="row">
-            <div class="col">
-                <label data-i18n="settings.minimum" for="min">Minimum</label>
-                <input class="insight-input" disabled id="min" type="number"/>
-            </div>
-            <div class="col">
-                <label data-i18n="settings.maximum" for="max">Maximum</label>
-                <input class="insight-input" disabled id="max" type="number"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label data-i18n="settings.average" for="mean">Average</label>
-                <input class="insight-input" disabled id="mean" type="number"/>
-            </div>
-            <div class="col">
-                <label data-i18n="settings.median" for="median">Median</label>
-                <input class="insight-input" disabled id="median" type="number"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label data-i18n="settings.standardDeviation" for="standardDeviation">Standard Deviation</label>
-                <input class="insight-input" disabled id="standardDeviation" type="number"/>
-            </div>
-            <div class="col">
-                <label data-i18n="settings.trend" for="trend">Trend</label>
-                <input class="insight-input" disabled id="trend" type="number"/>
-            </div>
-        </div>
-        <div class="row center">
-            <div class="col">
-                <label data-i18n="settings.sizeOfDataPoints" for="size">Number of used data points</label>
-                <input class="insight-input" disabled id="size" type="number"/>
-            </div>
+        <div class="col">
+            <label data-i18n="settings.minimum" for="min">Minimum</label>
+            <input class="insight-input" disabled id="min" type="number"/>
+            <label data-i18n="settings.maximum" for="max">Maximum</label>
+            <input class="insight-input" disabled id="max" type="number"/>
+            <label data-i18n="settings.average" for="mean">Average</label>
+            <input class="insight-input" disabled id="mean" type="number"/>
+            <label data-i18n="settings.median" for="median">Median</label>
+            <input class="insight-input" disabled id="median" type="number"/>
+            <label data-i18n="settings.standardDeviation" for="standardDeviation">Standard Deviation</label>
+            <input class="insight-input" disabled id="standardDeviation" type="number"/>
+            <label data-i18n="settings.trend" for="trend">Trend</label>
+            <input class="insight-input" disabled id="trend" type="number"/>
+            <label data-i18n="settings.sizeOfDataPoints" for="size">Number of used data points</label>
+            <input class="insight-input" disabled id="size" type="number"/>
         </div>
     </div>
 
     <div class="tab-container">
-        <div class="row">
-            <div class="col">
-                <label data-i18n="settings.firstValue" for="firstValue">First Value</label>
-                <input class="insight-input" disabled id="firstValue" type="number"/>
-            </div>
-            <div class="col">
-                <label data-i18n="settings.lastValue" for="lastValue">Last Value</label>
-                <input class="insight-input" disabled id="lastValue" type="number"/>
-            </div>
+        <div class="col">
+            <label data-i18n="settings.firstValue" for="firstValue">First Value</label>
+            <input class="insight-input" disabled id="firstValue" type="number"/>
+            <label data-i18n="settings.lastValue" for="lastValue">Last Value</label>
+            <input class="insight-input" disabled id="lastValue" type="number"/>
+            <label data-i18n="settings.firstValueTime" for="firstValueTime">First Value Time</label>
+            <input class="insight-input hy-nostyle" disabled id="firstValueTime" type="text"/>
+            <label data-i18n="settings.lastValueTime" for="lastValueTime">Last Value Time</label>
+            <input class="insight-input hy-nostyle" disabled id="lastValueTime" type="text"/>
+            <label data-i18n="settings.firstValueTimestamp" for="firstValueTimestamp">First Value Timestamp</label>
+            <input class="insight-input" disabled id="firstValueTimestamp" type="number"/>
+            <label data-i18n="settings.lastValueTimestamp" for="lastValueTimestamp">Last Value Timestamp</label>
+            <input class="insight-input" disabled id="lastValueTimestamp" type="number"/>
         </div>
-        <div class="row">
-            <div class="col">
-                <label data-i18n="settings.firstValueTime" for="firstValueTime">First Value Time</label>
-                <input class="insight-input hy-nostyle" disabled id="firstValueTime" type="text"/>
-            </div>
-            <div class="col">
-                <label data-i18n="settings.lastValueTime" for="lastValueTime">Last Value Time</label>
-                <input class="insight-input hy-nostyle" disabled id="lastValueTime" type="text"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label data-i18n="settings.firstValueTimestamp" for="firstValueTimestamp">First Value Timestamp</label>
-                <input class="insight-input" disabled id="firstValueTimestamp" type="number"/>
-            </div>
-            <div class="col">
-                <label data-i18n="settings.lastValueTimestamp" for="lastValueTimestamp">Last Value Timestamp</label>
-                <input class="insight-input" disabled id="lastValueTimestamp" type="number"/>
-            </div>
-        </div>
-        <hr class="hy-nostyle">
-        <div class="row">
-            <div class="col" style="align-items: stretch; width: 100%">
-                <label for="percentileRange">Percent (<span id="valueRange">50</span>%)</label>
-                <input id="percentileRange" max="100" min="0" oninput="onPercentileChange()" type="range" value="50"/>
-            </div>
-        </div>
-        <div class="row center">
-            <div class="col">
-                <label data-i18n="settings.percentile" for="size">Percentile</label>
-                <input class="insight-input" disabled id="percentile" type="number"/>
-            </div>
+        <div class="col">
+            <label for="percentileRange">Percent (<span id="valueRange">50</span>%)</label>
+            <input id="percentileRange" max="100" min="0" oninput="onPercentileChange()" type="range" value="50"/>
+            <label data-i18n="settings.percentile" for="size">Percentile</label>
+            <input class="insight-input" disabled id="percentile" type="number"/>
         </div>
     </div>
 </div>
@@ -143,16 +100,19 @@
     </header>
     <div class="row" style="margin-bottom: .5em">
         <h2 data-i18n="settings.significantFigures">Significant Figures</h2>
-        <input id="significantFiguresRange"
-               max="20" min="1" onchange="saveSignificantFiguresValue()" oninput="significantFiguresRangeChange()"
-               type="range"
-               value="5">
-        <span id="significantFiguresRangeValue">05</span>
         <label class="switch right">
             <input class="hy-nostyle" id="significantFigures" onclick="onSignificantFigures()" type="checkbox">
             <span class="slider round"></span>
         </label>
     </div>
+    <div class="row" style="margin-bottom: .5em">
+        <input id="significantFiguresRange"
+               max="20" min="1" onchange="saveSignificantFiguresValue()" oninput="significantFiguresRangeChange()"
+               type="range"
+               value="5">
+        <span id="significantFiguresRangeValue">05</span>
+    </div>
+    <hr>
     <div class="row" style="margin-bottom: .5em">
         <h2 data-i18n="settings.significantFiguresTrendValue">Ignore Trend Value</h2>
         <label class="switch right">

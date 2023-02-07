@@ -30,7 +30,7 @@ export default class FlowUtils {
             let insights: any = undefined;
             if (app.cachedInsights.length != 0 && app.cachedInsightsLastupdate > (Date.now() - 60000 * 5)) {
                 insights = app.cachedInsights;
-                app.log(`Using cached insights last update: ${app.cachedInsightsLastupdate}`);
+                app.log(`Using cached insights MS till update: ${app.cachedInsightsLastupdate - (Date.now() - 60000 * 5)}`);
             } else {
                 try {
                     insights = await app.getHomeyAPI().insights.getLogs(filter).catch(app.error);

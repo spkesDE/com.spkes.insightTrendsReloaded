@@ -321,8 +321,7 @@ function onSignificantFigures() {
 
 function onIgnoreTrendValue() {
     let significantFigures = document.getElementById('ignoreTrendValue').checked ?? false;
-    Homey.set('significantFigures', significantFigures)
-    saveSignificantFiguresValue();
+    Homey.set('ignoreTrendValue', significantFigures)
 }
 
 function handleTab(event) {
