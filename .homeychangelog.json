@@ -40,5 +40,8 @@
   },
   "1.0.13": {
     "en": "Added possible support for HomePro2019 again"
+  },
+  "1.0.14": {
+    "en": "Added Translation for the Settingspage, Added toggle to ignore rounding of the trend value"
   }
 }
