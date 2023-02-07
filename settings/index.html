@@ -10,14 +10,15 @@
     <link href="autoComplete.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 
-    <!--<link href="https://63c568c5e1c0180b8a2acafe.connect.athom.com/manager/webserver/assets/css/homey.css" rel="stylesheet">-->
+    <link href="https://63c568c5e1c0180b8a2acafe.connect.athom.com/manager/webserver/assets/css/homey.css"
+          rel="stylesheet">
 
     <script src='https://cdn.staticaly.com/gh/robertklep/homey-mocks/v0.0.4/homey-settings-mock.js'></script>
 </head>
 
 <body>
 <div class="tab">
-    <button class="tab-links hy-nostyle" data-i18n="settings.data" data-target="insights" id="defaultOpen">Insights
+    <button class="tab-links hy-nostyle" data-i18n="settings.insights" data-target="insights" id="defaultOpen">Insights
     </button>
     <button class="tab-links hy-nostyle" data-i18n="settings.settings" data-target="settings">Settings</button>
 </div>
@@ -33,9 +34,9 @@
         <div class="input-group" style="margin-top: 5px; margin-bottom: 5px">
             <input class="scope hy-nostyle" id="range" placeholder="24" style="width: 100%" type="number">
             <select class="scope hy-nostyle" id="unit">
-                <option value="1">Minutes</option>
-                <option selected="selected" value="60">Hours</option>
-                <option value="1440">Days</option>
+                <option data-i18n="settings.minutes" value="1">Minutes</option>
+                <option data-i18n="settings.hours" selected="selected" value="60">Hours</option>
+                <option data-i18n="settings.days" value="1440">Days</option>
             </select>
             <button class="btn scope hy-nostyle" id="refreshChart" onclick="refreshChart()">
                 <i class="fas fa-sync" id="reload-icon"></i>
@@ -51,37 +52,37 @@
     <div class="tab-container">
         <div class="row">
             <div class="col">
-                <label for="min">Minimum</label>
+                <label data-i18n="settings.minimum" for="min">Minimum</label>
                 <input class="insight-input" disabled id="min" type="number"/>
             </div>
             <div class="col">
-                <label for="max">Maximum</label>
+                <label data-i18n="settings.maximum" for="max">Maximum</label>
                 <input class="insight-input" disabled id="max" type="number"/>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <label for="mean">Average</label>
+                <label data-i18n="settings.average" for="mean">Average</label>
                 <input class="insight-input" disabled id="mean" type="number"/>
             </div>
             <div class="col">
-                <label for="median">Median</label>
+                <label data-i18n="settings.median" for="median">Median</label>
                 <input class="insight-input" disabled id="median" type="number"/>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <label for="standardDeviation">Standard Deviation</label>
+                <label data-i18n="settings.standardDeviation" for="standardDeviation">Standard Deviation</label>
                 <input class="insight-input" disabled id="standardDeviation" type="number"/>
             </div>
             <div class="col">
-                <label for="trend">trend</label>
+                <label data-i18n="settings.trend" for="trend">Trend</label>
                 <input class="insight-input" disabled id="trend" type="number"/>
             </div>
         </div>
         <div class="row center">
             <div class="col">
-                <label for="size">Number of used data points</label>
+                <label data-i18n="settings.sizeOfDataPoints" for="size">Number of used data points</label>
                 <input class="insight-input" disabled id="size" type="number"/>
             </div>
         </div>
@@ -90,31 +91,31 @@
     <div class="tab-container">
         <div class="row">
             <div class="col">
-                <label for="firstValue">First Value</label>
+                <label data-i18n="settings.firstValue" for="firstValue">First Value</label>
                 <input class="insight-input" disabled id="firstValue" type="number"/>
             </div>
             <div class="col">
-                <label for="lastValue">Last Value</label>
+                <label data-i18n="settings.lastValue" for="lastValue">Last Value</label>
                 <input class="insight-input" disabled id="lastValue" type="number"/>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <label for="firstValueTime">First Value Time</label>
+                <label data-i18n="settings.firstValueTime" for="firstValueTime">First Value Time</label>
                 <input class="insight-input hy-nostyle" disabled id="firstValueTime" type="text"/>
             </div>
             <div class="col">
-                <label for="lastValueTime">Last Value Time</label>
+                <label data-i18n="settings.lastValueTime" for="lastValueTime">Last Value Time</label>
                 <input class="insight-input hy-nostyle" disabled id="lastValueTime" type="text"/>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <label for="firstValueTimestamp">First Value</label>
+                <label data-i18n="settings.firstValueTimestamp" for="firstValueTimestamp">First Value Timestamp</label>
                 <input class="insight-input" disabled id="firstValueTimestamp" type="number"/>
             </div>
             <div class="col">
-                <label for="lastValueTimestamp">Last Value</label>
+                <label data-i18n="settings.lastValueTimestamp" for="lastValueTimestamp">Last Value Timestamp</label>
                 <input class="insight-input" disabled id="lastValueTimestamp" type="number"/>
             </div>
         </div>
@@ -127,7 +128,7 @@
         </div>
         <div class="row center">
             <div class="col">
-                <label for="size">Percentile</label>
+                <label data-i18n="settings.percentile" for="size">Percentile</label>
                 <input class="insight-input" disabled id="percentile" type="number"/>
             </div>
         </div>
@@ -135,6 +136,11 @@
 </div>
 
 <div class="tab-content tab-container" id="settings" style="margin-bottom: 50px">
+    <header class="homey-header  mb-2">
+        <p class="homey-title" data-i18n="settings.significantFiguresHeader">
+            Significant Figures Settings
+        </p>
+    </header>
     <div class="row" style="margin-bottom: .5em">
         <h2 data-i18n="settings.significantFigures">Significant Figures</h2>
         <input id="significantFiguresRange"
@@ -144,6 +150,13 @@
         <span id="significantFiguresRangeValue">05</span>
         <label class="switch right">
             <input class="hy-nostyle" id="significantFigures" onclick="onSignificantFigures()" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="row" style="margin-bottom: .5em">
+        <h2 data-i18n="settings.significantFiguresTrendValue">Ignore Trend Value</h2>
+        <label class="switch right">
+            <input class="hy-nostyle" id="ignoreTrendValue" onclick="onIgnoreTrendValue()" type="checkbox">
             <span class="slider round"></span>
         </label>
     </div>

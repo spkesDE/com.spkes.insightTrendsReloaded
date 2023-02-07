@@ -319,6 +319,12 @@ function onSignificantFigures() {
     saveSignificantFiguresValue();
 }
 
+function onIgnoreTrendValue() {
+    let significantFigures = document.getElementById('ignoreTrendValue').checked ?? false;
+    Homey.set('significantFigures', significantFigures)
+    saveSignificantFiguresValue();
+}
+
 function handleTab(event) {
     //Hide all tabs
     let tabContent = document.getElementsByClassName('tab-content');

@@ -1,0 +1,26 @@
+{
+  "settings": {
+    "average": "Durchschnitt",
+    "days": "Tage",
+    "firstValue": "Erster Wert",
+    "firstValueTime": "Zeit des ersten Werts",
+    "firstValueTimestamp": "Zeitstempel des ersten Werts",
+    "hours": "Stunden",
+    "insights": "Einsichten",
+    "lastValue": "Letzter Wert",
+    "lastValueTime": "Zeit des letzten Werts",
+    "lastValueTimestamp": "Zeitstempel des letzten Werts",
+    "maximum": "Maximum",
+    "median": "Median",
+    "minimum": "Minimum",
+    "minutes": "Minuten",
+    "percentile": "Percentile",
+    "settings": "Einstellungen",
+    "significantFigures": "Signifikante Zahlen",
+    "significantFiguresHeader": "Signifikante Zahlen Einstellungen",
+    "significantFiguresTrendValue": "Trendwert ignorieren",
+    "sizeOfDataPoints": "Anzahl der verwendeten Datenpunkte",
+    "standardDeviation": "Standardabweichung",
+    "trend": "Trend"
+  }
+}

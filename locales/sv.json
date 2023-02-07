@@ -1,0 +1,26 @@
+{
+  "settings": {
+    "average": "Medelvärde",
+    "days": "Dagar",
+    "firstValue": "Första värdet",
+    "firstValueTime": "Tid för första värdet",
+    "firstValueTimestamp": "Tidsstämpel för första värdet",
+    "hours": "Timmar",
+    "insights": "Insikter",
+    "lastValue": "Sista värdet",
+    "lastValueTime": "Tid för sista värdet",
+    "lastValueTimestamp": "Tidsstämpel för sista värdet",
+    "maximum": "Maximal",
+    "median": "Median",
+    "minimum": "Minimum",
+    "minutes": "Minuter",
+    "percentile": "Percentil",
+    "settings": "Inställningar",
+    "significantFigures": "Signifikanta siffror",
+    "significantFiguresHeader": "Signifikanta siffror inställningar",
+    "significantFiguresTrendValue": "Ignorera trendvärde",
+    "sizeOfDataPoints": "Antal använda datapunkter",
+    "standardDeviation": "Standardavvikelse",
+    "trend": "Trend"
+  }
+}
