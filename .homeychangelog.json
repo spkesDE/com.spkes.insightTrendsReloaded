@@ -21,13 +21,13 @@
     "en": "Fixed bugs, Added tokens"
   },
   "1.0.7": {
-    "en": "Beta 1 of the settingspage"
+    "en": "Beta 1 of the settings page"
   },
   "1.0.8": {
     "en": "Result size to 25"
   },
   "1.0.9": {
-    "en": "Changed search beheavor"
+    "en": "Changed search behavior"
   },
   "1.0.10": {
     "en": "Added highlighting back"
@@ -43,5 +43,8 @@
   },
   "1.0.14": {
     "en": "Added Translation for the Settingspage, Added toggle to ignore rounding of the trend value"
+  },
+  "1.1.0": {
+    "en": "New Settings page. Homey Pro 2023 support"
   }
 }
