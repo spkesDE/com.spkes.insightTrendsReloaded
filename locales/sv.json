@@ -6,21 +6,22 @@
     "firstValueTime": "Tid för första värdet",
     "firstValueTimestamp": "Tidsstämpel för första värdet",
     "hours": "Timmar",
-    "insights": "Insikter",
+    "insights": "Insights-data",
     "lastValue": "Sista värdet",
     "lastValueTime": "Tid för sista värdet",
     "lastValueTimestamp": "Tidsstämpel för sista värdet",
-    "maximum": "Maximal",
+    "maximum": "Maximum",
     "median": "Median",
     "minimum": "Minimum",
     "minutes": "Minuter",
+    "percent": "Procent",
     "percentile": "Percentil",
     "settings": "Inställningar",
     "significantFigures": "Signifikanta siffror",
-    "significantFiguresHeader": "Signifikanta siffror inställningar",
+    "significantFiguresHeader": "Inställningar signifikanta siffror",
     "significantFiguresTrendValue": "Ignorera trendvärde",
     "sizeOfDataPoints": "Antal använda datapunkter",
     "standardDeviation": "Standardavvikelse",
-    "trend": "Trend"
+    "trend": "Trendvärde"
   }
 }
