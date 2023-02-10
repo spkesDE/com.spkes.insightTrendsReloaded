@@ -46,5 +46,8 @@
   },
   "1.1.0": {
     "en": "New Settings page. Homey Pro 2023 support"
+  },
+  "1.2.0": {
+    "en": "New Settings page. Homey Pro 2023 support. Some users experience problems with the last value being null. Added filter for that."
   }
 }
