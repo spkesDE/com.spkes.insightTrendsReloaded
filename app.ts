@@ -81,15 +81,16 @@ export class InsightTrendsReloaded extends Homey.App {
             //Calculate the lowest date based on user input
             let minDate = Date.now() - minutes * 60000;
             this.log('Got ' + logEntries.values.length + ' entries from homey with timespan(' + minutes + ') of ' + this.minutesToTimespan(minutes))
-            resolve(
-                //Filter the log entries by date
-                logEntries.values.filter((entry: { t: string, v: any }) => {
+            this.log("Raw data:", logEntries);
+            resolve(logEntries.values
+                //Filter the entries by date
+                .filter((entry: { t: string, v: any }) => {
                     return Date.parse(entry.t) >= minDate;
                 })
-                    //Map the log entries to the x and y
-                    .map((entry: { t: string; v: any; }) => {
-                        return {x: Date.parse(entry.t), y: Number(entry.v ?? 0)};
-                    })
+                //Map the log entries to the x and y
+                .map((entry: { t: string; v: any; }) => {
+                    return {x: Date.parse(entry.t), y: Number(entry.v ?? 0)};
+                })
             );
         })
     }
