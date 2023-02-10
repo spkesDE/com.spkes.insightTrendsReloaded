@@ -81,8 +81,14 @@ export class InsightTrendsReloaded extends Homey.App {
             //Calculate the lowest date based on user input
             let minDate = Date.now() - minutes * 60000;
             this.log('Got ' + logEntries.values.length + ' entries from homey with timespan(' + minutes + ') of ' + this.minutesToTimespan(minutes))
-            let tempArray = logEntries.values;
-            this.log("Raw last 10 data points:", tempArray.slice(Math.max(tempArray.length - 10, 0)))
+            //Little hack to filter out the last 3 data points that are "null"
+            for (let i = 0; i < 3; i++) {
+                let index = logEntries.values.length - 1 - i;
+                if (logEntries.values[index].v == null) {
+                    this.log("Value is null. Splicing....", logEntries.values[index]);
+                    logEntries.values.splice(i, 1);
+                }
+            }
             resolve(logEntries.values
                 //Filter the entries by date
                 .filter((entry: { t: string, v: any }) => {
