@@ -86,7 +86,7 @@ export class InsightTrendsReloaded extends Homey.App {
                 let index = logEntries.values.length - 1 - i;
                 if (logEntries.values[index].v == null) {
                     this.log("Value is null. Splicing....", logEntries.values[index]);
-                    logEntries.values.splice(i, 1);
+                    logEntries.values.splice(index, 1);
                 }
             }
             resolve(logEntries.values
