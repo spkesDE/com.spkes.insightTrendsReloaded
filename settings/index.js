@@ -310,6 +310,10 @@ function onHomeyReady(Homey) {
         document.getElementById('significantFigures').checked = boolean ?? false;
     })
 
+    Homey.get('filterNullValues', (e, boolean) => {
+        document.getElementById('removeNullValues').checked = boolean ?? false;
+    })
+
     Homey.ready();
 }
 
@@ -322,6 +326,11 @@ function onSignificantFigures() {
 function onIgnoreTrendValue() {
     let significantFigures = document.getElementById('ignoreTrendValue').checked ?? false;
     Homey.set('ignoreTrendValue', significantFigures)
+}
+
+function onRemoveNullValuesValue() {
+    let removeNullValues = document.getElementById('removeNullValues').checked ?? false;
+    Homey.set('filterNullValues', removeNullValues)
 }
 
 function handleTab(event) {

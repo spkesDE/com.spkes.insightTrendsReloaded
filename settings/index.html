@@ -10,8 +10,8 @@
     <link href="autoComplete.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 
-    <!--<link href="https://63c568c5e1c0180b8a2acafe.connect.athom.com/manager/webserver/assets/css/homey.css"
-          rel="stylesheet">-->
+    <link href="https://63c568c5e1c0180b8a2acafe.connect.athom.com/manager/webserver/assets/css/homey.css"
+          rel="stylesheet">
 
     <script src='https://cdn.staticaly.com/gh/robertklep/homey-mocks/v0.0.4/homey-settings-mock.js'></script>
 </head>
@@ -91,35 +91,54 @@
     </div>
 </div>
 
-<div class="tab-content tab-container" id="settings" style="margin-bottom: 50px">
-    <header class="homey-header  mb-2">
-        <p class="homey-title" data-i18n="settings.significantFiguresHeader">
-            Significant Figures Settings
-        </p>
-    </header>
-    <div class="row" style="margin-bottom: .5em">
-        <h2 data-i18n="settings.significantFigures">Significant Figures</h2>
-        <label class="switch right">
-            <input class="hy-nostyle" id="significantFigures" onclick="onSignificantFigures()" type="checkbox">
-            <span class="slider round"></span>
-        </label>
+<div class="tab-content" id="settings" style="margin-bottom: 50px">
+    <div class="tab-container">
+        <header class="homey-header  mb-2">
+            <p class="homey-title" data-i18n="settings.significantFiguresHeader">
+                Significant Figures Settings
+            </p>
+        </header>
+        <div class="row" style="margin-bottom: .5em">
+            <h2 data-i18n="settings.significantFigures">Significant Figures</h2>
+            <label class="switch right">
+                <input class="hy-nostyle" id="significantFigures" onclick="onSignificantFigures()" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="row" style="margin-bottom: .5em">
+            <input id="significantFiguresRange"
+                   max="20" min="1" onchange="saveSignificantFiguresValue()" oninput="significantFiguresRangeChange()"
+                   type="range"
+                   value="5">
+            <span id="significantFiguresRangeValue">05</span>
+        </div>
+        <hr>
+        <div class="row" style="margin-bottom: .5em">
+            <h2 data-i18n="settings.significantFiguresTrendValue">Ignore Trend Value</h2>
+            <label class="switch right">
+                <input class="hy-nostyle" id="ignoreTrendValue" onclick="onIgnoreTrendValue()" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
     </div>
-    <div class="row" style="margin-bottom: .5em">
-        <input id="significantFiguresRange"
-               max="20" min="1" onchange="saveSignificantFiguresValue()" oninput="significantFiguresRangeChange()"
-               type="range"
-               value="5">
-        <span id="significantFiguresRangeValue">05</span>
+    <div class="tab-container">
+        <header class="homey-header  mb-2">
+            <p class="homey-title" data-i18n="settings.miscSettings">
+                Miscellaneous Settings
+            </p>
+        </header>
+        <div class="row">
+            <h2 data-i18n="settings.removeNullValues">Remove <code>'null'</code> values</h2>
+            <label class="switch right">
+                <input class="hy-nostyle" id="removeNullValues" onclick="onRemoveNullValuesValue()" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div>
+            <i class="fas fa-info-circle"></i>
+            <span data-i18n="settings.removeNullValuesInfo">Some users experience problems with the last value being null. This will check the all points and filter them if necessary (Value == null).</span>
+        </div>
     </div>
-    <hr>
-    <div class="row" style="margin-bottom: .5em">
-        <h2 data-i18n="settings.significantFiguresTrendValue">Ignore Trend Value</h2>
-        <label class="switch right">
-            <input class="hy-nostyle" id="ignoreTrendValue" onclick="onIgnoreTrendValue()" type="checkbox">
-            <span class="slider round"></span>
-        </label>
-    </div>
-</div>
-<script src="index.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
 </body>
 </html>

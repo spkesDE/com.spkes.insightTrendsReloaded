@@ -18,6 +18,7 @@ export class InsightTrendsReloaded extends Homey.App {
     public significantFiguresValue: number = 5;
     cachedInsightsLastupdate: number = 0;
     cachedInsights: [] = [];
+    private filterNullValues: boolean = false;
 
     /**
      * onInit is called when the app is initialized.
@@ -30,6 +31,7 @@ export class InsightTrendsReloaded extends Homey.App {
         }
         this.significantFigures = await this.homey.settings.get("significantFigures") ?? false;
         this.significantFiguresValue = await this.homey.settings.get("significantFiguresValue") ?? 5;
+        this.filterNullValues = await this.homey.settings.get("filterNullValues") ?? false;
         this._initializeFlowCards();
         this.homeyId = await this.homey.cloud.getHomeyId();
         this.log('InsightTrendsReloaded has been initialized');
@@ -45,6 +47,10 @@ export class InsightTrendsReloaded extends Homey.App {
             if (key === 'ignoreTrendValue') {
                 this.ignoreTrendValue = await this.homey.settings.get('ignoreTrendValue')
                 this.log(`Ignore Trend Value is now ${this.ignoreTrendValue}`);
+            }
+            if (key === 'filterNullValues') {
+                this.filterNullValues = await this.homey.settings.get('filterNullValues')
+                this.log(`Filter Null Values is now ${this.filterNullValues}`);
             }
         });
 
@@ -81,23 +87,20 @@ export class InsightTrendsReloaded extends Homey.App {
             //Calculate the lowest date based on user input
             let minDate = Date.now() - minutes * 60000;
             this.log('Got ' + logEntries.values.length + ' entries from homey with timespan(' + minutes + ') of ' + this.minutesToTimespan(minutes))
-            //Little hack to filter out the last 3 data points that are "null"
-            for (let i = 0; i < 3; i++) {
-                let index = logEntries.values.length - 1 - i;
-                if (logEntries.values[index].v == null) {
-                    this.log("Value is null. Splicing....", logEntries.values[index]);
-                    logEntries.values.splice(index, 1);
-                }
-            }
-            resolve(logEntries.values
-                //Filter the entries by date
-                .filter((entry: { t: string, v: any }) => {
-                    return Date.parse(entry.t) >= minDate;
-                })
-                //Map the log entries to the x and y
-                .map((entry: { t: string; v: any; }) => {
-                    return {x: Date.parse(entry.t), y: Number(entry.v ?? 0)};
-                })
+            resolve(
+                logEntries.values
+                    //Some users experience problems with the last value being null. This will check all points and filter them if necessary (Value == null).
+                    .filter((entry: { t: string, v: any }) => {
+                        return this.filterNullValues ? entry.v !== null : true
+                    })
+                    //Filter the entries by date
+                    .filter((entry: { t: string, v: any }) => {
+                        return Date.parse(entry.t) >= minDate;
+                    })
+                    //Map the log entries to the x and y
+                    .map((entry: { t: string; v: any; }) => {
+                        return {x: Date.parse(entry.t), y: Number(entry.v ?? 0)};
+                    })
             );
         })
     }
