@@ -1,6 +1,7 @@
 import {InsightTrendsReloaded} from "../app";
 import Trend from "../trend";
 import {Stats} from "fast-stats";
+import {HomeyAPIV2, HomeyAPIV3} from "homey-api";
 
 export default class FlowUtils {
     public static compare(a: number, b: number, operator: string): boolean {
@@ -27,13 +28,13 @@ export default class FlowUtils {
 
     public static async getCachedInsights(app: InsightTrendsReloaded, filter: any = {type: undefined}) {
         return new Promise<any>(async (resolve, reject) => {
-            let insights: any = undefined;
+            let insights: any =  [];
             if (app.cachedInsights.length != 0 && app.cachedInsightsLastupdate > (Date.now() - 60000 * 5)) {
                 insights = app.cachedInsights;
                 app.log(`Using cached insights MS till update: ${app.cachedInsightsLastupdate - (Date.now() - 60000 * 5)}`);
             } else {
                 try {
-                    insights = await app.getHomeyAPI().insights.getLogs(filter).catch(app.error);
+                    insights = Object.values(await app.getHomeyAPI().insights.getLogs(filter).catch(app.error));
                     if (insights === undefined || insights.length === 0) {
                         app.error("Failed to get insights returning cached insights");
                         return app.cachedInsights;
@@ -50,22 +51,17 @@ export default class FlowUtils {
 
     public static async getSortedInsightsForAutocomplete(app: InsightTrendsReloaded, query: any, filter: any = {type: undefined}): Promise<any> {
         return new Promise<any>(async (resolve, reject) => {
-            let insights: any = await this.getCachedInsights(app, filter).catch(app.error);
+            let insights = await this.getCachedInsights(app, filter).catch(app.error);
+            if(insights === undefined) reject(new Error(`Insights are undefined`));
             resolve(insights.filter((entry: any) => entry.type == filter.type || filter.type == undefined)
                 // Map entries to a usable friendly object
                 .map((entry: any) => {
                     let result: any = {
                         name: entry.title,
-                        description: entry.uriObj?.name ?? entry.ownerName ?? "Unknown",
                         id: entry.id,
                         uri: entry.uri ?? entry.ownerUri,
                         type: entry.type,
                         units: entry.units
-                    }
-                    //Homey API changes to ni iCON?
-
-                    if (entry.uriObj?.iconObj && app.homeyId) {
-                        result.icon = "https://" + app.homeyId + ".connect.athom.com" + entry.uriObj?.iconObj?.url;
                     }
                     if (entry.units) {
                         result.name = result.name + ' (' + entry.units + ')';

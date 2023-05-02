@@ -5,14 +5,15 @@ import CalculatePercentile from "./flows/actions/calculatePercentile";
 import CalculateTrend from "./flows/actions/calculateTrend";
 import CheckInsight from "./flows/conditions/checkInsight";
 import CheckInsightPercentile from "./flows/conditions/checkInsightPercentile";
-import {HomeyAPIApp} from "homey-api";
-import FlowUtils from "./flows/flowUtils";
+import {HomeyAPI, HomeyAPIV3Local} from "homey-api";
 import {Stats} from "fast-stats";
 import Trend from "./trend";
+import {HomeyCloudAPI} from "homey-api/assets/types/homey-api.private";
+import FlowUtils from "./flows/flowUtils";
 
 export class InsightTrendsReloaded extends Homey.App {
     public homeyId: string | undefined;
-    private api!: HomeyAPIApp;
+    private api!: HomeyAPI;
     public significantFigures: boolean = false;
     public ignoreTrendValue: boolean = false;
     public significantFiguresValue: number = 5;
@@ -24,7 +25,9 @@ export class InsightTrendsReloaded extends Homey.App {
      */
     async onInit() {
         try {
-            this.api = await new HomeyAPIApp({homey: this.homey, debug: false});
+            // @ts-ignore
+            this.api = await HomeyAPI.createAppAPI({homey: this.homey});
+            console.log(this.api)
         } catch (err) {
             this.error(err)
         }

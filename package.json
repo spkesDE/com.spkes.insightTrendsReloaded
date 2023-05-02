@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "fast-stats": "^0.0.6",
-    "homey-api": "^1.10.15"
+    "homey-api": "^3.0.0-rc.19"
   }
 }
