@@ -79,6 +79,7 @@ export class InsightTrendsReloaded extends Homey.App {
                     resolution: this.minutesToTimespan(minutes)
                 }
             }
+            this.log(opts);
             let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts).catch(this.error);
             if (logEntries === undefined || logEntries.length === 0) {
                 this.error('Failed to get log entries! Most likely Timeout after 5000ms. Try again later.');
