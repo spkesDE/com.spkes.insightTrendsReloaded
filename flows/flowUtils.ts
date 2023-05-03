@@ -103,13 +103,14 @@ export default class FlowUtils {
                         app.error("Failed to get insights returning cached insights");
                         return app.cachedInsights;
                     }
-                    insights = await Promise.all(insights.map(async (entry: any) => {
+                    app.cachedInsights = [];
+                    for (let entry of insights) {
                         let insightInformation = await this.getDescriptionAndIcon(app, entry.ownerUri, entry.ownerId);
                         let result: any = {
                             name: entry.title,
                             description: insightInformation.description,
                             id: entry.id,
-                            uri: entry.uri ?? entry.ownerUri,
+                            uri: entry.ownerUri,
                             type: entry.type,
                             units: entry.units
                         }
@@ -119,9 +120,8 @@ export default class FlowUtils {
                         if (entry.units) {
                             result.name = result.name + ' (' + entry.units + ')';
                         }
-                        return result;
-                    }));
-                    app.cachedInsights = insights;
+                        app.cachedInsights.push(result);
+                    }
                     app.cachedInsightsLastupdate = Date.now();
                 } catch (e) {
                     app.error(e)

@@ -18,7 +18,7 @@ export class InsightTrendsReloaded extends Homey.App {
     public ignoreTrendValue: boolean = false;
     public significantFiguresValue: number = 5;
     cachedInsightsLastupdate: number = 0;
-    cachedInsights: [] = [];
+    cachedInsights: any[] = [];
 
     /**
      * onInit is called when the app is initialized.
