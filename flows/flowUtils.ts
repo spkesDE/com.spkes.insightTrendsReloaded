@@ -93,9 +93,9 @@ export default class FlowUtils {
     public static async getCachedInsights(app: InsightTrendsReloaded, filter: any = {type: undefined}) {
         return new Promise<any>(async (resolve, reject) => {
             let insights: any = [];
-            if (app.cachedInsights.length != 0 && app.cachedInsightsLastupdate > (Date.now() - 60000 * 5)) {
+            if (app.cachedInsights.length != 0 && app.cachedInsightsLastupdate > (Date.now() - 60000 * 60)) {
                 insights = app.cachedInsights;
-                app.log(`Using cached insights MS till update: ${app.cachedInsightsLastupdate - (Date.now() - 60000 * 5)}`);
+                app.log(`Using cached insights MS till update: ${app.cachedInsightsLastupdate - (Date.now() - 60000 * 60)}`);
             } else {
                 try {
                     insights = Object.values(await app.getHomeyAPI().insights.getLogs(filter).catch(app.error));
