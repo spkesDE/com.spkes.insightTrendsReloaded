@@ -27,7 +27,6 @@ export class InsightTrendsReloaded extends Homey.App {
         try {
             // @ts-ignore
             this.api = await HomeyAPI.createAppAPI({homey: this.homey});
-            console.log(this.api)
         } catch (err) {
             this.error(err)
         }
