@@ -12,7 +12,7 @@ import {HomeyCloudAPI} from "homey-api/assets/types/homey-api.private";
 import FlowUtils from "./flows/flowUtils";
 
 export class InsightTrendsReloaded extends Homey.App {
-    public homeyId: string | undefined;
+    public homeyCloudUrl: string | undefined;
     private api!: HomeyAPI;
     public significantFigures: boolean = false;
     public ignoreTrendValue: boolean = false;
@@ -33,7 +33,10 @@ export class InsightTrendsReloaded extends Homey.App {
         this.significantFigures = await this.homey.settings.get("significantFigures") ?? false;
         this.significantFiguresValue = await this.homey.settings.get("significantFiguresValue") ?? 5;
         this._initializeFlowCards();
-        this.homeyId = await this.homey.cloud.getHomeyId();
+        let image = await this.homey.images.createImage();
+        // @ts-ignore
+        this.homeyCloudUrl = image.cloudUrl.split("/api/")[0];
+        await image.unregister();
         this.log('InsightTrendsReloaded has been initialized');
         this.homey.settings.on('set', async key => {
             if (key === 'significantFigures') {
@@ -51,6 +54,7 @@ export class InsightTrendsReloaded extends Homey.App {
         });
 
         this.initCachedInsights();
+
     }
 
     public initCachedInsights(tries: number = 3) {

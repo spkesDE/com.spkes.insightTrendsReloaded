@@ -30,46 +30,67 @@ export default class FlowUtils {
             let defaultIcon = "/app/com.spkes.insightTrendsReloaded/settings/images/unknown.svg"
             if (uri.includes("homey:device")) {
                 let d = await app.getHomeyAPI().devices.getDevice({id: uri.replace("homey:device:", '')}).catch(app.error);
+                if(d == undefined) {
+                    app.error("Could not get app information for device " + uri);
+                    return resolve({
+                        description: app.homey.__("app.unknown"),
+                        icon: defaultIcon
+                    })
+                }
                 return resolve({
-                    description: d.name ?? "Unknown device",
+                    description: d.name ?? app.homey.__("app.unknown"),
                     icon: d.iconObj?.url ?? defaultIcon
                 });
             } else if (uri.includes("homey:app:")) {
                 let a = await app.getHomeyAPI().apps.getApp({id: uri.replace("homey:app:", '')}).catch(app.error);
+                if(a == undefined) {
+                    app.error("Could not get app information for app " + uri);
+                    return resolve({
+                        description: app.homey.__("app.unknown"),
+                        icon: defaultIcon
+                    })
+                }
                 return resolve({
-                    description: a.name ?? "Unknown device",
+                    description: a.name ?? app.homey.__("app.unknown"),
                     icon: a.iconObj?.url ?? defaultIcon
                 });
             } else if (uri.includes("homey:manager:")) {
                 switch (uri.replace("homey:manager:", "")) {
                     case "weather":
                         return resolve({
-                            description: "Weather",
+                            description:app.homey.__("app.weather"),
                             icon: "/app/com.spkes.insightTrendsReloaded/settings/images/weather.svg"
                         });
                     case "apps":
                         let appId= id.slice(0, -4);
                         let a = await app.getHomeyAPI().apps.getApp({id: appId}).catch(app.error);
+                        if(a == undefined) {
+                            app.error("Could not get app information for app " + appId);
+                            return resolve({
+                                description: app.homey.__("app.unknown"),
+                                    icon: defaultIcon
+                            })
+                        }
                         return resolve({
-                            description: a.name ?? "Unknown app",
+                            description: a.name ?? app.homey.__("app.unknown"),
                             icon: a.iconObj?.url ?? defaultIcon
                         });
                     case "system":
                         return resolve({
-                            description: "System",
+                            description: app.homey.__("app.system"),
                             icon: "/app/com.spkes.insightTrendsReloaded/settings/images/system.svg"
                         });
                     default:
                         app.log("Unknown manager URI type: " + uri);
                         return resolve({
-                            description: "Unknown Manager",
+                            description: app.homey.__("app.unknown"),
                             icon: defaultIcon
                         });
                 }
             }
             app.log("Unknown URI type: " + uri);
             return resolve({
-                description: "Unknown",
+                description: app.homey.__("app.unknown"),
                 icon: defaultIcon
             });
         });
@@ -98,8 +119,8 @@ export default class FlowUtils {
                             type: entry.type,
                             units: entry.units
                         }
-                        if (insightInformation.icon != undefined && app.homeyId) {
-                            result.icon = "https://" + app.homeyId + ".connect.athom.com" + insightInformation.icon;
+                        if (insightInformation.icon != undefined && app.homeyCloudUrl) {
+                            result.icon = app.homeyCloudUrl + insightInformation.icon;
                         }
                         if (entry.units) {
                             result.name = result.name + ' (' + entry.units + ')';

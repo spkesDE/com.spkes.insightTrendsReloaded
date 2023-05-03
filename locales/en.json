@@ -1,4 +1,9 @@
 {
+  "app": {
+    "weather": "Weather",
+    "system": "System",
+    "unknown": "Unknown"
+  },
   "settings": {
     "average": "Average",
     "days": "Days",

@@ -1,4 +1,9 @@
 {
+  "app": {
+    "weather": "Väder",
+    "system": "Systemet",
+    "unknown": "Okänd"
+  },
   "settings": {
     "average": "Medelvärde",
     "days": "Dagar",
