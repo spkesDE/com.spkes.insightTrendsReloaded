@@ -2,7 +2,8 @@
   "app": {
     "weather": "Väder",
     "system": "Systemet",
-    "unknown": "Okänd"
+    "unknown": "Okänd",
+    "logic": "Logik"
   },
   "settings": {
     "average": "Medelvärde",

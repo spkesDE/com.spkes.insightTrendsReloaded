@@ -2,7 +2,8 @@
   "app": {
     "weather": "Weather",
     "system": "System",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+    "logic": "Logic"
   },
   "settings": {
     "average": "Average",

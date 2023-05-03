@@ -2,7 +2,8 @@
   "app": {
     "weather": "Wetter",
     "system": "System",
-    "unknown": "Unbekannt"
+    "unknown": "Unbekannt",
+    "logic": "Logik"
   },
   "settings": {
     "average": "Durchschnitt",

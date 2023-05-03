@@ -28,14 +28,15 @@ export default class FlowUtils {
     public static async getDescriptionAndIcon(app: InsightTrendsReloaded, uri: string, id: string) {
         return new Promise<{ description: String; icon: any; }>(async (resolve, rejects) => {
             let defaultIcon = "/app/com.spkes.insightTrendsReloaded/settings/images/unknown.svg"
+            let defaultResult = {
+                description: app.homey.__("app.unknown"),
+                icon: defaultIcon
+            }
             if (uri.includes("homey:device")) {
                 let d = await app.getHomeyAPI().devices.getDevice({id: uri.replace("homey:device:", '')}).catch(app.error);
                 if(d == undefined) {
                     app.error("Could not get app information for device " + uri);
-                    return resolve({
-                        description: app.homey.__("app.unknown"),
-                        icon: defaultIcon
-                    })
+                    return resolve(defaultResult);
                 }
                 return resolve({
                     description: d.name ?? app.homey.__("app.unknown"),
@@ -45,10 +46,7 @@ export default class FlowUtils {
                 let a = await app.getHomeyAPI().apps.getApp({id: uri.replace("homey:app:", '')}).catch(app.error);
                 if(a == undefined) {
                     app.error("Could not get app information for app " + uri);
-                    return resolve({
-                        description: app.homey.__("app.unknown"),
-                        icon: defaultIcon
-                    })
+                    return resolve(defaultResult);
                 }
                 return resolve({
                     description: a.name ?? app.homey.__("app.unknown"),
@@ -66,10 +64,7 @@ export default class FlowUtils {
                         let a = await app.getHomeyAPI().apps.getApp({id: appId}).catch(app.error);
                         if(a == undefined) {
                             app.error("Could not get app information for app " + appId);
-                            return resolve({
-                                description: app.homey.__("app.unknown"),
-                                    icon: defaultIcon
-                            })
+                            return resolve(defaultResult);
                         }
                         return resolve({
                             description: a.name ?? app.homey.__("app.unknown"),
@@ -80,19 +75,18 @@ export default class FlowUtils {
                             description: app.homey.__("app.system"),
                             icon: "/app/com.spkes.insightTrendsReloaded/settings/images/system.svg"
                         });
+                    case "logic":
+                        return resolve({
+                            description: app.homey.__("app.logic"),
+                            icon: "/app/com.spkes.insightTrendsReloaded/settings/images/logic.png"
+                        });
                     default:
                         app.log("Unknown manager URI type: " + uri);
-                        return resolve({
-                            description: app.homey.__("app.unknown"),
-                            icon: defaultIcon
-                        });
+                        return resolve(defaultResult);
                 }
             }
             app.log("Unknown URI type: " + uri);
-            return resolve({
-                description: app.homey.__("app.unknown"),
-                icon: defaultIcon
-            });
+            return resolve(defaultResult);
         });
     }
 
