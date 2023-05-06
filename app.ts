@@ -10,6 +10,7 @@ import {Stats} from "fast-stats";
 import Trend from "./trend";
 import {HomeyCloudAPI} from "homey-api/assets/types/homey-api.private";
 import FlowUtils from "./flows/flowUtils";
+import CalculatePercentage from "./flows/actions/calculatePercentage";
 
 export class InsightTrendsReloaded extends Homey.App {
     public homeyCloudUrl: string | undefined;
@@ -79,7 +80,6 @@ export class InsightTrendsReloaded extends Homey.App {
                     resolution: this.minutesToTimespan(minutes)
                 }
             }
-            this.log(opts);
             let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts).catch(this.error);
             if (logEntries === undefined || logEntries.length === 0) {
                 this.error('Failed to get log entries! Most likely Timeout after 5000ms. Try again later.');
@@ -116,6 +116,7 @@ export class InsightTrendsReloaded extends Homey.App {
         new CalculatePercentile(this, this.homey.flow.getActionCard('calculatePercentileWithoutToken'), false);
         new CalculateTrend(this, this.homey.flow.getActionCard('calculateTrend'));
         new CalculateTrend(this, this.homey.flow.getActionCard('calculateTrendWithoutToken'), false);
+        new CalculatePercentage(this, this.homey.flow.getActionCard('calculatePercentage'));
         this.log('Flow cards initialized');
     }
 
