@@ -5,10 +5,9 @@ import CalculatePercentile from "./flows/actions/calculatePercentile";
 import CalculateTrend from "./flows/actions/calculateTrend";
 import CheckInsight from "./flows/conditions/checkInsight";
 import CheckInsightPercentile from "./flows/conditions/checkInsightPercentile";
-import {HomeyAPI, HomeyAPIV3Local} from "homey-api";
+import {HomeyAPI} from "homey-api";
 import {Stats} from "fast-stats";
 import Trend from "./trend";
-import {HomeyCloudAPI} from "homey-api/assets/types/homey-api.private";
 import FlowUtils from "./flows/flowUtils";
 import CalculatePercentage from "./flows/actions/calculatePercentage";
 
@@ -72,7 +71,7 @@ export class InsightTrendsReloaded extends Homey.App {
     }
 
     async getLogs(range: number, unit: string, opts: { uri: string, id: string, resolution?: string }, isBooleanBasedCapability: boolean = false) {
-        return new Promise<{ x: number; y: any; }[]>(async (resolve, reject) => {
+        return new Promise<{ x: number; y: any; }[]>(async (resolve) => {
             let minutes = range * parseInt(unit);
             if (!isBooleanBasedCapability) {
                 opts = {
@@ -82,7 +81,7 @@ export class InsightTrendsReloaded extends Homey.App {
             }
             let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts).catch(this.error);
             if (logEntries === undefined || logEntries.length === 0) {
-                this.error('Failed to get log entries! Most likely Timeout after 5000ms. Try again later.');
+                this.error(`Failed to get log entries! Most likely Timeout after 5000ms. Try again later. ${opts}`);
                 return [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}]
             }
             //Calculate the lowest date based on user input

@@ -26,7 +26,7 @@ export default class FlowUtils {
     }
 
     public static async getDescriptionAndIcon(app: InsightTrendsReloaded, uri: string, id: string) {
-        return new Promise<{ description: String; icon: any; }>(async (resolve, rejects) => {
+        return new Promise<{ description: String; icon: any; }>(async (resolve) => {
             let defaultIcon = "/app/com.spkes.insightTrendsReloaded/settings/images/unknown.svg"
             let defaultResult = {
                 description: app.homey.__("app.unknown"),
@@ -67,7 +67,7 @@ export default class FlowUtils {
                             .replace("-cpu", "")
                         let a = await app.getHomeyAPI().apps.getApp({id: appId}).catch(app.error);
                         if(a == undefined) {
-                            app.error("Could not get app information for app " + appId);
+                            app.error(`Could not get app information for app ${appId} (${id})`);
                             return resolve(defaultResult);
                         }
                         return resolve({
@@ -95,7 +95,7 @@ export default class FlowUtils {
     }
 
     public static async getCachedInsights(app: InsightTrendsReloaded, filter: any = {type: undefined}) {
-        return new Promise<any>(async (resolve, reject) => {
+        return new Promise<any>(async (resolve) => {
             let insights: any = [];
             if (app.cachedInsights.length != 0 && app.cachedInsightsLastupdate > (Date.now() - 60000 * 60)) {
                 insights = app.cachedInsights;
