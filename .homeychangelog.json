@@ -70,5 +70,11 @@
   },
   "1.3.6": {
     "en": "Updated Homey API"
+  },
+  "1.3.7": {
+    "en": "Improved caching function"
+  },
+  "1.3.8": {
+    "en": " Improved caching function"
   }
 }
