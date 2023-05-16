@@ -103,8 +103,12 @@ export default class FlowUtils {
                         app.error("Failed to get insights returning cached insights");
                         return app.cachedInsights;
                     }
-                    app.cachedInsights = [];
+                    let insightsTemp = [];
                     for (let entry of insights) {
+                        if (app.cachedInsights.some((e: any) => e.id == entry.id)) {
+                            //app.log("Cached insights already has this entry " + entry.id + " . skipping...")
+                            continue;
+                        }
                         let insightInformation = await this.getDescriptionAndIcon(app, entry.ownerUri, entry.ownerId);
                         let result: any = {
                             name: entry.title,
@@ -120,8 +124,9 @@ export default class FlowUtils {
                         if (entry.units) {
                             result.name = result.name + ' (' + entry.units + ')';
                         }
-                        app.cachedInsights.push(result);
+                        insightsTemp.push(result);
                     }
+                    app.cachedInsights.push(...insightsTemp);
                     app.cachedInsightsLastupdate = Date.now();
                 } catch (e) {
                     app.error(e)
