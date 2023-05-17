@@ -87,7 +87,7 @@ export class InsightTrendsReloaded extends Homey.App {
             }
             let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts).catch(this.error);
             if (logEntries === undefined || logEntries.length === 0) {
-                this.error(`Failed to get log entries! Most likely Timeout after 5000ms. Try again later. ${opts}`);
+                this.error(`Failed to get log entries! Most likely Timeout after 5000ms. Try again later. ${opts.uri} - ${opts.id}`);
                 return [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}]
             }
             //Calculate the lowest date based on user input

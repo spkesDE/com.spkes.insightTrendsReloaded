@@ -60,7 +60,9 @@ export default class FlowUtils {
                             icon: "/app/com.spkes.insightTrendsReloaded/settings/images/weather.svg"
                         });
                     case "apps":
-                        let appId= id.split('-')[0]
+                        let appIdSplit = id.split('-');
+                        if(appIdSplit.length >= 2) appIdSplit.pop()
+                        let appId= appIdSplit.join("-");
                         let a = await app.getHomeyAPI().apps.getApp({id: appId}).catch(app.error);
                         if(a == undefined) {
                             app.error(`Could not get app information for app ${appId} (${id})`);
