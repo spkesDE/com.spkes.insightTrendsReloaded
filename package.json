@@ -8,12 +8,12 @@
   "devDependencies": {
     "@tsconfig/node12": "^1.0.11",
     "@types/fast-stats": "^0.0.32",
-    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.1",
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.4",
     "@types/node": "^18.11.18",
     "typescript": "^4.9.4"
   },
   "dependencies": {
     "fast-stats": "^0.0.6",
-    "homey-api": "^1.10.15"
+    "homey-api": "^3.0.2"
   }
 }

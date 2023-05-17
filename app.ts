@@ -5,27 +5,29 @@ import CalculatePercentile from "./flows/actions/calculatePercentile";
 import CalculateTrend from "./flows/actions/calculateTrend";
 import CheckInsight from "./flows/conditions/checkInsight";
 import CheckInsightPercentile from "./flows/conditions/checkInsightPercentile";
-import {HomeyAPIApp} from "homey-api";
-import FlowUtils from "./flows/flowUtils";
+import {HomeyAPI} from "homey-api";
 import {Stats} from "fast-stats";
 import Trend from "./trend";
+import FlowUtils from "./flows/flowUtils";
+import CalculatePercentage from "./flows/actions/calculatePercentage";
 
 export class InsightTrendsReloaded extends Homey.App {
-    public homeyId: string | undefined;
-    private api!: HomeyAPIApp;
+    public homeyCloudUrl: string | undefined;
+    private api!: HomeyAPI;
     public significantFigures: boolean = false;
     public ignoreTrendValue: boolean = false;
     public significantFiguresValue: number = 5;
     cachedInsightsLastupdate: number = 0;
-    cachedInsights: [] = [];
     private filterNullValues: boolean = false;
+    cachedInsights: any[] = [];
 
     /**
      * onInit is called when the app is initialized.
      */
     async onInit() {
         try {
-            this.api = await new HomeyAPIApp({homey: this.homey, debug: false});
+            // @ts-ignore
+            this.api = await HomeyAPI.createAppAPI({homey: this.homey});
         } catch (err) {
             this.error(err)
         }
@@ -33,7 +35,10 @@ export class InsightTrendsReloaded extends Homey.App {
         this.significantFiguresValue = await this.homey.settings.get("significantFiguresValue") ?? 5;
         this.filterNullValues = await this.homey.settings.get("filterNullValues") ?? false;
         this._initializeFlowCards();
-        this.homeyId = await this.homey.cloud.getHomeyId();
+        let image = await this.homey.images.createImage();
+        // @ts-ignore
+        this.homeyCloudUrl = image.cloudUrl.split("/api/")[0];
+        await image.unregister();
         this.log('InsightTrendsReloaded has been initialized');
         this.homey.settings.on('set', async key => {
             if (key === 'significantFigures') {
@@ -55,6 +60,7 @@ export class InsightTrendsReloaded extends Homey.App {
         });
 
         this.initCachedInsights();
+
     }
 
     public initCachedInsights(tries: number = 3) {
@@ -71,7 +77,7 @@ export class InsightTrendsReloaded extends Homey.App {
     }
 
     async getLogs(range: number, unit: string, opts: { uri: string, id: string, resolution?: string }, isBooleanBasedCapability: boolean = false) {
-        return new Promise<{ x: number; y: any; }[]>(async (resolve, reject) => {
+        return new Promise<{ x: number; y: any; }[]>(async (resolve) => {
             let minutes = range * parseInt(unit);
             if (!isBooleanBasedCapability) {
                 opts = {
@@ -81,22 +87,22 @@ export class InsightTrendsReloaded extends Homey.App {
             }
             let logEntries: any = await this.getHomeyAPI().insights.getLogEntries(opts).catch(this.error);
             if (logEntries === undefined || logEntries.length === 0) {
-                this.error('Failed to get log entries! Most likely Timeout after 5000ms. Try again later.');
+                this.error(`Failed to get log entries! Most likely Timeout after 5000ms. Try again later. ${opts.uri} - ${opts.id}`);
                 return [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}]
             }
             //Calculate the lowest date based on user input
             let minDate = Date.now() - minutes * 60000;
             this.log('Got ' + logEntries.values.length + ' entries from homey with timespan(' + minutes + ') of ' + this.minutesToTimespan(minutes))
             resolve(
+                //Filter the log entries by date
                 logEntries.values
                     //Some users experience problems with the last value being null. This will check all points and filter them if necessary (Value == null).
                     .filter((entry: { t: string, v: any }) => {
                         return this.filterNullValues ? entry.v !== null : true
                     })
-                    //Filter the entries by date
                     .filter((entry: { t: string, v: any }) => {
-                        return Date.parse(entry.t) >= minDate;
-                    })
+                    return Date.parse(entry.t) >= minDate;
+                })
                     //Map the log entries to the x and y
                     .map((entry: { t: string; v: any; }) => {
                         return {x: Date.parse(entry.t), y: Number(entry.v ?? 0)};

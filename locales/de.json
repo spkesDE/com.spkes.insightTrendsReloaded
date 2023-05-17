@@ -1,4 +1,10 @@
 {
+  "app": {
+    "weather": "Wetter",
+    "system": "System",
+    "unknown": "Unbekannt",
+    "logic": "Logik"
+  },
   "settings": {
     "average": "Durchschnitt",
     "days": "Tage",

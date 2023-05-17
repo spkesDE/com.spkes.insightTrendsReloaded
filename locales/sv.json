@@ -1,4 +1,10 @@
 {
+  "app": {
+    "weather": "Väder",
+    "system": "Systemet",
+    "unknown": "Okänd",
+    "logic": "Logik"
+  },
   "settings": {
     "average": "Medelvärde",
     "days": "Dagar",

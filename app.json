@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.spkes.insightTrendsReloaded",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "compatibility": ">=8.1.0",
   "sdk": 3,
   "brandColor": "#AA3939",
@@ -647,6 +647,167 @@
       }
     ],
     "actions": [
+      {
+        "title": {
+          "en": "Calculate percentage",
+          "de": "Prozentualer Anteil berechnen",
+          "sv": "Beräkna procent"
+        },
+        "highlight": true,
+        "titleFormatted": {
+          "en": "Calculate percentage for [[insight]] in time period [[range]] [[unit]]. If the value [[operator]] as [[value]].",
+          "de": "Berechne Prozentualer Anteil für [[insight]] in der Zeitspanne [[range]] [[unit]]. Wenn der Wert [[operator]] als [[value]].",
+          "sv": "Beräkna procent för [[insight]] i tidsperiod [[range]] [[unit]]. Om värdet [[operator]] som [[value]]."
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "insight",
+            "title": {
+              "en": "Insight",
+              "de": "Einblick",
+              "sv": "Insights-data"
+            }
+          },
+          {
+            "type": "number",
+            "name": "range",
+            "title": {
+              "en": "Time range",
+              "de": "Zeitraum",
+              "sv": "Tidsintervall"
+            },
+            "min": 1,
+            "value": 15
+          },
+          {
+            "type": "dropdown",
+            "name": "unit",
+            "title": {
+              "en": "Time unit",
+              "de": "Zeit einheit",
+              "sv": "Tidsenhet"
+            },
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Minutes",
+                  "de": "Minuten",
+                  "sv": "Minuter"
+                }
+              },
+              {
+                "id": "60",
+                "label": {
+                  "en": "Hours",
+                  "de": "Stunden",
+                  "sv": "Timmar"
+                }
+              },
+              {
+                "id": "1440",
+                "label": {
+                  "en": "Days",
+                  "de": "Tage",
+                  "sv": "Dagar"
+                }
+              }
+            ]
+          },
+          {
+            "type": "dropdown",
+            "name": "operator",
+            "title": {
+              "en": "Operator",
+              "de": "Operator",
+              "sv": "Relation"
+            },
+            "values": [
+              {
+                "id": "smaller",
+                "label": {
+                  "en": "smaller than",
+                  "de": "kleiner als",
+                  "sv": "mindre än"
+                }
+              },
+              {
+                "id": "smaller_equal",
+                "label": {
+                  "en": "smaller than or equals to",
+                  "de": "kleiner oder gleich als",
+                  "sv": "större än"
+                }
+              },
+              {
+                "id": "equal",
+                "label": {
+                  "en": "equal to",
+                  "de": "gleich als",
+                  "sv": "lika med"
+                }
+              },
+              {
+                "id": "not_equal",
+                "label": {
+                  "en": "not equal to",
+                  "de": "nicht gleich als",
+                  "sv": "inte lika med"
+                }
+              },
+              {
+                "id": "greater_equal",
+                "label": {
+                  "en": "greater or equal than",
+                  "de": "größer oder gleich als",
+                  "sv": "större än eller lika med"
+                }
+              },
+              {
+                "id": "greater",
+                "label": {
+                  "en": "greater than",
+                  "de": "größer als",
+                  "sv": "större än"
+                }
+              }
+            ]
+          },
+          {
+            "type": "number",
+            "name": "value",
+            "title": {
+              "en": "Value",
+              "de": "Wert",
+              "sv": "Värde"
+            }
+          }
+        ],
+        "tokens": [
+          {
+            "name": "percent",
+            "type": "number",
+            "title": {
+              "en": "Percent",
+              "de": "Prozent",
+              "sv": "Procent"
+            },
+            "example": 50
+          },
+          {
+            "name": "size",
+            "type": "number",
+            "title": {
+              "en": "Number of used data points",
+              "de": "Anzahl der verwenden Daten",
+              "sv": "Antal använda datapunkter"
+            },
+            "example": 1337
+          }
+        ],
+        "id": "calculatePercentage"
+      },
       {
         "title": {
           "en": "Calculate percentile",

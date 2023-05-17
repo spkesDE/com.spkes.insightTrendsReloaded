@@ -155,6 +155,8 @@ function autoCompleteHandler() {
             },
             keys: ["name", "description"],
         },
+        debounce: 300,
+        threshold: 2,
         resultsList: {
             element: (list, data) => {
                 if (!data.results.length) {
