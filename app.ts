@@ -18,6 +18,7 @@ export class InsightTrendsReloaded extends Homey.App {
     public ignoreTrendValue: boolean = false;
     public significantFiguresValue: number = 5;
     cachedInsightsLastupdate: number = 0;
+    private filterNullValues: boolean = false;
     cachedInsights: any[] = [];
 
     /**
@@ -32,6 +33,7 @@ export class InsightTrendsReloaded extends Homey.App {
         }
         this.significantFigures = await this.homey.settings.get("significantFigures") ?? false;
         this.significantFiguresValue = await this.homey.settings.get("significantFiguresValue") ?? 5;
+        this.filterNullValues = await this.homey.settings.get("filterNullValues") ?? false;
         this._initializeFlowCards();
         let image = await this.homey.images.createImage();
         // @ts-ignore
@@ -50,6 +52,10 @@ export class InsightTrendsReloaded extends Homey.App {
             if (key === 'ignoreTrendValue') {
                 this.ignoreTrendValue = await this.homey.settings.get('ignoreTrendValue')
                 this.log(`Ignore Trend Value is now ${this.ignoreTrendValue}`);
+            }
+            if (key === 'filterNullValues') {
+                this.filterNullValues = await this.homey.settings.get('filterNullValues')
+                this.log(`Filter Null Values is now ${this.filterNullValues}`);
             }
         });
 
@@ -89,7 +95,12 @@ export class InsightTrendsReloaded extends Homey.App {
             this.log('Got ' + logEntries.values.length + ' entries from homey with timespan(' + minutes + ') of ' + this.minutesToTimespan(minutes))
             resolve(
                 //Filter the log entries by date
-                logEntries.values.filter((entry: { t: string, v: any }) => {
+                logEntries.values
+                    //Some users experience problems with the last value being null. This will check all points and filter them if necessary (Value == null).
+                    .filter((entry: { t: string, v: any }) => {
+                        return this.filterNullValues ? entry.v !== null : true
+                    })
+                    .filter((entry: { t: string, v: any }) => {
                     return Date.parse(entry.t) >= minDate;
                 })
                     //Map the log entries to the x and y
@@ -115,7 +126,6 @@ export class InsightTrendsReloaded extends Homey.App {
         new CalculatePercentile(this, this.homey.flow.getActionCard('calculatePercentileWithoutToken'), false);
         new CalculateTrend(this, this.homey.flow.getActionCard('calculateTrend'));
         new CalculateTrend(this, this.homey.flow.getActionCard('calculateTrendWithoutToken'), false);
-        new CalculatePercentage(this, this.homey.flow.getActionCard('calculatePercentage'));
         this.log('Flow cards initialized');
     }
 
