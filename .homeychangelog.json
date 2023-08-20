@@ -94,5 +94,11 @@
   },
   "1.4.0": {
     "en": "Updated homey-api version. Some users experience problems with the last value being null. Added filter for that."
+  },
+  "1.4.1": {
+    "en": "Updated dependency"
+  },
+  "1.5.0": {
+    "en": "Updated Dependency"
   }
 }
