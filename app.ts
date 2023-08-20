@@ -9,7 +9,6 @@ import {HomeyAPI} from "homey-api";
 import {Stats} from "fast-stats";
 import Trend from "./trend";
 import FlowUtils from "./flows/flowUtils";
-import CalculatePercentage from "./flows/actions/calculatePercentage";
 
 export class InsightTrendsReloaded extends Homey.App {
     public homeyCloudUrl: string | undefined;
@@ -155,11 +154,45 @@ export class InsightTrendsReloaded extends Homey.App {
         return await FlowUtils.getSortedInsightsForAutocomplete(this, query);
     }
 
-    public async getInsightCalculated(id: string, uri: string, range: number, unit: string, percent: number, type: string) {
+    /**
+     * Calculates the trend of the Insight
+     * @param id
+     * @param uri
+     * @param range
+     * @param unit
+     * @param percent - optional
+     * @param type - optional
+     *
+     * @returns object {
+     *     trendline: [
+     *         {X: number (timestamp): y: number}
+     *     ]
+     *     min: number
+     *     max: number
+     *     mean: number
+     *     median: number
+     *     standardDeviation: number
+     *     trend: number
+     *     firstvalue: number
+     *     firstvalue_timestamp: number (timestamp)
+     *     firstvalue_time: string
+     *     lastvalue: number
+     *     lastvalue_timestamp: number (timestamp)
+     *     lastvalue_time: string
+     *     size: number,
+     *     percentile: number
+     *     percent: number,
+     *     data: [
+     *          {x: number (timestamp), y: number}
+     *     ]
+     * }
+     */
+    public async getInsightCalculated(id: string, uri: string, range: number, unit: string, percent: number = 50, type?: string) {
+        console.log(id, uri, range, unit, percent, type)
         let logEntries = await this.getLogs(range, unit, {id: id, uri: uri}, type === 'boolean');
-        let stats = await new Stats().push(logEntries.map((entry: any) => entry.y));
+        let stats = new Stats().push(logEntries.map((entry: any) => entry.y));
         let trendline = Trend.createTrend(logEntries);
-        return {
+        return  {
             trendLine: [
                 {x: logEntries[0].x, y: trendline.calcY(logEntries[0].x)},
                 {x: logEntries[logEntries.length - 1].x, y: trendline.calcY(logEntries[logEntries.length - 1].x)},
