@@ -9,6 +9,7 @@ import {HomeyAPI} from "homey-api";
 import {Stats} from "fast-stats";
 import Trend from "./trend";
 import FlowUtils from "./flows/flowUtils";
+import CalculatePercentage from "./flows/actions/calculatePercentage";
 
 export class InsightTrendsReloaded extends Homey.App {
     public homeyCloudUrl: string | undefined;
@@ -125,6 +126,7 @@ export class InsightTrendsReloaded extends Homey.App {
         new CalculatePercentile(this, this.homey.flow.getActionCard('calculatePercentileWithoutToken'), false);
         new CalculateTrend(this, this.homey.flow.getActionCard('calculateTrend'));
         new CalculateTrend(this, this.homey.flow.getActionCard('calculateTrendWithoutToken'), false);
+        new CalculatePercentage(this, this.homey.flow.getActionCard('calculatePercentage'));
         this.log('Flow cards initialized');
     }
 
