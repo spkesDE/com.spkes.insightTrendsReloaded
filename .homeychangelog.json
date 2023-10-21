@@ -100,5 +100,8 @@
   },
   "1.5.0": {
     "en": "Updated Dependency"
+  },
+  "1.5.1": {
+    "en": "Bug fixes (Calculate Percentage)"
   }
 }
