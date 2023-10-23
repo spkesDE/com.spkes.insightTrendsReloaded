@@ -12,7 +12,7 @@ export default class CalculatePercentage {
                 FlowUtils.compare(a.y, args.value, args.operator));
             let percentage = (logsCondition.length * 100) / logs.length
             let token = {
-                percent: app.roundPercentage ?  Math.round(percentage) : percentage,
+                percent: app.roundPercentage ?  Math.round(percentage) : app.significantFigures ? FlowUtils.toSignificantDigits(Number(percentage), app.significantFiguresValue) : percentage,
                 size: logs.length
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)
