@@ -316,7 +316,6 @@ function onHomeyReady(Homey) {
         document.getElementById('removeNullValues').checked = boolean ?? false;
     })
 
-
     Homey.get('roundPercentage', (e, boolean) => {
         document.getElementById('roundPercentage').checked = boolean ?? false;
     })
