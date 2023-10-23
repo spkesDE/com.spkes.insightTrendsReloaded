@@ -335,6 +335,12 @@ function onRemoveNullValuesValue() {
     Homey.set('filterNullValues', removeNullValues)
 }
 
+function onRoundPercentage() {
+    let roundPercentage = document.getElementById('roundPercentage').checked ?? false;
+    Homey.set('roundPercentage', roundPercentage)
+}
+
+
 function handleTab(event) {
     //Hide all tabs
     let tabContent = document.getElementsByClassName('tab-content');

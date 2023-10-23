@@ -1,9 +1,9 @@
 {
   "app": {
-    "weather": "Väder",
+    "logic": "Logik",
     "system": "Systemet",
     "unknown": "Okänd",
-    "logic": "Logik"
+    "weather": "Väder"
   },
   "settings": {
     "average": "Medelvärde",
@@ -25,6 +25,7 @@
     "percentile": "Percentil",
     "removeNullValues": "Ta bort <code>'null'</code>-värden",
     "removeNullValuesInfo": "Några användare upplever problem med att sista värdet blir null. Denna kontrollerar alla datapunkter och filtrerar bort dem om det är nödvändigt (Värde == null).",
+    "roundPercentage": "",
     "settings": "Inställningar",
     "significantFigures": "Signifikanta siffror",
     "significantFiguresHeader": "Inställningar signifikanta siffror",

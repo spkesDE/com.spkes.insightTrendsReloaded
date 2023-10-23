@@ -10,9 +10,9 @@ export default class CalculatePercentage {
             let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean');
             let logsCondition = logs.filter((a: {x: number, y: any}, index : number, array) =>
                 FlowUtils.compare(a.y, args.value, args.operator));
-            let percentage = Math.round((logsCondition.length * 100) / logs.length)
+            let percentage = (logsCondition.length * 100) / logs.length
             let token = {
-                percent: percentage,
+                percent: app.roundPercentage ?  Math.round(percentage) : percentage,
                 size: logs.length
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)

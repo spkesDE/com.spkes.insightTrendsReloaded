@@ -20,6 +20,7 @@ export class InsightTrendsReloaded extends Homey.App {
     cachedInsightsLastupdate: number = 0;
     private filterNullValues: boolean = false;
     cachedInsights: any[] = [];
+    roundPercentage: boolean = true;
 
     /**
      * onInit is called when the app is initialized.
@@ -34,6 +35,7 @@ export class InsightTrendsReloaded extends Homey.App {
         this.significantFigures = await this.homey.settings.get("significantFigures") ?? false;
         this.significantFiguresValue = await this.homey.settings.get("significantFiguresValue") ?? 5;
         this.filterNullValues = await this.homey.settings.get("filterNullValues") ?? false;
+        this.roundPercentage = await this.homey.settings.get("roundPercentage") ?? false;
         this._initializeFlowCards();
         let image = await this.homey.images.createImage();
         // @ts-ignore
@@ -55,7 +57,11 @@ export class InsightTrendsReloaded extends Homey.App {
             }
             if (key === 'filterNullValues') {
                 this.filterNullValues = await this.homey.settings.get('filterNullValues')
-                this.log(`Filter Null Values is now ${this.filterNullValues}`);
+                this.log(`Filter Null Value is now ${this.filterNullValues}`);
+            }
+            if(key === 'roundPercentage') {
+                this.roundPercentage = await this.homey.settings.get('roundPercentage')
+                this.log(`Round Percentage Value is now ${this.roundPercentage}`);
             }
         });
 
