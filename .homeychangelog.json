@@ -109,5 +109,8 @@
   },
   "1.5.3": {
     "en": "Bug fixes"
+  },
+  "1.5.4": {
+    "en": "Fixed icon url"
   }
 }
