@@ -115,5 +115,8 @@
   },
   "1.5.5": {
     "en": "Bug fixes"
+  },
+  "1.5.6": {
+    "en": "Upgrade packages to latest versions and fix security issues"
   }
 }
