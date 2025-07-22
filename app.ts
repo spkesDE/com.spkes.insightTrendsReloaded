@@ -20,6 +20,7 @@ export class InsightTrendsReloaded extends Homey.App {
     cachedInsightsLastupdate: number = 0;
     private filterNullValues: boolean = false;
     cachedInsights: any[] = [];
+    roundPercentage: boolean = true;
 
     /**
      * onInit is called when the app is initialized.
@@ -34,6 +35,7 @@ export class InsightTrendsReloaded extends Homey.App {
         this.significantFigures = await this.homey.settings.get("significantFigures") ?? false;
         this.significantFiguresValue = await this.homey.settings.get("significantFiguresValue") ?? 5;
         this.filterNullValues = await this.homey.settings.get("filterNullValues") ?? false;
+        this.roundPercentage = await this.homey.settings.get("roundPercentage") ?? false;
         this._initializeFlowCards();
         let image = await this.homey.images.createImage();
         // @ts-ignore
@@ -55,7 +57,11 @@ export class InsightTrendsReloaded extends Homey.App {
             }
             if (key === 'filterNullValues') {
                 this.filterNullValues = await this.homey.settings.get('filterNullValues')
-                this.log(`Filter Null Values is now ${this.filterNullValues}`);
+                this.log(`Filter Null Value is now ${this.filterNullValues}`);
+            }
+            if(key === 'roundPercentage') {
+                this.roundPercentage = await this.homey.settings.get('roundPercentage')
+                this.log(`Round Percentage Value is now ${this.roundPercentage}`);
             }
         });
 
@@ -126,6 +132,7 @@ export class InsightTrendsReloaded extends Homey.App {
         new CalculatePercentile(this, this.homey.flow.getActionCard('calculatePercentileWithoutToken'), false);
         new CalculateTrend(this, this.homey.flow.getActionCard('calculateTrend'));
         new CalculateTrend(this, this.homey.flow.getActionCard('calculateTrendWithoutToken'), false);
+        new CalculatePercentage(this, this.homey.flow.getActionCard('calculatePercentage'));
         this.log('Flow cards initialized');
     }
 
@@ -155,11 +162,45 @@ export class InsightTrendsReloaded extends Homey.App {
         return await FlowUtils.getSortedInsightsForAutocomplete(this, query);
     }
 
-    public async getInsightCalculated(id: string, uri: string, range: number, unit: string, percent: number, type: string) {
+    /**
+     * Calculates the trend of the Insight
+     * @param id
+     * @param uri
+     * @param range
+     * @param unit
+     * @param percent - optional
+     * @param type - optional
+     *
+     * @returns object {
+     *     trendline: [
+     *         {X: number (timestamp): y: number}
+     *     ]
+     *     min: number
+     *     max: number
+     *     mean: number
+     *     median: number
+     *     standardDeviation: number
+     *     trend: number
+     *     firstvalue: number
+     *     firstvalue_timestamp: number (timestamp)
+     *     firstvalue_time: string
+     *     lastvalue: number
+     *     lastvalue_timestamp: number (timestamp)
+     *     lastvalue_time: string
+     *     size: number,
+     *     percentile: number
+     *     percent: number,
+     *     data: [
+     *          {x: number (timestamp), y: number}
+     *     ]
+     * }
+     */
+    public async getInsightCalculated(id: string, uri: string, range: number, unit: string, percent: number = 50, type?: string) {
+        console.log(id, uri, range, unit, percent, type)
         let logEntries = await this.getLogs(range, unit, {id: id, uri: uri}, type === 'boolean');
-        let stats = await new Stats().push(logEntries.map((entry: any) => entry.y));
+        let stats = new Stats().push(logEntries.map((entry: any) => entry.y));
         let trendline = Trend.createTrend(logEntries);
-        return {
+        return  {
             trendLine: [
                 {x: logEntries[0].x, y: trendline.calcY(logEntries[0].x)},
                 {x: logEntries[logEntries.length - 1].x, y: trendline.calcY(logEntries[logEntries.length - 1].x)},

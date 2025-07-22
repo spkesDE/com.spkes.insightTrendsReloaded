@@ -94,5 +94,26 @@
   },
   "1.4.0": {
     "en": "Updated homey-api version. Some users experience problems with the last value being null. Added filter for that."
+  },
+  "1.4.1": {
+    "en": "Updated dependency"
+  },
+  "1.5.0": {
+    "en": "Updated Dependency"
+  },
+  "1.5.1": {
+    "en": "Bug fixes (Calculate Percentage)"
+  },
+  "1.5.2": {
+    "en": "Added Toggle for Calculate Percentage Rounding. It will use Significant Figures if enabeld. Else it will be the full value"
+  },
+  "1.5.3": {
+    "en": "Bug fixes"
+  },
+  "1.5.4": {
+    "en": "Fixed icon url"
+  },
+  "1.5.5": {
+    "en": "Bug fixes"
   }
 }

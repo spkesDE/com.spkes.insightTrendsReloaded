@@ -1,9 +1,9 @@
 {
   "app": {
-    "weather": "Weather",
+    "logic": "Logic",
     "system": "System",
     "unknown": "Unknown",
-    "logic": "Logic"
+    "weather": "Weather"
   },
   "settings": {
     "average": "Average",
@@ -25,6 +25,7 @@
     "percentile": "Percentile",
     "removeNullValues": "Remove <code>'null'</code> values",
     "removeNullValuesInfo": "Some users experience problems with the last value being null. This will check the all points and filter them if necessary (Value == null).",
+    "roundPercentage": "Round Percentage",
     "settings": "Settings",
     "significantFigures": "Significant Figures",
     "significantFiguresHeader": "Significant Figures Settings",

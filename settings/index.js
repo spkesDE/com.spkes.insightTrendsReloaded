@@ -316,6 +316,10 @@ function onHomeyReady(Homey) {
         document.getElementById('removeNullValues').checked = boolean ?? false;
     })
 
+    Homey.get('roundPercentage', (e, boolean) => {
+        document.getElementById('roundPercentage').checked = boolean ?? false;
+    })
+
     Homey.ready();
 }
 
@@ -334,6 +338,12 @@ function onRemoveNullValuesValue() {
     let removeNullValues = document.getElementById('removeNullValues').checked ?? false;
     Homey.set('filterNullValues', removeNullValues)
 }
+
+function onRoundPercentage() {
+    let roundPercentage = document.getElementById('roundPercentage').checked ?? false;
+    Homey.set('roundPercentage', roundPercentage)
+}
+
 
 function handleTab(event) {
     //Hide all tabs

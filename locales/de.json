@@ -1,9 +1,9 @@
 {
   "app": {
-    "weather": "Wetter",
+    "logic": "Logik",
     "system": "System",
     "unknown": "Unbekannt",
-    "logic": "Logik"
+    "weather": "Wetter"
   },
   "settings": {
     "average": "Durchschnitt",
@@ -25,6 +25,7 @@
     "percentile": "Percentile",
     "removeNullValues": "Entferne <code>'null'</code> werte",
     "removeNullValuesInfo": "Einige Benutzer haben Probleme damit, dass der letzte Wert null ist. Damit werden alle Datenpunkte geprüft und gegebenenfalls gefiltert (Wert == null).",
+    "roundPercentage": "Prozente Runden",
     "settings": "Einstellungen",
     "significantFigures": "Signifikante Zahlen",
     "significantFiguresHeader": "Signifikante Zahlen Einstellungen",
