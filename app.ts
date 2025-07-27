@@ -37,10 +37,16 @@ export class InsightTrendsReloaded extends Homey.App {
         this.filterNullValues = await this.homey.settings.get("filterNullValues") ?? false;
         this.roundPercentage = await this.homey.settings.get("roundPercentage") ?? false;
         this._initializeFlowCards();
-        let image = await this.homey.images.createImage();
-        // @ts-ignore
-        this.homeyCloudUrl = image.cloudUrl.split("/api/")[0];
-        await image.unregister();
+        try {
+            let image = await this.homey.images.createImage();
+            console.log(image)
+            // @ts-ignore cloudUrl is present at runtime but not in Homey's TypeScript typing
+            this.homeyCloudUrl = image.cloudUrl.split("/api/")[0];
+            await image.unregister();
+        } catch (err) {
+            this.error('Error creating or processing image:', err);
+            this.homeyCloudUrl = '';
+        }
         this.log('InsightTrendsReloaded has been initialized');
         this.homey.settings.on('set', async key => {
             if (key === 'significantFigures') {
