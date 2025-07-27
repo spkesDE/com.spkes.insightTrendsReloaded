@@ -121,5 +121,8 @@
   },
   "1.5.7": {
     "en": "Bug fixed (Node12 Update)"
+  },
+  "1.5.8": {
+    "en": "Fixed a startup crash that could occur on some systems"
   }
 }
