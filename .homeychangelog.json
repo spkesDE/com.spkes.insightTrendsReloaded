@@ -124,5 +124,8 @@
   },
   "1.5.8": {
     "en": "Fixed a startup crash that could occur on some systems"
+  },
+  "1.5.9": {
+    "en": "Enable Debugging for Check Insight flow card"
   }
 }
