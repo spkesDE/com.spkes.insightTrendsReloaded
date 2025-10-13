@@ -127,5 +127,11 @@
   },
   "1.5.9": {
     "en": "Enable Debugging for Check Insight flow card"
+  },
+  "1.5.10": {
+    "en": "Fixed an issue where the trend slope is modfied after the initial calculation"
+  },
+  "1.5.11": {
+    "en": "Changed Trend Calculation! Calculated trend values will differ significantly from previous versions. Added Trend Direction."
   }
 }
