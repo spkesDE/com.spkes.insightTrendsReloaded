@@ -136,5 +136,8 @@
   },
   "1.6.0": {
     "en": "Added option to humanize the trend value in the app settings (Default Off). Added Trend Direction Tag to flow cards. Added optional Label to the calculate cards. Label, Time range and Time unit are available as Tags in the 'Trend calculated' and 'Percentile calculated' cards."
+  },
+  "1.6.1": {
+    "en": "Bug fixed, QoL Improvements, New Settings UI"
   }
 }
