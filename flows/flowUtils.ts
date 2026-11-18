@@ -129,7 +129,7 @@ export default class FlowUtils {
                     insights = Object.values(await app.getHomeyAPI().insights.getLogs(filter).catch(app.error));
                     if (insights === undefined || insights.length === 0) {
                         app.error("Failed to get insights returning cached insights");
-                        return app.cachedInsights;
+                        return resolve(app.cachedInsights);
                     }
                     let insightsTemp = [];
                     for (let entry of insights) {

@@ -66,8 +66,8 @@ let reloadQueued = false;
 
 const units = computed(() => selected.value?.units ?? "");
 
-// The app returns size 0 for an empty range. Older versions returned entries with timestamp 0.
-const noData = computed(() => data.value !== undefined && (!data.value.size || data.value.firstvalue_timestamp === 0));
+// The app returns size 0 when no values are left in the range.
+const noData = computed(() => data.value !== undefined && !data.value.size);
 
 const trend = computed(() => TRENDS[data.value?.trend_direction ?? "flat"] ?? TRENDS.flat);
 
