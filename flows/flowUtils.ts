@@ -25,6 +25,14 @@ export default class FlowUtils {
         return 0;
     }
 
+    // Insights stay after a device or app is removed. Homey then returns 404, so log one line and use the default.
+    private static async findOwner(app: InsightTrendsReloaded, request: Promise<any>, owner: string) {
+        return request.catch((err: any) => {
+            app.log(`No information for ${owner}, using default description: ${err?.description ?? err?.message ?? err}`);
+            return undefined;
+        });
+    }
+
     public static async getDescriptionAndIcon(app: InsightTrendsReloaded, uri: string, id: string) {
         return new Promise<{ description: String; icon: any; }>(async (resolve) => {
             let defaultIcon = "/app/com.spkes.insightTrendsReloaded/settings/images/unknown.svg"
@@ -33,21 +41,15 @@ export default class FlowUtils {
                 icon: defaultIcon
             }
             if (uri.includes("homey:device")) {
-                let d = await app.getHomeyAPI().devices.getDevice({id: uri.replace("homey:device:", '')}).catch(app.error);
-                if(d == undefined) {
-                    app.error("Could not get app information for device " + uri);
-                    return resolve(defaultResult);
-                }
+                let d = await this.findOwner(app, app.getHomeyAPI().devices.getDevice({id: uri.replace("homey:device:", '')}), uri);
+                if (d == undefined) return resolve(defaultResult);
                 return resolve({
                     description: d.name ?? app.homey.__("app.unknown"),
                     icon: d.iconObj?.url ?? defaultIcon
                 });
             } else if (uri.includes("homey:app:")) {
-                let a = await app.getHomeyAPI().apps.getApp({id: uri.replace("homey:app:", '')}).catch(app.error);
-                if(a == undefined) {
-                    app.error("Could not get app information for app " + uri);
-                    return resolve(defaultResult);
-                }
+                let a = await this.findOwner(app, app.getHomeyAPI().apps.getApp({id: uri.replace("homey:app:", '')}), uri);
+                if (a == undefined) return resolve(defaultResult);
                 return resolve({
                     description: a.name ?? app.homey.__("app.unknown"),
                     icon: a.iconObj?.url ?? defaultIcon
@@ -63,11 +65,8 @@ export default class FlowUtils {
                         let appIdSplit = id.split('-');
                         if(appIdSplit.length >= 2) appIdSplit.pop()
                         let appId= appIdSplit.join("-");
-                        let a = await app.getHomeyAPI().apps.getApp({id: appId}).catch(app.error);
-                        if(a == undefined) {
-                            app.error(`Could not get app information for app ${appId} (${id})`);
-                            return resolve(defaultResult);
-                        }
+                        let a = await this.findOwner(app, app.getHomeyAPI().apps.getApp({id: appId}), `app ${appId} (${id})`);
+                        if (a == undefined) return resolve(defaultResult);
                         return resolve({
                             description: a.name ?? app.homey.__("app.unknown"),
                             icon: a.iconObj?.url ?? defaultIcon
