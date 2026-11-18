@@ -1,0 +1,545 @@
+.explorer {
+  --accent: #0070d8;
+  --accent-soft: #e6f2fe;
+  --muted: #6e6e73;
+  --divider: #ececf0;
+  padding: var(--su-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--su-2);
+  color: var(--color-text);
+}
+
+.explorer .card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-light);
+}
+
+.explorer strong {
+  font-weight: 600;
+}
+
+/* Search */
+
+.searchField {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+}
+
+.searchField:focus-within {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.searchField > i {
+  color: var(--color-mono-50);
+}
+
+.searchField input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: var(--font-size-default);
+  color: inherit;
+}
+
+.resultList {
+  overflow: hidden;
+}
+
+.groupLabel {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 12px 16px 6px;
+}
+
+.groupLabel:not(:first-child) {
+  border-top: 1px solid var(--divider);
+}
+
+.resultItem {
+  width: 100%;
+  border: none;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  font-size: 16px;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.resultItem + .resultItem {
+  background: linear-gradient(var(--divider), var(--divider)) no-repeat 60px 0 / calc(100% - 60px) 1px, var(--white);
+}
+
+.resultItem:hover {
+  background-color: var(--color-mono-01);
+}
+
+.resultName {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resultName mark {
+  background: none;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.resultList .unit {
+  font-size: var(--font-size-small);
+  color: var(--muted);
+}
+
+.resultList .chevron {
+  font-size: 12px;
+  color: var(--color-mono-30);
+}
+
+.emptyRow {
+  margin: 0;
+  padding: 14px 16px;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.iconTile {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconTile img {
+  width: 18px;
+  height: 18px;
+}
+
+.iconTile.large {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.iconTile.large img {
+  width: 22px;
+  height: 22px;
+}
+
+/* Selected insight */
+
+.insightHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.insightName {
+  flex: 1;
+  min-width: 0;
+}
+
+.insightName strong,
+.insightName span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.insightName strong {
+  font-size: var(--font-size-default);
+}
+
+.insightName span {
+  font-size: var(--font-size-small);
+  color: var(--muted);
+}
+
+.lastValue {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 38%;
+  min-width: 0;
+  transition: opacity .2s;
+}
+
+.lastValue .tileValue {
+  max-width: 100%;
+}
+
+.lastValue .tileNumber {
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+.lastValue .placeholder {
+  color: var(--color-mono-30);
+}
+
+.lastValue small,
+.tileLabel {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.unitSuffix {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.rangeRow {
+  border-top: 1px solid var(--divider);
+  display: flex;
+  align-items: center;
+  gap: var(--su);
+  padding: 10px 16px;
+}
+
+.rangeRow > span {
+  flex: 1;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.rangeRow input,
+.rangeRow select {
+  height: 32px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-mono-10);
+  border-radius: 8px;
+  background: var(--white);
+  font-size: 15px;
+  color: inherit;
+}
+
+.rangeRow input {
+  width: 56px;
+  text-align: center;
+}
+
+.rangeRow select {
+  padding: 0 var(--su);
+}
+
+.filterField {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-small);
+  color: var(--muted);
+}
+
+.rangeRow .filterField input {
+  width: 64px;
+}
+
+.iconButton {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.iconButton:disabled {
+  cursor: default;
+}
+
+/* Data */
+
+.explorerContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--su-2);
+  transition: opacity .2s;
+}
+
+.explorerContent.isLoading,
+.lastValue.isLoading {
+  opacity: .45;
+}
+
+.chartCard {
+  padding: 14px 16px 12px;
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: var(--su);
+}
+
+.legend {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.legend span::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 3px;
+  border-radius: 2px;
+  margin-right: 5px;
+  vertical-align: middle;
+  background: var(--accent);
+}
+
+.legend .trendKey::before {
+  background: #4f4f4f;
+}
+
+.axisUnit {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sectionTitle {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+
+.sectionHint {
+  margin: 0;
+  padding: 2px 16px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.tileGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--su);
+}
+
+.statTile {
+  border: none;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.tileValue {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+}
+
+.tileNumber {
+  font-size: var(--font-size-medium);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.statTile.expanded .tileNumber {
+  white-space: normal;
+  word-break: break-all;
+}
+
+.tileUnit {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.tileMeta {
+  font-size: 13px;
+  color: var(--color-mono-70);
+}
+
+.tileMono {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+}
+
+.trendCard {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trendCard .grow {
+  flex: 1;
+}
+
+.trendCard .right {
+  text-align: right;
+  min-width: 0;
+  max-width: 50%;
+}
+
+.trendCard strong {
+  display: block;
+  font-size: var(--font-size-default);
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trendIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--color-mono-02);
+  color: var(--muted);
+}
+
+.trendIcon.up {
+  background: #e3f6e9;
+  color: #1f8a43;
+}
+
+.trendIcon.down {
+  background: #fff3e0;
+  color: #b25e00;
+}
+
+.percentileCard {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.percentileCard .grow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.percentileCard label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.percentileCard label strong {
+  color: var(--color-text);
+}
+
+.percentileCard input[type="range"] {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.percentileResult {
+  text-align: right;
+  min-width: 0;
+  max-width: 45%;
+  padding-left: 14px;
+  border-left: 1px solid var(--divider);
+}
+
+.percentileResult {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.percentileResult .tileValue {
+  max-width: 100%;
+}
+
+/* Empty states */
+
+.emptyCard {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.emptyCard strong {
+  font-size: var(--font-size-default);
+}
+
+.emptyCard p {
+  margin: 0;
+  max-width: 290px;
+  font-size: var(--font-size-small);
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.emptyIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptyIcon.warning {
+  background: #fff3e0;
+  color: #b25e00;
+}

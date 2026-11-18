@@ -2,7 +2,34 @@ import {InsightTrendsReloaded} from "../app";
 import Trend from "../trend";
 import {Stats} from "fast-stats";
 
+// Values below `below` or above `above` are ignored. Undefined means no limit.
+export interface ValueFilter {
+    below?: number
+    above?: number
+}
+
+function optionalNumber(value: unknown): number | undefined {
+    if (value === undefined || value === null || value === "") return undefined;
+    const number = Number(value);
+    return Number.isFinite(number) ? number : undefined;
+}
+
 export default class FlowUtils {
+    // Reads the optional ignoreBelow / ignoreAbove flow card args or API query values.
+    public static parseValueFilter(args: { ignoreBelow?: unknown, ignoreAbove?: unknown }): ValueFilter {
+        return {below: optionalNumber(args.ignoreBelow), above: optionalNumber(args.ignoreAbove)};
+    }
+
+    public static isInValueFilter(value: number, filter: ValueFilter): boolean {
+        return (filter.below === undefined || value >= filter.below) &&
+            (filter.above === undefined || value <= filter.above);
+    }
+
+    // The ignore filter can remove all values. Without values the cards cannot calculate anything.
+    public static assertHasEntries(logs: unknown[]) {
+        if (logs.length === 0) throw new Error("No values in this time range. Check the time range and the ignore values.");
+    }
+
     public static compare(a: number, b: number, operator: string): boolean {
         if (operator === "smaller") return a < b;
         if (operator === "smaller_equal") return a <= b;
@@ -13,16 +40,24 @@ export default class FlowUtils {
         return false;
     }
 
-    public static getValue(logs: any, characteristic: string, percent: number = 0): number {
-        if (characteristic === "trend") return Trend.createTrend(logs).slope ?? 0
+    public static getValue(logs: any, characteristic: string, opts?: { percent?: number, useHumanizedTrend?: boolean }): number {
+        if (characteristic === "trend") return Trend.createTrendHumanized(logs, opts?.useHumanizedTrend ?? false ).slope
         let stats = new Stats().push(logs.map((entry: any) => entry.y));
         if (characteristic === "min") return stats.range()[0];
         if (characteristic === "max") return stats.range()[1];
         if (characteristic === "average") return stats.amean();
         if (characteristic === "median") return stats.median();
         if (characteristic === "standardDeviation") return stats.stddev();
-        if (characteristic === "percentile") return stats.percentile(percent);
+        if (characteristic === "percentile") return stats.percentile(opts?.percent ?? 0);
         return 0;
+    }
+
+    // Insights stay after a device or app is removed. Homey then returns 404, so log one line and use the default.
+    private static async findOwner(app: InsightTrendsReloaded, request: Promise<any>, owner: string) {
+        return request.catch((err: any) => {
+            app.log(`No information for ${owner}, using default description: ${err?.description ?? err?.message ?? err}`);
+            return undefined;
+        });
     }
 
     public static async getDescriptionAndIcon(app: InsightTrendsReloaded, uri: string, id: string) {
@@ -33,21 +68,15 @@ export default class FlowUtils {
                 icon: defaultIcon
             }
             if (uri.includes("homey:device")) {
-                let d = await app.getHomeyAPI().devices.getDevice({id: uri.replace("homey:device:", '')}).catch(app.error);
-                if(d == undefined) {
-                    app.error("Could not get app information for device " + uri);
-                    return resolve(defaultResult);
-                }
+                let d = await this.findOwner(app, app.getHomeyAPI().devices.getDevice({id: uri.replace("homey:device:", '')}), uri);
+                if (d == undefined) return resolve(defaultResult);
                 return resolve({
                     description: d.name ?? app.homey.__("app.unknown"),
                     icon: d.iconObj?.url ?? defaultIcon
                 });
             } else if (uri.includes("homey:app:")) {
-                let a = await app.getHomeyAPI().apps.getApp({id: uri.replace("homey:app:", '')}).catch(app.error);
-                if(a == undefined) {
-                    app.error("Could not get app information for app " + uri);
-                    return resolve(defaultResult);
-                }
+                let a = await this.findOwner(app, app.getHomeyAPI().apps.getApp({id: uri.replace("homey:app:", '')}), uri);
+                if (a == undefined) return resolve(defaultResult);
                 return resolve({
                     description: a.name ?? app.homey.__("app.unknown"),
                     icon: a.iconObj?.url ?? defaultIcon
@@ -63,11 +92,8 @@ export default class FlowUtils {
                         let appIdSplit = id.split('-');
                         if(appIdSplit.length >= 2) appIdSplit.pop()
                         let appId= appIdSplit.join("-");
-                        let a = await app.getHomeyAPI().apps.getApp({id: appId}).catch(app.error);
-                        if(a == undefined) {
-                            app.error(`Could not get app information for app ${appId} (${id})`);
-                            return resolve(defaultResult);
-                        }
+                        let a = await this.findOwner(app, app.getHomeyAPI().apps.getApp({id: appId}), `app ${appId} (${id})`);
+                        if (a == undefined) return resolve(defaultResult);
                         return resolve({
                             description: a.name ?? app.homey.__("app.unknown"),
                             icon: a.iconObj?.url ?? defaultIcon
@@ -103,7 +129,7 @@ export default class FlowUtils {
                     insights = Object.values(await app.getHomeyAPI().insights.getLogs(filter).catch(app.error));
                     if (insights === undefined || insights.length === 0) {
                         app.error("Failed to get insights returning cached insights");
-                        return app.cachedInsights;
+                        return resolve(app.cachedInsights);
                     }
                     let insightsTemp = [];
                     for (let entry of insights) {
@@ -155,6 +181,12 @@ export default class FlowUtils {
                     ));
         })
     }
+    public static unitName(unit: string): string {
+        if (unit === "60") return "hours";
+        if (unit === "1440") return "days";
+        return "minutes";
+    }
+
     public static toSignificantDigits(number: number, precision: number = 4): number {
         if (precision > 20) precision = 20;
         return Number(number.toFixed(precision))

@@ -55,6 +55,36 @@
         "sv": "Antal använda datapunkter"
       },
       "example": 1337
+    },
+    {
+      "name": "range",
+      "type": "number",
+      "title": {
+        "en": "Time range",
+        "de": "Zeitraum",
+        "sv": "Tidsintervall"
+      },
+      "example": 15
+    },
+    {
+      "name": "unit",
+      "type": "string",
+      "title": {
+        "en": "Time unit (minutes, hours, days)",
+        "de": "Zeiteinheit (minutes, hours, days)",
+        "sv": "Tidsenhet (minutes, hours, days)"
+      },
+      "example": "minutes"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "title": {
+        "en": "Label",
+        "de": "Label",
+        "sv": "Etikett"
+      },
+      "example": "daily"
     }
   ]
 }

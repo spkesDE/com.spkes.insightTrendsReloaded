@@ -7,7 +7,8 @@ export default class CalculatePercentage {
     constructor(app: InsightTrendsReloaded, card: FlowCardAction) {
         card.registerRunListener(async (args: any) => {
             let state = {id: args.insight.id, uri: args.insight.uri};
-            let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean');
+            let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean', FlowUtils.parseValueFilter(args));
+            FlowUtils.assertHasEntries(logs);
             let logsCondition = logs.filter((a: {x: number, y: any}, index : number, array) =>
                 FlowUtils.compare(a.y, args.value, args.operator));
             let percentage = (logsCondition.length * 100) / logs.length

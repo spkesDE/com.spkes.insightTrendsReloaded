@@ -6,9 +6,9 @@
   },
   "highlight": true,
   "titleFormatted": {
-    "en": "Calculate percentage for [[insight]] in time period [[range]] [[unit]]. If the value [[operator]] as [[value]].",
-    "de": "Berechne Prozentualer Anteil für [[insight]] in der Zeitspanne [[range]] [[unit]]. Wenn der Wert [[operator]] als [[value]].",
-    "sv": "Beräkna procent för [[insight]] i tidsperiod [[range]] [[unit]]. Om värdet [[operator]] som [[value]]."
+    "en": "Calculate percentage for [[insight]] in time period [[range]] [[unit]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]]. If the value [[operator]] as [[value]].",
+    "de": "Berechne Prozentualer Anteil für [[insight]] in der Zeitspanne [[range]] [[unit]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]]. Wenn der Wert [[operator]] als [[value]].",
+    "sv": "Beräkna procent för [[insight]] i tidsperiod [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]]. Om värdet [[operator]] som [[value]]."
   },
   "args": [
     {
@@ -133,6 +133,36 @@
         "de": "Wert",
         "sv": "Värde"
       }
+    },
+    {
+      "type": "number",
+      "name": "ignoreBelow",
+      "title": {
+        "en": "Ignore values below",
+        "de": "Werte ignorieren unter",
+        "sv": "Ignorera värden under"
+      },
+      "placeholder": {
+        "en": "Optional",
+        "de": "Optional",
+        "sv": "Valfri"
+      },
+      "required": false
+    },
+    {
+      "type": "number",
+      "name": "ignoreAbove",
+      "title": {
+        "en": "Ignore values above",
+        "de": "Werte ignorieren über",
+        "sv": "Ignorera värden över"
+      },
+      "placeholder": {
+        "en": "Optional",
+        "de": "Optional",
+        "sv": "Valfri"
+      },
+      "required": false
     }
   ],
   "tokens": [

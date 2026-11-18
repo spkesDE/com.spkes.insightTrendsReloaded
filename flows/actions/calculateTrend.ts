@@ -8,8 +8,10 @@ export default class CalculateTrend {
     constructor(app: InsightTrendsReloaded, card: FlowCardAction, withToken: boolean = true) {
         card.registerRunListener(async (args: any) => {
             let state = {id: args.insight.id, uri: args.insight.uri};
-            let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean');
-            let stats = await new Stats().push(logs.map((entry: any) => entry.y));
+            let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean', FlowUtils.parseValueFilter(args));
+            FlowUtils.assertHasEntries(logs);
+            let stats = new Stats().push(logs.map((entry: any) => entry.y));
+            let trend = Trend.createTrendHumanized(logs, app.useHumanizedTrend);
             let token = {
                 //Casting to number because of boolean values
                 min: app.significantFigures ? FlowUtils.toSignificantDigits(Number(stats.range()[0]), app.significantFiguresValue) : Number(stats.range()[0]),
@@ -17,7 +19,8 @@ export default class CalculateTrend {
                 mean: app.significantFigures ? FlowUtils.toSignificantDigits(stats.amean(), app.significantFiguresValue) : stats.amean(),
                 median: app.significantFigures ? FlowUtils.toSignificantDigits(stats.median(), app.significantFiguresValue) : stats.median(),
                 standardDeviation: app.significantFigures ? FlowUtils.toSignificantDigits(stats.stddev(), app.significantFiguresValue) : stats.stddev(),
-                trend: app.significantFigures ? FlowUtils.toSignificantDigits(Trend.createTrend(logs).slope * 1000, app.significantFiguresValue) : Trend.createTrend(logs).slope * 1000,
+                trend: app.significantFigures ? FlowUtils.toSignificantDigits(trend.slope, app.significantFiguresValue) : trend.slope,
+                trend_direction: trend.direction,
                 firstvalue: app.significantFigures ? FlowUtils.toSignificantDigits(logs[0].y, app.significantFiguresValue) : logs[0].y,
                 firstvalue_timestamp: logs[0].x,
                 firstvalue_time: new Date(logs[0].x).toLocaleString('en-GB', {
@@ -31,7 +34,7 @@ export default class CalculateTrend {
                 size: logs.length
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)
-            await app.homey.flow.getTriggerCard('trendCalculated').trigger(token, state);
+            await app.homey.flow.getTriggerCard('trendCalculated').trigger({...token, range: args.range, unit: FlowUtils.unitName(args.unit), label: args.label ?? ""}, state);
             if (withToken)
                 return token;
         });

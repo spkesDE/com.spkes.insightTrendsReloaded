@@ -25,13 +25,44 @@
     "percentile": "Percentil",
     "removeNullValues": "Ta bort <code>'null'</code>-värden",
     "removeNullValuesInfo": "Några användare upplever problem med att sista värdet blir null. Denna kontrollerar alla datapunkter och filtrerar bort dem om det är nödvändigt (Värde == null).",
-    "roundPercentage": "",
+    "roundPercentage": "Avrunda procent",
     "settings": "Inställningar",
     "significantFigures": "Signifikanta siffror",
     "significantFiguresHeader": "Inställningar signifikanta siffror",
     "significantFiguresTrendValue": "Ignorera trendvärde",
     "sizeOfDataPoints": "Antal använda datapunkter",
     "standardDeviation": "Standardavvikelse",
-    "trend": "Trendvärde"
+    "trend": "Trendvärde",
+    "trendDirection": "Trendriktning",
+    "humanizedTrend": "Gör trendvärde lättare att förstå",
+    "humanizedTrendInfo": "Den här funktionen gör trendvärdet lättare att förstå genom att skala upp mycket små tal till ett mer läsbart värde. Exempel: istället för 0.000002 visas t.ex. +12 eller -8 beroende på riktning.",
+    "mainMenu": {
+      "explorer": "Insights-utforskare"
+    },
+    "misc": {
+      "back": "Tillbaka"
+    },
+    "significantFiguresValue": "Siffror",
+    "explorer": {
+      "search": "Sök Insights...",
+      "noResults": "Inga resultat",
+      "hint": "Sök efter en Insight för att se diagram och statistik.",
+      "range": "Tidsintervall",
+      "statistics": "Statistik",
+      "values": "Värden",
+      "noSelection": "Ingen Insight vald",
+      "history": "Historik",
+      "value": "Värde",
+      "trendUp": "Stigande",
+      "trendDown": "Fallande",
+      "trendFlat": "Oförändrad",
+      "dataPoints": "Datapunkter",
+      "noData": "Ingen data i detta tidsintervall",
+      "noDataHint": "Välj ett längre tidsintervall, kontrollera ignorerade värden eller att enheten rapporterar värden.",
+      "tapHint": "Tryck på långa värden för att se dem helt.",
+      "ignore": "Ignorera värden",
+      "below": "under",
+      "above": "över"
+    }
   }
 }

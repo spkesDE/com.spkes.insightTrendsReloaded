@@ -32,6 +32,37 @@
     "significantFiguresTrendValue": "Ignore Trend Value",
     "sizeOfDataPoints": "Number of used data points",
     "standardDeviation": "Standard Deviation",
-    "trend": "Trend"
+    "trend": "Trend",
+    "trendDirection": "Trend Direction",
+    "humanizedTrend": "Humanize Trend Value",
+    "humanizedTrendInfo": "This function makes the trend value easier to read by scaling very small numbers into a human-friendly range. Example: instead of 0.000002, you might see +12 or -8 depending on the direction.",
+    "mainMenu": {
+      "explorer": "Insights Explorer"
+    },
+    "misc": {
+      "back": "Back"
+    },
+    "significantFiguresValue": "Digits",
+    "explorer": {
+      "search": "Search Insights...",
+      "noResults": "No results",
+      "hint": "Search for an Insight to see its chart and statistics.",
+      "range": "Time range",
+      "statistics": "Statistics",
+      "values": "Values",
+      "noSelection": "No Insight selected",
+      "history": "History",
+      "value": "Value",
+      "trendUp": "Rising",
+      "trendDown": "Falling",
+      "trendFlat": "Flat",
+      "dataPoints": "Data points",
+      "noData": "No data in this time range",
+      "noDataHint": "Choose a longer time range, check the ignore values, or check if the device reports values.",
+      "tapHint": "Tap long values to see them in full.",
+      "ignore": "Ignore values",
+      "below": "below",
+      "above": "above"
+    }
   }
 }
