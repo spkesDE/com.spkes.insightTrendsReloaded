@@ -35,6 +35,7 @@ export class InsightTrendsReloaded extends Homey.App {
         }
         this.significantFigures = await this.homey.settings.get("significantFigures") ?? false;
         this.significantFiguresValue = await this.homey.settings.get("significantFiguresValue") ?? 5;
+        this.ignoreTrendValue = await this.homey.settings.get("ignoreTrendValue") ?? false;
         this.filterNullValues = await this.homey.settings.get("filterNullValues") ?? false;
         this.roundPercentage = await this.homey.settings.get("roundPercentage") ?? false;
         this.useHumanizedTrend = await this.homey.settings.get("useHumanizedTrend") ?? false;
