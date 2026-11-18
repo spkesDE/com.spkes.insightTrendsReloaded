@@ -35,6 +35,31 @@
     "trend": "Trend",
     "trendDirection": "Trend Richtung",
     "humanizedTrend": "Trendwert lesbarer machen",
-    "humanizedTrendInfo": "Diese Funktion macht den Trendwert leichter verständlich, indem sehr kleine Zahlen in einen lesbaren Bereich umgerechnet werden. Beispiel: statt 0.000002 siehst du z. B. +12 oder -8, je nach Richtung."
+    "humanizedTrendInfo": "Diese Funktion macht den Trendwert leichter verständlich, indem sehr kleine Zahlen in einen lesbaren Bereich umgerechnet werden. Beispiel: statt 0.000002 siehst du z. B. +12 oder -8, je nach Richtung.",
+    "mainMenu": {
+      "explorer": "Insights Explorer"
+    },
+    "misc": {
+      "back": "Zurück"
+    },
+    "significantFiguresValue": "Stellen",
+    "explorer": {
+      "search": "Insights durchsuchen...",
+      "noResults": "Keine Ergebnisse",
+      "hint": "Suche ein Insight, um Diagramm und Statistik zu sehen.",
+      "range": "Zeitraum",
+      "statistics": "Statistik",
+      "values": "Werte",
+      "noSelection": "Noch kein Insight gewählt",
+      "history": "Verlauf",
+      "value": "Wert",
+      "trendUp": "Steigend",
+      "trendDown": "Fallend",
+      "trendFlat": "Gleichbleibend",
+      "dataPoints": "Datenpunkte",
+      "noData": "Keine Daten in diesem Zeitraum",
+      "noDataHint": "Wähle einen längeren Zeitraum oder prüfe, ob das Gerät Werte meldet.",
+      "tapHint": "Lange Werte antippen, um sie ganz zu sehen."
+    }
   }
 }

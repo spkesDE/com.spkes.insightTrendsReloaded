@@ -3,3 +3,4 @@
 /.homeybuild/
 /.idea/*
 unfuck.cmd
+/insight-settings-vue/node_modules/

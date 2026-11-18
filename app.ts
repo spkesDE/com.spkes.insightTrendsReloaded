@@ -211,6 +211,8 @@ export class InsightTrendsReloaded extends Homey.App {
     public async getInsightCalculated(id: string, uri: string, range: number, unit: string, percent: number = 50, type?: string) {
         console.log(id, uri, range, unit, percent, type)
         let logEntries = await this.getLogs(range, unit, {id: id, uri: uri}, type === 'boolean');
+        // No entries in the range. The settings page shows an empty state for size 0.
+        if (logEntries.length === 0) return {size: 0, data: [], trendLine: []};
         let stats = new Stats().push(logEntries.map((entry: any) => entry.y));
         let trendline = Trend.createTrendHumanized(logEntries, this.useHumanizedTrend);
         return  {

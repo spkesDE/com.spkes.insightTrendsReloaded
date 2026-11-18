@@ -1,0 +1,50 @@
+.spacer {
+  padding-top: 1px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  font-size: calc(var(--font-size-xlarge) * 2);
+  flex-direction: column;
+}
+
+.loading > h1 {
+  font-size: var(--font-size-xlarge);
+}
+
+.fancySelect {
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-default);
+  font-weight: var(--font-weight-regular);
+  border-color: var(--color-mono-10);
+  padding: var(--su-05);
+  padding-left: var(--su-2);
+  padding-right: var(--su-2);
+  color: var(--color-mono-60);
+}
+
+.fancySelect option {
+  color: var(--color-mono-60);
+  font-size: var(--font-size-default);
+  font-weight: var(--font-weight-regular);
+}
+
+.itemValue {
+  color: var(--color-mono-60);
+  font-size: var(--font-size-default);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: var(--su-2);
+}
+
+.rangeSlider {
+  flex: 1;
+  margin: 0 var(--su-2);
+  accent-color: var(--color-blue);
+}
