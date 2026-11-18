@@ -2,7 +2,34 @@ import {InsightTrendsReloaded} from "../app";
 import Trend from "../trend";
 import {Stats} from "fast-stats";
 
+// Values below `below` or above `above` are ignored. Undefined means no limit.
+export interface ValueFilter {
+    below?: number
+    above?: number
+}
+
+function optionalNumber(value: unknown): number | undefined {
+    if (value === undefined || value === null || value === "") return undefined;
+    const number = Number(value);
+    return Number.isFinite(number) ? number : undefined;
+}
+
 export default class FlowUtils {
+    // Reads the optional ignoreBelow / ignoreAbove flow card args or API query values.
+    public static parseValueFilter(args: { ignoreBelow?: unknown, ignoreAbove?: unknown }): ValueFilter {
+        return {below: optionalNumber(args.ignoreBelow), above: optionalNumber(args.ignoreAbove)};
+    }
+
+    public static isInValueFilter(value: number, filter: ValueFilter): boolean {
+        return (filter.below === undefined || value >= filter.below) &&
+            (filter.above === undefined || value <= filter.above);
+    }
+
+    // The ignore filter can remove all values. Without values the cards cannot calculate anything.
+    public static assertHasEntries(logs: unknown[]) {
+        if (logs.length === 0) throw new Error("No values in this time range. Check the time range and the ignore values.");
+    }
+
     public static compare(a: number, b: number, operator: string): boolean {
         if (operator === "smaller") return a < b;
         if (operator === "smaller_equal") return a <= b;

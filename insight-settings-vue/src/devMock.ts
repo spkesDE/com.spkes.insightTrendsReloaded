@@ -14,16 +14,21 @@ function translate(key: string): string {
   return typeof value === "string" ? value : key;
 }
 
-function calculated() {
+function calculated(params: URLSearchParams) {
   const now = Date.now();
-  const data = Array.from({length: 100}, (_, i) => ({x: now - (100 - i) * 60_000, y: 18 + Math.random() * 4}));
+  const below = params.get("ignoreBelow") ? Number(params.get("ignoreBelow")) : -Infinity;
+  const above = params.get("ignoreAbove") ? Number(params.get("ignoreAbove")) : Infinity;
+  const data = Array.from({length: 100}, (_, i) => ({x: now - (100 - i) * 60_000, y: 18 + Math.random() * 4}))
+    .filter((point) => point.y >= below && point.y <= above);
+  if (data.length === 0) return {size: 0, data: [], trendLine: []};
+  const last = data.length - 1;
   return {
     data,
-    trendLine: [{x: data[0].x, y: 18.5}, {x: data[99].x, y: 21.2}],
+    trendLine: [{x: data[0].x, y: 18.5}, {x: data[last].x, y: 21.2}],
     min: 18.0004, max: 21.9871, mean: 19.9512, median: 19.9433, standardDeviation: 1.1537,
     trend: 0.0000027, trend_direction: "up", size: data.length,
     firstvalue: data[0].y, firstvalue_time: new Date(data[0].x).toLocaleString("en-GB"), firstvalue_timestamp: data[0].x,
-    lastvalue: data[99].y, lastvalue_time: new Date(data[99].x).toLocaleString("en-GB"), lastvalue_timestamp: data[99].x,
+    lastvalue: data[last].y, lastvalue_time: new Date(data[last].x).toLocaleString("en-GB"), lastvalue_timestamp: data[last].x,
     percentile: 19.95, percent: 50
   };
 }
@@ -46,7 +51,7 @@ export function installHomeyMock() {
       const empty = Number(params.get("range")) * Number(params.get("unit")) < 5;
       const result = path.startsWith("/searchInsights")
         ? insights.filter((insight) => `${insight.name} ${insight.description}`.toLowerCase().includes(query))
-        : empty ? {size: 0, data: [], trendLine: []} : calculated();
+        : empty ? {size: 0, data: [], trendLine: []} : calculated(params);
       setTimeout(() => callback(null, result), 300);
     }
   };

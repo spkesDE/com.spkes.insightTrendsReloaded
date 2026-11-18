@@ -56,6 +56,9 @@ const selected = ref<Insight>();
 const range = ref(24);
 const unit = ref(60);
 const percent = ref(50);
+// Empty input gives "". Values outside the limits are not used for the chart and the statistics.
+const ignoreBelow = ref<number | "">("");
+const ignoreAbove = ref<number | "">("");
 const data = ref<InsightData>();
 const loading = ref(false);
 let searchTimer: number | undefined;
@@ -114,6 +117,9 @@ function select(insight: Insight) {
   query.value = displayName(insight);
   results.value = undefined;
   data.value = undefined;
+  // Limits depend on the unit of the insight, so they do not carry over.
+  ignoreBelow.value = "";
+  ignoreAbove.value = "";
   void load();
 }
 
@@ -132,7 +138,9 @@ async function load() {
     range: String(range.value || 24),
     unit: String(unit.value),
     percentile: String(percent.value),
-    type: insight.type ?? ""
+    type: insight.type ?? "",
+    ignoreBelow: String(ignoreBelow.value),
+    ignoreAbove: String(ignoreAbove.value)
   });
   const result = await Homey.api<InsightData>("GET", `/getInsightCalculated?${params}`).catch(showError);
   if (insight === selected.value) data.value = result;
@@ -276,6 +284,29 @@ onActivated(load);
             >
               <i :class="['fas', 'fa-sync', {'fa-spin': loading}]"></i>
             </button>
+          </div>
+          <div class="rangeRow">
+            <span>{{ Homey.__('settings.explorer.ignore') }}</span>
+            <label class="filterField">
+              {{ Homey.__('settings.explorer.below') }}
+              <input
+                v-model.number="ignoreBelow"
+                class="hy-nostyle"
+                type="number"
+                placeholder="–"
+                @change="load"
+              />
+            </label>
+            <label class="filterField">
+              {{ Homey.__('settings.explorer.above') }}
+              <input
+                v-model.number="ignoreAbove"
+                class="hy-nostyle"
+                type="number"
+                placeholder="–"
+                @change="load"
+              />
+            </label>
           </div>
         </div>
 

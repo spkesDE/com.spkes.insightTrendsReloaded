@@ -373,9 +373,9 @@
           "sv": "Testa Insights-data"
         },
         "titleFormatted": {
-          "en": "Check if [[characteristic]] is [[operator]] [[value]] for the past [[range]] [[unit]] on [[insight]]",
-          "de": "Prüfe ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist.",
-          "sv": "Testa om [[characteristic]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]]."
+          "en": "Check if [[characteristic]] is [[operator]] [[value]] for the past [[range]] [[unit]] on [[insight]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]]",
+          "de": "Prüfe ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]], ist.",
+          "sv": "Testa om [[characteristic]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]]."
         },
         "args": [
           {
@@ -559,6 +559,36 @@
               "de": "Wert",
               "sv": "Värde"
             }
+          },
+          {
+            "type": "number",
+            "name": "ignoreBelow",
+            "title": {
+              "en": "Ignore values below",
+              "de": "Werte ignorieren unter",
+              "sv": "Ignorera värden under"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
+          },
+          {
+            "type": "number",
+            "name": "ignoreAbove",
+            "title": {
+              "en": "Ignore values above",
+              "de": "Werte ignorieren über",
+              "sv": "Ignorera värden över"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
           }
         ],
         "id": "checkInsight"
@@ -570,9 +600,9 @@
           "sv": "Testa percentilen på Insights-data"
         },
         "titleFormatted": {
-          "en": "Check if [[percent]] of the values of [[insight]] are [[operator]] [[value]] for the past [[range]] [[unit]]",
-          "de": "Prüfe ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], sind.",
-          "sv": "Testa om [[percent]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]]"
+          "en": "Check if [[percent]] of the values of [[insight]] are [[operator]] [[value]] for the past [[range]] [[unit]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]]",
+          "de": "Prüfe ob [[percent]] der Werte von [[insight]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]], sind.",
+          "sv": "Testa om [[percent]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]]"
         },
         "args": [
           {
@@ -711,6 +741,36 @@
               "de": "Wert",
               "sv": "Värde"
             }
+          },
+          {
+            "type": "number",
+            "name": "ignoreBelow",
+            "title": {
+              "en": "Ignore values below",
+              "de": "Werte ignorieren unter",
+              "sv": "Ignorera värden under"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
+          },
+          {
+            "type": "number",
+            "name": "ignoreAbove",
+            "title": {
+              "en": "Ignore values above",
+              "de": "Werte ignorieren über",
+              "sv": "Ignorera värden över"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
           }
         ],
         "id": "checkInsightPercentile"
@@ -725,9 +785,9 @@
         },
         "highlight": true,
         "titleFormatted": {
-          "en": "Calculate percentage for [[insight]] in time period [[range]] [[unit]]. If the value [[operator]] as [[value]].",
-          "de": "Berechne Prozentualer Anteil für [[insight]] in der Zeitspanne [[range]] [[unit]]. Wenn der Wert [[operator]] als [[value]].",
-          "sv": "Beräkna procent för [[insight]] i tidsperiod [[range]] [[unit]]. Om värdet [[operator]] som [[value]]."
+          "en": "Calculate percentage for [[insight]] in time period [[range]] [[unit]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]]. If the value [[operator]] as [[value]].",
+          "de": "Berechne Prozentualer Anteil für [[insight]] in der Zeitspanne [[range]] [[unit]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]]. Wenn der Wert [[operator]] als [[value]].",
+          "sv": "Beräkna procent för [[insight]] i tidsperiod [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]]. Om värdet [[operator]] som [[value]]."
         },
         "args": [
           {
@@ -852,6 +912,36 @@
               "de": "Wert",
               "sv": "Värde"
             }
+          },
+          {
+            "type": "number",
+            "name": "ignoreBelow",
+            "title": {
+              "en": "Ignore values below",
+              "de": "Werte ignorieren unter",
+              "sv": "Ignorera värden under"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
+          },
+          {
+            "type": "number",
+            "name": "ignoreAbove",
+            "title": {
+              "en": "Ignore values above",
+              "de": "Werte ignorieren über",
+              "sv": "Ignorera värden över"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
           }
         ],
         "tokens": [
@@ -891,9 +981,9 @@
           "sv": "Använd NÄR-kortet 'Percentilen beräknad' i ett annat flöde för att få resultatet av beräkningen. Om man använder argumentet '50%' blir resultetat medianvärdet och man använder '25%' eller '75%' får man första respektive tredje kvartilen som resultat."
         },
         "titleFormatted": {
-          "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]], label [[label]]",
-          "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]], Label [[label]]",
-          "sv": "Beräkna percentilen av [[percent]] för [[insight]] baserat på senaste [[range]] [[unit]], etikett [[label]]"
+          "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]], label [[label]]",
+          "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]], Label [[label]]",
+          "sv": "Beräkna percentilen av [[percent]] för [[insight]] baserat på senaste [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]], etikett [[label]]"
         },
         "args": [
           {
@@ -964,6 +1054,36 @@
             "step": 1,
             "value": 50,
             "label": "%"
+          },
+          {
+            "type": "number",
+            "name": "ignoreBelow",
+            "title": {
+              "en": "Ignore values below",
+              "de": "Werte ignorieren unter",
+              "sv": "Ignorera värden under"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
+          },
+          {
+            "type": "number",
+            "name": "ignoreAbove",
+            "title": {
+              "en": "Ignore values above",
+              "de": "Werte ignorieren über",
+              "sv": "Ignorera värden över"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
           },
           {
             "type": "text",
@@ -1027,9 +1147,9 @@
           "sv": "Använd NÄR-kortet 'Percentilen beräknad' i ett annat flöde för att få resultatet av beräkningen. Om man använder argumentet '50%' blir resultetat medianvärdet och man använder '25%' eller '75%' får man första respektive tredje kvartilen som resultat."
         },
         "titleFormatted": {
-          "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]], label [[label]]",
-          "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]], Label [[label]]",
-          "sv": "Beräkna percentilen av [[percent]] för [[insight]] baserat på senaste [[range]] [[unit]], etikett [[label]]"
+          "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]], label [[label]]",
+          "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]], Label [[label]]",
+          "sv": "Beräkna percentilen av [[percent]] för [[insight]] baserat på senaste [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]], etikett [[label]]"
         },
         "args": [
           {
@@ -1102,6 +1222,36 @@
             "label": "%"
           },
           {
+            "type": "number",
+            "name": "ignoreBelow",
+            "title": {
+              "en": "Ignore values below",
+              "de": "Werte ignorieren unter",
+              "sv": "Ignorera värden under"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
+          },
+          {
+            "type": "number",
+            "name": "ignoreAbove",
+            "title": {
+              "en": "Ignore values above",
+              "de": "Werte ignorieren über",
+              "sv": "Ignorera värden över"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
+          },
+          {
             "type": "text",
             "name": "label",
             "title": {
@@ -1132,9 +1282,9 @@
           "sv": "Genom att använda NÄR-kortet 'Trend beräknad' får man resultatet av beräkningen."
         },
         "titleFormatted": {
-          "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]], label [[label]]",
-          "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]], Label [[label]]",
-          "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]], etikett [[label]]"
+          "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]], label [[label]]",
+          "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]], Label [[label]]",
+          "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]], etikett [[label]]"
         },
         "args": [
           {
@@ -1191,6 +1341,36 @@
                 }
               }
             ]
+          },
+          {
+            "type": "number",
+            "name": "ignoreBelow",
+            "title": {
+              "en": "Ignore values below",
+              "de": "Werte ignorieren unter",
+              "sv": "Ignorera värden under"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
+          },
+          {
+            "type": "number",
+            "name": "ignoreAbove",
+            "title": {
+              "en": "Ignore values above",
+              "de": "Werte ignorieren über",
+              "sv": "Ignorera värden över"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
           },
           {
             "type": "text",
@@ -1364,9 +1544,9 @@
           "sv": "Genom att använda NÄR-kortet 'Trend beräknad' får man resultatet av beräkningen."
         },
         "titleFormatted": {
-          "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]], label [[label]]",
-          "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]], Label [[label]]",
-          "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]], etikett [[label]]"
+          "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]], label [[label]]",
+          "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]], Label [[label]]",
+          "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]], etikett [[label]]"
         },
         "args": [
           {
@@ -1423,6 +1603,36 @@
                 }
               }
             ]
+          },
+          {
+            "type": "number",
+            "name": "ignoreBelow",
+            "title": {
+              "en": "Ignore values below",
+              "de": "Werte ignorieren unter",
+              "sv": "Ignorera värden under"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
+          },
+          {
+            "type": "number",
+            "name": "ignoreAbove",
+            "title": {
+              "en": "Ignore values above",
+              "de": "Werte ignorieren über",
+              "sv": "Ignorera värden över"
+            },
+            "placeholder": {
+              "en": "Optional",
+              "de": "Optional",
+              "sv": "Valfri"
+            },
+            "required": false
           },
           {
             "type": "text",

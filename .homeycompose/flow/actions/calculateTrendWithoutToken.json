@@ -10,9 +10,9 @@
     "sv": "Genom att använda NÄR-kortet 'Trend beräknad' får man resultatet av beräkningen."
   },
   "titleFormatted": {
-    "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]], label [[label]]",
-    "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]], Label [[label]]",
-    "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]], etikett [[label]]"
+    "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]], label [[label]]",
+    "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]], Label [[label]]",
+    "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]], etikett [[label]]"
   },
   "args": [
     {
@@ -69,6 +69,36 @@
           }
         }
       ]
+    },
+    {
+      "type": "number",
+      "name": "ignoreBelow",
+      "title": {
+        "en": "Ignore values below",
+        "de": "Werte ignorieren unter",
+        "sv": "Ignorera värden under"
+      },
+      "placeholder": {
+        "en": "Optional",
+        "de": "Optional",
+        "sv": "Valfri"
+      },
+      "required": false
+    },
+    {
+      "type": "number",
+      "name": "ignoreAbove",
+      "title": {
+        "en": "Ignore values above",
+        "de": "Werte ignorieren über",
+        "sv": "Ignorera värden över"
+      },
+      "placeholder": {
+        "en": "Optional",
+        "de": "Optional",
+        "sv": "Valfri"
+      },
+      "required": false
     },
     {
       "type": "text",

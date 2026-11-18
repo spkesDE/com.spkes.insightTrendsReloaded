@@ -242,6 +242,18 @@
   padding: 0 var(--su);
 }
 
+.filterField {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-small);
+  color: var(--muted);
+}
+
+.rangeRow .filterField input {
+  width: 64px;
+}
+
 .iconButton {
   width: 32px;
   height: 32px;

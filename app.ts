@@ -8,7 +8,7 @@ import CheckInsightPercentile from "./flows/conditions/checkInsightPercentile";
 import {HomeyAPI} from "homey-api";
 import {Stats} from "fast-stats";
 import Trend from "./trend";
-import FlowUtils from "./flows/flowUtils";
+import FlowUtils, {ValueFilter} from "./flows/flowUtils";
 import CalculatePercentage from "./flows/actions/calculatePercentage";
 
 export class InsightTrendsReloaded extends Homey.App {
@@ -94,7 +94,7 @@ export class InsightTrendsReloaded extends Homey.App {
         return this.api as any;
     }
 
-    async getLogs(range: number, unit: string, opts: { uri: string, id: string, resolution?: string }, isBooleanBasedCapability: boolean = false) {
+    async getLogs(range: number, unit: string, opts: { uri: string, id: string, resolution?: string }, isBooleanBasedCapability: boolean = false, valueFilter: ValueFilter = {}) {
         return new Promise<{ x: number; y: any; }[]>(async (resolve) => {
             let minutes = range * parseInt(unit);
             if (!isBooleanBasedCapability) {
@@ -125,6 +125,8 @@ export class InsightTrendsReloaded extends Homey.App {
                     .map((entry: { t: string; v: any; }) => {
                         return {x: Date.parse(entry.t), y: Number(entry.v ?? 0)};
                     })
+                    //Ignore values outside the range the user set, e.g. standby power of a device that is off
+                    .filter((entry: { x: number, y: number }) => FlowUtils.isInValueFilter(entry.y, valueFilter))
             );
         })
     }
@@ -208,9 +210,9 @@ export class InsightTrendsReloaded extends Homey.App {
      *     ]
      * }
      */
-    public async getInsightCalculated(id: string, uri: string, range: number, unit: string, percent: number = 50, type?: string) {
-        console.log(id, uri, range, unit, percent, type)
-        let logEntries = await this.getLogs(range, unit, {id: id, uri: uri}, type === 'boolean');
+    public async getInsightCalculated(id: string, uri: string, range: number, unit: string, percent: number = 50, type?: string, valueFilter: ValueFilter = {}) {
+        console.log(id, uri, range, unit, percent, type, valueFilter)
+        let logEntries = await this.getLogs(range, unit, {id: id, uri: uri}, type === 'boolean', valueFilter);
         // No entries in the range. The settings page shows an empty state for size 0.
         if (logEntries.length === 0) return {size: 0, data: [], trendLine: []};
         let stats = new Stats().push(logEntries.map((entry: any) => entry.y));

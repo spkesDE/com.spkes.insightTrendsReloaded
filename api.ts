@@ -1,3 +1,5 @@
+import FlowUtils from "./flows/flowUtils";
+
 module.exports = {
     async searchInsights({homey, query}: any) {
         return await homey.app.searchInsights(query.search);
@@ -11,6 +13,8 @@ module.exports = {
      * @param unit
      * @param percent - optional
      * @param type - optional
+     * @param ignoreBelow - optional, values below are not used
+     * @param ignoreAbove - optional, values above are not used
      *
      * @returns object {
      *     trendline: [
@@ -37,6 +41,7 @@ module.exports = {
      * }
      */
     async getInsightCalculated({homey, query}: any) {
-        return await homey.app.getInsightCalculated(query.id, query.uri, query.range, query.unit, query.percentile, query.type);
+        return await homey.app.getInsightCalculated(query.id, query.uri, query.range, query.unit, query.percentile, query.type,
+            FlowUtils.parseValueFilter(query));
     },
 };

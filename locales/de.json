@@ -58,8 +58,11 @@
       "trendFlat": "Gleichbleibend",
       "dataPoints": "Datenpunkte",
       "noData": "Keine Daten in diesem Zeitraum",
-      "noDataHint": "Wähle einen längeren Zeitraum oder prüfe, ob das Gerät Werte meldet.",
-      "tapHint": "Lange Werte antippen, um sie ganz zu sehen."
+      "noDataHint": "Wähle einen längeren Zeitraum, prüfe die ignorierten Werte oder ob das Gerät Werte meldet.",
+      "tapHint": "Lange Werte antippen, um sie ganz zu sehen.",
+      "ignore": "Werte ignorieren",
+      "below": "unter",
+      "above": "über"
     }
   }
 }

@@ -14,7 +14,7 @@ export default class CheckInsight {
                 const logEntries = await app.getLogs(args.range, args.unit, {
                     id: args.insight.id,
                     uri: args.insight.uri
-                });
+                }, false, FlowUtils.parseValueFilter(args));
                 app.log("Log entries length:", logEntries.length);
                 app.log("Log Trends:", Trend.createTrendHumanized(logEntries, app.useHumanizedTrend));
                 let stats = new Stats().push(logEntries.map((entry: any) => entry.y));

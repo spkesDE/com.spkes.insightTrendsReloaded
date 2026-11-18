@@ -5,7 +5,7 @@ import FlowUtils from "../flowUtils";
 export default class CheckInsightPercentile {
     constructor(app: InsightTrendsReloaded, card: FlowCardAction) {
         card.registerRunListener(async (args: any) => {
-            let logEntries = await app.getLogs(args.range, args.unit, {id: args.insight.id, uri: args.insight.uri});
+            let logEntries = await app.getLogs(args.range, args.unit, {id: args.insight.id, uri: args.insight.uri}, false, FlowUtils.parseValueFilter(args));
             return FlowUtils.compare(FlowUtils.getValue(logEntries, args.characteristic, {
                 useHumanizedTrend: app.useHumanizedTrend,
                 percent: args.percent

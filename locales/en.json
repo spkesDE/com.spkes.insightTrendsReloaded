@@ -58,8 +58,11 @@
       "trendFlat": "Flat",
       "dataPoints": "Data points",
       "noData": "No data in this time range",
-      "noDataHint": "Choose a longer time range or check if the device reports values.",
-      "tapHint": "Tap long values to see them in full."
+      "noDataHint": "Choose a longer time range, check the ignore values, or check if the device reports values.",
+      "tapHint": "Tap long values to see them in full.",
+      "ignore": "Ignore values",
+      "below": "below",
+      "above": "above"
     }
   }
 }

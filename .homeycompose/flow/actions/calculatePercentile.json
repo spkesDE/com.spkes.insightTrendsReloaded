@@ -11,9 +11,9 @@
     "sv": "Använd NÄR-kortet 'Percentilen beräknad' i ett annat flöde för att få resultatet av beräkningen. Om man använder argumentet '50%' blir resultetat medianvärdet och man använder '25%' eller '75%' får man första respektive tredje kvartilen som resultat."
   },
   "titleFormatted": {
-    "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]], label [[label]]",
-    "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]], Label [[label]]",
-    "sv": "Beräkna percentilen av [[percent]] för [[insight]] baserat på senaste [[range]] [[unit]], etikett [[label]]"
+    "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]], label [[label]]",
+    "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]], Label [[label]]",
+    "sv": "Beräkna percentilen av [[percent]] för [[insight]] baserat på senaste [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]], etikett [[label]]"
   },
   "args": [
     {
@@ -84,6 +84,36 @@
       "step": 1,
       "value": 50,
       "label": "%"
+    },
+    {
+      "type": "number",
+      "name": "ignoreBelow",
+      "title": {
+        "en": "Ignore values below",
+        "de": "Werte ignorieren unter",
+        "sv": "Ignorera värden under"
+      },
+      "placeholder": {
+        "en": "Optional",
+        "de": "Optional",
+        "sv": "Valfri"
+      },
+      "required": false
+    },
+    {
+      "type": "number",
+      "name": "ignoreAbove",
+      "title": {
+        "en": "Ignore values above",
+        "de": "Werte ignorieren über",
+        "sv": "Ignorera värden över"
+      },
+      "placeholder": {
+        "en": "Optional",
+        "de": "Optional",
+        "sv": "Valfri"
+      },
+      "required": false
     },
     {
       "type": "text",

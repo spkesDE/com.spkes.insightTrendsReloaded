@@ -7,7 +7,8 @@ export default class CalculatePercentile {
     constructor(app: InsightTrendsReloaded, card: FlowCardAction, withToken: boolean = true) {
         card.registerRunListener(async (args: any) => {
             let state = {id: args.insight.id, uri: args.insight.uri};
-            let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean');
+            let logs = await app.getLogs(args.range, args.unit, state, args.insight.type == 'boolean', FlowUtils.parseValueFilter(args));
+            FlowUtils.assertHasEntries(logs);
             let stats = new Stats().push(logs.map((entry: any) => entry.y));
             let token = {
                 value: stats.percentile(args.percent),

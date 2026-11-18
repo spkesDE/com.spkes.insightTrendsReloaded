@@ -58,8 +58,11 @@
       "trendFlat": "Oförändrad",
       "dataPoints": "Datapunkter",
       "noData": "Ingen data i detta tidsintervall",
-      "noDataHint": "Välj ett längre tidsintervall eller kontrollera att enheten rapporterar värden.",
-      "tapHint": "Tryck på långa värden för att se dem helt."
+      "noDataHint": "Välj ett längre tidsintervall, kontrollera ignorerade värden eller att enheten rapporterar värden.",
+      "tapHint": "Tryck på långa värden för att se dem helt.",
+      "ignore": "Ignorera värden",
+      "below": "under",
+      "above": "över"
     }
   }
 }

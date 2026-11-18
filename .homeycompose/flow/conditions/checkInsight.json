@@ -5,9 +5,9 @@
     "sv": "Testa Insights-data"
   },
   "titleFormatted": {
-    "en": "Check if [[characteristic]] is [[operator]] [[value]] for the past [[range]] [[unit]] on [[insight]]",
-    "de": "Prüfe ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ist.",
-    "sv": "Testa om [[characteristic]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]]."
+    "en": "Check if [[characteristic]] is [[operator]] [[value]] for the past [[range]] [[unit]] on [[insight]], ignoring values below [[ignoreBelow]] and above [[ignoreAbove]]",
+    "de": "Prüfe ob [[characteristic]] [[operator]] [[value]], für die vergangenen [[range]] [[unit]] auf [[insight]], ohne Werte unter [[ignoreBelow]] und über [[ignoreAbove]], ist.",
+    "sv": "Testa om [[characteristic]] för [[insight]] är [[operator]] [[value]] under de senaste [[range]] [[unit]], utan värden under [[ignoreBelow]] och över [[ignoreAbove]]."
   },
   "args": [
     {
@@ -191,6 +191,36 @@
         "de": "Wert",
         "sv": "Värde"
       }
+    },
+    {
+      "type": "number",
+      "name": "ignoreBelow",
+      "title": {
+        "en": "Ignore values below",
+        "de": "Werte ignorieren unter",
+        "sv": "Ignorera värden under"
+      },
+      "placeholder": {
+        "en": "Optional",
+        "de": "Optional",
+        "sv": "Valfri"
+      },
+      "required": false
+    },
+    {
+      "type": "number",
+      "name": "ignoreAbove",
+      "title": {
+        "en": "Ignore values above",
+        "de": "Werte ignorieren über",
+        "sv": "Ignorera värden över"
+      },
+      "placeholder": {
+        "en": "Optional",
+        "de": "Optional",
+        "sv": "Valfri"
+      },
+      "required": false
     }
   ]
 }
