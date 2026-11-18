@@ -99,6 +99,7 @@ async function loadChartData(value) {
     document.getElementById('median').value = data.median ?? "0";
     document.getElementById('standardDeviation').value = data.standardDeviation ?? "0";
     document.getElementById('trend').value = data.trend ?? "0";
+    document.getElementById('trendDirection').value = data.trend_direction ?? "flat";
     document.getElementById('size').value = data.size ?? "0";
     document.getElementById('firstValue').value = data.firstvalue ?? "0";
     document.getElementById('firstValueTime').value = data.firstvalue_time ?? "0";
@@ -320,6 +321,20 @@ function onHomeyReady(Homey) {
         document.getElementById('roundPercentage').checked = boolean ?? false;
     })
 
+    Homey.get('ignoreTrendValue', (e, boolean) => {
+        document.getElementById('ignoreTrendValue').checked = boolean ?? false;
+    })
+
+    Homey.get('useHumanizedTrend', (e, boolean) => {
+        document.getElementById('useHumanizedTrend').checked = boolean ?? false;
+    })
+
+    Homey.get('significantFiguresValue', (e, value) => {
+        if (value === undefined || value === null) value = 4;
+        document.getElementById('significantFiguresRange').value = value;
+        significantFiguresRangeChange();
+    })
+
     Homey.ready();
 }
 
@@ -342,6 +357,12 @@ function onRemoveNullValuesValue() {
 function onRoundPercentage() {
     let roundPercentage = document.getElementById('roundPercentage').checked ?? false;
     Homey.set('roundPercentage', roundPercentage)
+}
+
+function onHumanizedTrend() {
+    let humanizedTrend = document.getElementById('useHumanizedTrend').checked ?? false;
+    Homey.set('useHumanizedTrend', humanizedTrend)
+    void refreshChart()
 }
 
 

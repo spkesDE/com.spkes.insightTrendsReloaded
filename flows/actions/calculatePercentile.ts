@@ -15,7 +15,7 @@ export default class CalculatePercentile {
                 size: logs.length
             };
             app.log(`Got ${logs.length} from getLogs. The tokens are:`, token)
-            await app.homey.flow.getTriggerCard('percentileCalculated').trigger(token, state);
+            await app.homey.flow.getTriggerCard('percentileCalculated').trigger({...token, range: args.range, unit: FlowUtils.unitName(args.unit), label: args.label ?? ""}, state);
             if (withToken)
                 return token;
         });

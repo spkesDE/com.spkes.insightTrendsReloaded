@@ -13,15 +13,15 @@ export default class FlowUtils {
         return false;
     }
 
-    public static getValue(logs: any, characteristic: string, percent: number = 0): number {
-        if (characteristic === "trend") return Trend.createTrend(logs).slope ?? 0
+    public static getValue(logs: any, characteristic: string, opts?: { percent?: number, useHumanizedTrend?: boolean }): number {
+        if (characteristic === "trend") return Trend.createTrendHumanized(logs, opts?.useHumanizedTrend ?? false ).slope
         let stats = new Stats().push(logs.map((entry: any) => entry.y));
         if (characteristic === "min") return stats.range()[0];
         if (characteristic === "max") return stats.range()[1];
         if (characteristic === "average") return stats.amean();
         if (characteristic === "median") return stats.median();
         if (characteristic === "standardDeviation") return stats.stddev();
-        if (characteristic === "percentile") return stats.percentile(percent);
+        if (characteristic === "percentile") return stats.percentile(opts?.percent ?? 0);
         return 0;
     }
 
@@ -155,6 +155,12 @@ export default class FlowUtils {
                     ));
         })
     }
+    public static unitName(unit: string): string {
+        if (unit === "60") return "hours";
+        if (unit === "1440") return "days";
+        return "minutes";
+    }
+
     public static toSignificantDigits(number: number, precision: number = 4): number {
         if (precision > 20) precision = 20;
         return Number(number.toFixed(precision))

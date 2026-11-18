@@ -11,9 +11,9 @@
     "sv": "Genom att använda NÄR-kortet 'Trend beräknad' får man resultatet av beräkningen."
   },
   "titleFormatted": {
-    "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]]",
-    "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]]",
-    "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]]"
+    "en": "Calculate trend for [[insight]] based on the last [[range]] [[unit]], label [[label]]",
+    "de": "Berechne Tendenz für [[insight]] basierend auf die letzten [[range]] [[unit]], Label [[label]]",
+    "sv": "Beräkna trenden för [[insight]] baserat på de senaste [[range]] [[unit]], etikett [[label]]"
   },
   "args": [
     {
@@ -70,6 +70,21 @@
           }
         }
       ]
+    },
+    {
+      "type": "text",
+      "name": "label",
+      "title": {
+        "en": "Label",
+        "de": "Label",
+        "sv": "Etikett"
+      },
+      "placeholder": {
+        "en": "Optional, e.g. daily",
+        "de": "Optional, z.B. täglich",
+        "sv": "Valfri, t.ex. daglig"
+      },
+      "required": false
     }
   ],
   "tokens": [
@@ -132,6 +147,16 @@
         "sv": "Trendvärde"
       },
       "example": 1.337
+    },
+    {
+      "name": "trend_direction",
+      "type": "string",
+      "title": {
+        "en": "Trend direction",
+        "de": "Tendenz Richtung",
+        "sv": "Trendriktning"
+      },
+      "example": "up"
     },
     {
       "name": "firstvalue",

@@ -32,6 +32,9 @@
     "significantFiguresTrendValue": "Ignorera trendvärde",
     "sizeOfDataPoints": "Antal använda datapunkter",
     "standardDeviation": "Standardavvikelse",
-    "trend": "Trendvärde"
+    "trend": "Trendvärde",
+    "trendDirection": "Trendriktning",
+    "humanizedTrend": "Gör trendvärde lättare att förstå",
+    "humanizedTrendInfo": "Den här funktionen gör trendvärdet lättare att förstå genom att skala upp mycket små tal till ett mer läsbart värde. Exempel: istället för 0.000002 visas t.ex. +12 eller -8 beroende på riktning."
   }
 }

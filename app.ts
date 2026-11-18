@@ -19,6 +19,7 @@ export class InsightTrendsReloaded extends Homey.App {
     public significantFiguresValue: number = 5;
     cachedInsightsLastupdate: number = 0;
     private filterNullValues: boolean = false;
+    useHumanizedTrend: boolean = true;
     cachedInsights: any[] = [];
     roundPercentage: boolean = true;
 
@@ -36,10 +37,10 @@ export class InsightTrendsReloaded extends Homey.App {
         this.significantFiguresValue = await this.homey.settings.get("significantFiguresValue") ?? 5;
         this.filterNullValues = await this.homey.settings.get("filterNullValues") ?? false;
         this.roundPercentage = await this.homey.settings.get("roundPercentage") ?? false;
+        this.useHumanizedTrend = await this.homey.settings.get("useHumanizedTrend") ?? false;
         this._initializeFlowCards();
         try {
             let image = await this.homey.images.createImage();
-            console.log(image)
             // @ts-ignore cloudUrl is present at runtime but not in Homey's TypeScript typing
             this.homeyCloudUrl = image.cloudUrl.split("/api/")[0];
             await image.unregister();
@@ -68,6 +69,10 @@ export class InsightTrendsReloaded extends Homey.App {
             if(key === 'roundPercentage') {
                 this.roundPercentage = await this.homey.settings.get('roundPercentage')
                 this.log(`Round Percentage Value is now ${this.roundPercentage}`);
+            }
+            if (key === 'useHumanizedTrend') {
+                this.useHumanizedTrend = await this.homey.settings.get('useHumanizedTrend')
+                this.log(`Use Humanized Trend is now ${this.useHumanizedTrend}`);
             }
         });
 
@@ -104,7 +109,7 @@ export class InsightTrendsReloaded extends Homey.App {
             }
             //Calculate the lowest date based on user input
             let minDate = Date.now() - minutes * 60000;
-            this.log('Got ' + logEntries.values.length + ' entries from homey with timespan(' + minutes + ') of ' + this.minutesToTimespan(minutes))
+            this.log('Got ' + logEntries.values.length + ' entries from homey with timespan(' + minutes + ') of ' + this.minutesToTimespan(minutes) + ' for Insight ' + opts.id);
             resolve(
                 //Filter the log entries by date
                 logEntries.values
@@ -187,6 +192,7 @@ export class InsightTrendsReloaded extends Homey.App {
      *     median: number
      *     standardDeviation: number
      *     trend: number
+     *     trend_direction: string ('up' | 'down' | 'flat')
      *     firstvalue: number
      *     firstvalue_timestamp: number (timestamp)
      *     firstvalue_time: string
@@ -205,7 +211,7 @@ export class InsightTrendsReloaded extends Homey.App {
         console.log(id, uri, range, unit, percent, type)
         let logEntries = await this.getLogs(range, unit, {id: id, uri: uri}, type === 'boolean');
         let stats = new Stats().push(logEntries.map((entry: any) => entry.y));
-        let trendline = Trend.createTrend(logEntries);
+        let trendline = Trend.createTrendHumanized(logEntries, this.useHumanizedTrend);
         return  {
             trendLine: [
                 {x: logEntries[0].x, y: trendline.calcY(logEntries[0].x)},
@@ -217,7 +223,8 @@ export class InsightTrendsReloaded extends Homey.App {
             mean: this.significantFigures ? FlowUtils.toSignificantDigits(stats.amean(), this.significantFiguresValue) : stats.amean(),
             median: this.significantFigures ? FlowUtils.toSignificantDigits(stats.median(), this.significantFiguresValue) : stats.median(),
             standardDeviation: this.significantFigures ? FlowUtils.toSignificantDigits(stats.stddev(), this.significantFiguresValue) : stats.stddev(),
-            trend: this.significantFigures && !this.ignoreTrendValue ? FlowUtils.toSignificantDigits(trendline.slope * 1000, this.significantFiguresValue) : trendline.slope * 1000,
+            trend: this.significantFigures && !this.ignoreTrendValue ? FlowUtils.toSignificantDigits(trendline.slope, this.significantFiguresValue) : trendline.slope,
+            trend_direction: trendline.direction,
             firstvalue: this.significantFigures ? FlowUtils.toSignificantDigits(logEntries[0].y, this.significantFiguresValue) : logEntries[0].y,
             firstvalue_timestamp: logEntries[0].x,
             firstvalue_time: new Date(logEntries[0].x).toLocaleString('en-GB', {

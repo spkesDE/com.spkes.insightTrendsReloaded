@@ -64,8 +64,45 @@ export default class Trend {
 
         return {
             slope: b1,
-            yStart: b0,
+            direction: b1 > 0 ? 'up' : b1 < 0 ? 'down' : 'flat',
             calcY: (x: number) => b0 + b1 * x,
+            intercept: b0,
+        };
+    }
+
+    static createTrendHumanized(data: { x: number; y: number }[], useHumanized: boolean) {
+        if(!useHumanized) {
+            return this.createTrend(data);
+        }
+        if (!data || data.length < 2) return { slope: 0, direction: 'flat', calcY: () => 0 };
+
+        // Convert timestamps to seconds (so time differences aren’t huge)
+        const firstX = data[0].x;
+        const x = data.map(p => (p.x - firstX) / 1000);
+        const y = data.map(p => p.y);
+
+        const n = x.length;
+        const meanX = x.reduce((a, b) => a + b, 0) / n;
+        const meanY = y.reduce((a, b) => a + b, 0) / n;
+
+        // Calculate slope (Δy / Δx using least squares)
+        let num = 0, den = 0;
+        for (let i = 0; i < n; i++) {
+            num += (x[i] - meanX) * (y[i] - meanY);
+            den += (x[i] - meanX) ** 2;
+        }
+
+        const b1 = num / den; // slope
+        const b0 = meanY - b1 * meanX; // intercept (where line crosses Y-axis)
+
+        // Optional: normalize slope for readability (e.g. % change per hour)
+        let slope = b1 * 3600;
+
+        return {
+            slope,
+            direction: slope > 0 ? 'up' : slope < 0 ? 'down' : 'flat',
+            calcY: (xVal: number) => b0 + b1 * ((xVal - firstX) / 1000),
+            intercept: b0,
         };
     }
 }

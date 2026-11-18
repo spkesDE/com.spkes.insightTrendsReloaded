@@ -11,9 +11,9 @@
     "sv": "Använd NÄR-kortet 'Percentilen beräknad' i ett annat flöde för att få resultatet av beräkningen. Om man använder argumentet '50%' blir resultetat medianvärdet och man använder '25%' eller '75%' får man första respektive tredje kvartilen som resultat."
   },
   "titleFormatted": {
-    "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]]",
-    "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]]",
-    "sv": "Beräkna percentilen av [[percent]] för [[insight]] baserat på senaste [[range]] [[unit]]"
+    "en": "Calculate percentile of [[percent]] for [[insight]] based on the last [[range]] [[unit]], label [[label]]",
+    "de": "Berechne Perzentil von [[percent]] für [[insight]] basierend auf die letzten [[range]] [[unit]], Label [[label]]",
+    "sv": "Beräkna percentilen av [[percent]] för [[insight]] baserat på senaste [[range]] [[unit]], etikett [[label]]"
   },
   "args": [
     {
@@ -84,6 +84,21 @@
       "step": 1,
       "value": 50,
       "label": "%"
+    },
+    {
+      "type": "text",
+      "name": "label",
+      "title": {
+        "en": "Label",
+        "de": "Label",
+        "sv": "Etikett"
+      },
+      "placeholder": {
+        "en": "Optional, e.g. daily",
+        "de": "Optional, z.B. täglich",
+        "sv": "Valfri, t.ex. daglig"
+      },
+      "required": false
     }
   ],
   "tokens": [

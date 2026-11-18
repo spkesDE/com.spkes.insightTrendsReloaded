@@ -32,6 +32,9 @@
     "significantFiguresTrendValue": "Trendwert ignorieren",
     "sizeOfDataPoints": "Anzahl der verwendeten Datenpunkte",
     "standardDeviation": "Standardabweichung",
-    "trend": "Trend"
+    "trend": "Trend",
+    "trendDirection": "Trend Richtung",
+    "humanizedTrend": "Trendwert lesbarer machen",
+    "humanizedTrendInfo": "Diese Funktion macht den Trendwert leichter verständlich, indem sehr kleine Zahlen in einen lesbaren Bereich umgerechnet werden. Beispiel: statt 0.000002 siehst du z. B. +12 oder -8, je nach Richtung."
   }
 }
